@@ -1,0 +1,183 @@
+﻿<Window x:Class="GUI.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="Hotel Management - Đăng nhập" Height="720" Width="1080"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.Resources>
+        <!-- Style for Rounded TextBox and PasswordBox with Icon -->
+        <Style x:Key="InputBoxStyle" TargetType="{x:Type FrameworkElement}">
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Height" Value="45"/>
+        </Style>
+
+        <Style x:Key="MaterialButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#007BFF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="8" Background="{TemplateBinding Background}" x:Name="border">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.3" BlurRadius="5"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0056b3"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ExitButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialButtonStyle}">
+            <Setter Property="Background" Value="#6c757d"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="8" Background="{TemplateBinding Background}" x:Name="border">
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.3" BlurRadius="5"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#5a6268"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Main Window Border -->
+        <Border CornerRadius="10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#E0EAFC" Offset="0.0" />
+                    <GradientStop Color="#0A2A57" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <!-- Hotel Logo -->
+            <Border Width="80" Height="80" CornerRadius="40" Background="White" Padding="15">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="3" Color="Black" Opacity="0.2" BlurRadius="10"/>
+                </Border.Effect>
+                <Path Data="M10,2A1,1 0 0,1 11,3V4H9V3A1,1 0 0,1 10,2M5.293,5.293A1,1 0 0,1 5.293,6.707L3.586,8.414V17A1,1 0 0,0 4.586,18H6L7.293,16.707A1,1 0 0,1 8.707,16.707L10,18L11.293,16.707A1,1 0 0,1 12.707,16.707L14,18H15.414A1,1 0 0,0 16.414,17V8.414L14.707,6.707A1,1 0 0,1 14.707,5.293A1,1 0 0,1 15.414,5H17A1,1 0 0,1 18,6V18A1,1 0 0,1 17,19H3A1,1 0 0,1 2,18V6A1,1 0 0,1 3,5H4.586A1,1 0 0,1 5.293,5.293M10,10A2,2 0 1,0 10,6A2,2 0 0,0 10,10Z" 
+                      Fill="#0A2A57" Stretch="Uniform" />
+            </Border>
+
+            <TextBlock Text="Quản lý khách sạn" 
+                       Foreground="White" 
+                       FontSize="28" 
+                       FontWeight="Bold" 
+                       TextAlignment="Center" 
+                       Margin="0,15,0,20">
+                <TextBlock.Effect>
+                    <DropShadowEffect ShadowDepth="1" Color="Black" Opacity="0.5" BlurRadius="3"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!-- Login Card -->
+            <Border Width="400" CornerRadius="15" Padding="30">
+                <Border.Background>
+                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.3" BlurRadius="20"/>
+                </Border.Effect>
+                <StackPanel>
+                    <TextBlock Text="Đăng Nhập" 
+                               FontSize="22" 
+                               FontWeight="Bold" 
+                               TextAlignment="Center" 
+                               Foreground="#333"/>
+                    <TextBlock Text="Vui lòng nhập thông tin để tiếp tục" 
+                               TextAlignment="Center" 
+                               Foreground="#666" 
+                               Margin="0,5,0,20"/>
+
+                    <!-- Username -->
+                    <Grid Style="{StaticResource InputBoxStyle}">
+                        <TextBox x:Name="UsernameTextBox" VerticalContentAlignment="Center" Padding="40,0,10,0" BorderThickness="1" BorderBrush="LightGray" />
+                        <Path Data="M10,9A3,3 0 1,0 10,3A3,3 0 0,0 10,9M3,18A7,7 0 1,1 17,18H3Z" Fill="Gray" Width="18" Height="18" Stretch="Uniform" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                        <TextBlock IsHitTestVisible="False" Text="Tên đăng nhập" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=UsernameTextBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <!-- Password -->
+                    <Grid Style="{StaticResource InputBoxStyle}">
+                        <PasswordBox x:Name="PasswordBox" VerticalContentAlignment="Center" Padding="40,0,10,0" BorderThickness="1" BorderBrush="LightGray" />
+                        <Path Data="M18,8A6,6 0 0,1 10.257,13.743L10,14L9,15L8,16H6V18H2V14L6.257,9.743A6,6 0 0,1 18,8M12,4A1,1 0 1,0 12,6A1,1 0 0,0 12,4Z" Fill="Gray" Width="18" Height="18" Stretch="Uniform" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                        <TextBlock IsHitTestVisible="False" Text="Mật khẩu" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="DarkGray">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Password, ElementName=PasswordBox}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <!-- Role -->
+                    <ComboBox x:Name="RoleComboBox" Style="{StaticResource InputBoxStyle}" VerticalContentAlignment="Center" Padding="5" SelectedIndex="0">
+                        <ComboBoxItem Content="Nhân viên"/>
+                        <ComboBoxItem Content="Quản lý"/>
+                    </ComboBox>
+
+                    <!-- Remember me -->
+                    <CheckBox Content="Ghi nhớ đăng nhập" Foreground="#444" Margin="0,10,0,15"/>
+
+                    <!-- Error/Success Message -->
+                    <TextBlock x:Name="MessageLabel" TextAlignment="Center" FontWeight="Medium" Margin="0,0,0,15" Visibility="Collapsed"/>
+
+                    <!-- Buttons -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Margin="0,0,5,0" Content="Đăng nhập" Style="{StaticResource MaterialButtonStyle}" Click="LoginButton_Click"/>
+                        <Button Grid.Column="1" Margin="5,0,0,0" Content="Thoát" Style="{StaticResource ExitButtonStyle}" Click="ExitButton_Click"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <TextBlock Text="© 2025 Hotel Management System. All rights reserved." VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White" Opacity="0.75" Margin="20"/>
+    </Grid>
+</Window>

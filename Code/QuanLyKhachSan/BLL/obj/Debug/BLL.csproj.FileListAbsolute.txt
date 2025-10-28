@@ -1,0 +1,11 @@
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\bin\Debug\DAL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\bin\Debug\DTO.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\bin\Debug\DAL.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\bin\Debug\DTO.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.Up2Date
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.pdb

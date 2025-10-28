@@ -1,0 +1,9 @@
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\bin\Debug\DAL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\bin\Debug\DAL.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\bin\Debug\DTO.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\bin\Debug\DTO.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\obj\Debug\DAL.csproj.Up2Date
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\obj\Debug\DAL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\DAL\obj\Debug\DAL.pdb

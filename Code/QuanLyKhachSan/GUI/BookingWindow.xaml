@@ -1,0 +1,371 @@
+﻿<Window x:Class="GUI.BookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="Tạo Đơn Đặt Phòng" Height="750" Width="1400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Giả sử các style được định nghĩa trong file MainWindow.xaml có thể được tham chiếu ở đây -->
+            </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush x:Key="PrimaryBlue" Color="#3B82F6"/>
+            <SolidColorBrush x:Key="PrimaryGreen" Color="#22C55E"/>
+            <SolidColorBrush x:Key="TextPrimary" Color="#1F2937"/>
+            <SolidColorBrush x:Key="TextSecondary" Color="#6B7280"/>
+            <SolidColorBrush x:Key="BorderColor" Color="#E5E7EB"/>
+
+            <Style x:Key="BaseButton" TargetType="Button">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Padding" Value="12,8"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect ShadowDepth="1" BlurRadius="2" Opacity="0.3"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="Background" Value="{StaticResource PrimaryBlue}"/>
+            </Style>
+            <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource BaseButton}">
+                <Setter Property="Background" Value="{StaticResource PrimaryGreen}"/>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Padding" Value="10,8"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border x:Name="border" CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryBlue}"/>
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PrimaryBlue}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="Padding" Value="10,8"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+                <Setter Property="Padding" Value="10,8"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="ModernButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="#0A2A57"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Padding" Value="10,5"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="6" ShadowDepth="2" Opacity="0.3"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                        CornerRadius="6"  
+                                SnapsToDevicePixels="True">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#133D82"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" Value="#081A38"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border CornerRadius="10" MouseDown="Window_MouseDown">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#E0EAFC" Offset="0.0" />
+                <GradientStop Color="#0A2A57" Offset="1.0" />
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <!-- Close Button -->
+            <Button Content="&#x2715;"  
+                    HorizontalAlignment="Right"  
+                    VerticalAlignment="Top"  
+                    Width="30" Height="30"  
+                    Margin="0,10,10,0"  
+                    FontWeight="Bold"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Click="CloseButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4C4C"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Border Margin="30" CornerRadius="8" Background="#FDFEFF">
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- LEFT PANEL: CUSTOMER AND BOOKING INFO -->
+                    <Border Grid.Column="0" Background="White" CornerRadius="8" Padding="25" Margin="0,0,15,0">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock Text="Thông tin Đặt phòng" FontSize="24" FontWeight="Bold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,20"/>
+
+                                <!-- Customer Search -->
+                                <GroupBox Header="Tìm kiếm Khách hàng" FontWeight="SemiBold" Margin="0,0,0,15">
+                                    <StackPanel>
+                                        <Label Content="Nhập SĐT hoặc Email để tìm"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Grid.Column="0" Name="txtSearchCustomer"/>
+                                            <Button Grid.Column="1" Content="Tìm" Style="{StaticResource PrimaryButton}" Margin="10,0,0,0" Background="#FF1A53B2"/>
+                                        </Grid>
+                                        <CheckBox Name="chkNewCustomer" Content="Khách hàng mới" Margin="0,10,0,0" IsChecked="True"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!-- Customer Details -->
+                                <GroupBox Header="Thông tin Khách hàng" FontWeight="SemiBold" Margin="0,0,0,15">
+                                    <StackPanel IsEnabled="{Binding IsChecked, ElementName=chkNewCustomer}">
+                                        <Label Content="Họ và Tên"/>
+                                        <TextBox Name="txtTenKH" Text="Nguyễn Văn An"/>
+                                        <Label Content="Số Điện Thoại" Margin="0,10,0,0"/>
+                                        <TextBox Name="txtSoDienThoai" Text="0905123456"/>
+                                        <Label Content="Email" Margin="0,10,0,0"/>
+                                        <TextBox Name="txtEmail" Text="an.nguyen@example.com"/>
+                                        <Label Content="Địa chỉ" Margin="0,10,0,0"/>
+                                        <TextBox Name="txtDiaChi" Text="Hà Nội"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!-- Company Details -->
+                                <GroupBox Header="Thông tin Công ty (nếu có)" FontWeight="SemiBold" Margin="0,0,0,15">
+                                    <StackPanel>
+                                        <Label Content="Tên Công ty"/>
+                                        <TextBox Name="txtTenCongTy"/>
+                                        <Label Content="Mã số thuế" Margin="0,10,0,0"/>
+                                        <TextBox Name="txtMaSoThue"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <!-- Booking Details -->
+                                <GroupBox Header="Chi tiết Đặt phòng" FontWeight="SemiBold">
+                                    <StackPanel>
+                                        <Label Content="Người lớn" Margin="0,10,0,0"/>
+                                        <TextBox Name="txtNguoiLon"/>
+                                        <Label Content="Trẻ em" Margin="0,10,0,0"/>
+                                        <TextBox Name="txtTreEm"/>
+                                        <Label Content="Tiền cọc (VNĐ)"/>
+                                        <TextBox Name="txtTienCoc" Text="200000"/>
+                                        <Label Content="Ghi chú" Margin="0,10,0,0"/>
+                                        <TextBox Name="txtGhiChu" Text="Khách lẻ" Height="80" TextWrapping="Wrap" AcceptsReturn="True"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+
+                    <!-- RIGHT PANEL: ROOM SELECTION -->
+                    <Border Grid.Column="1" Background="White" CornerRadius="8" Padding="25">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Room Filters -->
+                            <StackPanel Grid.Row="0">
+                                <TextBlock Text="Chọn phòng" FontSize="24" FontWeight="Bold" Foreground="{StaticResource TextPrimary}" Margin="0,0,0,10"/>
+                                <Border Background="#F9FAFB" CornerRadius="5" Padding="15" BorderBrush="{StaticResource BorderColor}" BorderThickness="1">
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                                <Label Content="Ngày nhận phòng"/>
+                                                <DatePicker Name="dpNgayNhan" SelectedDate="2025-10-20"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                                                <Label Content="Ngày trả phòng"/>
+                                                <DatePicker Name="dpNgayTra" SelectedDate="2025-10-22"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                                            <StackPanel Margin="0,0,10,0">
+                                                <Label Content="Loại phòng"/>
+                                                <ComboBox Name="cmbLoaiPhong">
+                                                    <ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                            <StackPanel Margin="10,0,0,0">
+                                                <Label Content="Tầng"/>
+                                                <ComboBox Name="cmbTang">
+                                                    <ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>
+                                                </ComboBox>
+                                            </StackPanel>
+                                            <Button Content="Kiểm tra phòng trống" Style="{StaticResource PrimaryButton}" VerticalAlignment="Bottom" Margin="20,0,0,0" Background="#FF1A53B2"/>
+                                        </StackPanel>
+
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                            <!-- Tương tự CheckRoomStatus, hiển thị các phòng trống ở đây -->
+                                            <!-- Danh sách phòng trống -->
+                                            <DataGrid x:Name="dgPhongTrong" Margin="0,10,0,0"
+          AutoGenerateColumns="True"
+          CanUserAddRows="True"
+          HeadersVisibility="Column"
+          AlternatingRowBackground="#F5F5F5"
+          GridLinesVisibility="None"
+          SelectionMode="Single">
+
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="Số phòng" Binding="{Binding SoPhong}" Width="*"/>
+                                                    <DataGridTextColumn Header="Loại phòng" Binding="{Binding TenLoaiPhong}" Width="*"/>
+                                                    <DataGridTextColumn Header="Sức chứa" Binding="{Binding SucChua}" Width="*"/>
+                                                    <DataGridTextColumn Header="Giá/Đêm" Binding="{Binding GiaCoBan, StringFormat={}{0:N0} đ}" Width="*"/>
+                                                    <DataGridTemplateColumn Header="Hành động" Width="100">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <Button Content="Thêm"
+                            Style="{StaticResource ModernButtonStyle}"
+                            Padding="8,4"
+                            Click="BtnThemPhong_Click"/>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </ScrollViewer>
+                                    </StackPanel>
+                                </Border>
+                                
+                            </StackPanel>
+
+                            <!-- Room List & Selected Rooms -->
+                            <Grid Grid.Row="1" Margin="0,20,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="1.2*"/>
+                                </Grid.RowDefinitions>
+
+
+                                <TextBlock Grid.Row="0" Text="Phòng đã chọn" FontSize="18" FontWeight="SemiBold" Margin="0,15,0,10"/>
+
+                                <DataGrid Grid.Row="1" Name="dgSelectedRooms" AutoGenerateColumns="True" CanUserAddRows="True" IsReadOnly="True" Background="#F9FAFB">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Mã Phòng" Binding="{Binding RoomId}" Width="*"/>
+                                        <DataGridTextColumn Header="Loại Phòng" Binding="{Binding RoomType}" Width="*"/>
+                                        <DataGridTextColumn Header="Đơn giá/Đêm" Binding="{Binding Price, StringFormat={}{0:N0}}" Width="*"/>
+                                        <DataGridTextColumn Header="Thành tiền" Binding="{Binding Total, StringFormat={}{0:N0}}" Width="*"/>
+                                        <DataGridTemplateColumn Header="Hành Động" Width="80">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Xóa" Background="#EF4444" Foreground="White"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+
+                            <!-- Footer with Summary and Actions -->
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,0,0">
+                                <StackPanel VerticalAlignment="Center" Margin="0,0,20,0" HorizontalAlignment="Right">
+                                    <TextBlock Text="Tổng cộng:" FontSize="14" Foreground="{StaticResource TextSecondary}"/>
+                                    <TextBlock Name="tbTongTien" Text="2,090,000 VNĐ" FontSize="22" FontWeight="Bold" Foreground="{StaticResource PrimaryGreen}"/>
+                                </StackPanel>
+                                <Button Content="Hoàn tất Đặt phòng" Style="{StaticResource SuccessButton}" Padding="20,12"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
+
