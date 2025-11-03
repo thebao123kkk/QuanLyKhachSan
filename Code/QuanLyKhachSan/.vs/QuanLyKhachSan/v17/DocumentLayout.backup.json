@@ -1,72 +1,92 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\",
+  "WorkspaceRootPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\admindashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\admindashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\admindashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\maindashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\maindashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\maindashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\maindashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\paiding.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\paiding.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\reportsdashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\reportsdashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\housekeepingdashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\housekeepingdashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\bookingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\bookingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\roomdetails.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\roomdetails.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\searchroom.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\searchroom.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\admindashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\admindashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\housekeepingdashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\housekeepingdashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\b49ace08f4cd26a4f275d628999a0f91ccb8a1892704530d9e6f5bd1284082f1\\ResourcePart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\admindashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\admindashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\reportsdashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\reportsdashboard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\reportsdashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\reportsdashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\reportsdashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\roomdetails.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\roomdetails.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\paiding.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\paiding.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\paiding.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\paiding.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\paiding.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\roomdetails.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\roomdetails.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\roomdetails.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\gui.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\gui.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\gui.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\searchroom.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\searchroom.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\bookingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\bookingwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\searchroom.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\searchroom.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\searchroom.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\bookingwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\bookingwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\bookingwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\code\\quanlykhachsan\\gui\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|e:\\daihoc\\nam3\\hk1\\congnghephanmem\\doancuoiky\\quanlykhachsan\\code\\quanlykhachsan\\gui\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B9CCC51-5AC3-42C8-B0BC-D121FCA72FB4}|GUI\\GUI.csproj|solutionrelative:gui\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -77,7 +97,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -97,185 +117,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ResourcePart.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\b49ace08f4cd26a4f275d628999a0f91ccb8a1892704530d9e6f5bd1284082f1\\ResourcePart.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\b49ace08f4cd26a4f275d628999a0f91ccb8a1892704530d9e6f5bd1284082f1\\ResourcePart.cs [Read Only]",
-              "ViewState": "AgIAABgAAAAAAAAAAAAjwCcAAAAEAAAAAQAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T09:25:29.315Z",
-              "EditorCaption": " [Read Only]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminDashboard.xaml.cs",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml.cs",
-              "RelativeDocumentMoniker": "GUI\\AdminDashboard.xaml.cs",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml.cs",
-              "RelativeToolTip": "GUI\\AdminDashboard.xaml.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAiwGgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T09:23:20.329Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AdminDashboard.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml",
-              "RelativeDocumentMoniker": "GUI\\AdminDashboard.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml*",
-              "RelativeToolTip": "GUI\\AdminDashboard.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-27T09:16:06.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GUI",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
-              "RelativeDocumentMoniker": "GUI\\GUI.csproj",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
-              "RelativeToolTip": "GUI\\GUI.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-27T09:01:30.631Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ReportsDashboard.xaml.cs",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml.cs",
-              "RelativeDocumentMoniker": "GUI\\ReportsDashboard.xaml.cs",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml.cs",
-              "RelativeToolTip": "GUI\\ReportsDashboard.xaml.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAUwCwAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T08:53:54.663Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReportsDashboard.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml",
-              "RelativeDocumentMoniker": "GUI\\ReportsDashboard.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml",
-              "RelativeToolTip": "GUI\\ReportsDashboard.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-27T08:45:26.799Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Paiding.xaml.cs",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml.cs",
-              "RelativeDocumentMoniker": "GUI\\Paiding.xaml.cs",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml.cs",
-              "RelativeToolTip": "GUI\\Paiding.xaml.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAmwEAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T08:27:31.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Paiding.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml",
-              "RelativeDocumentMoniker": "GUI\\Paiding.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml",
-              "RelativeToolTip": "GUI\\Paiding.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-27T08:15:44.477Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RoomDetails.xaml.cs",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml.cs",
-              "RelativeDocumentMoniker": "GUI\\RoomDetails.xaml.cs",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml.cs",
-              "RelativeToolTip": "GUI\\RoomDetails.xaml.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAiwDEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-27T04:39:47.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "App.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\App.xaml",
-              "RelativeDocumentMoniker": "GUI\\App.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\App.xaml",
-              "RelativeToolTip": "GUI\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-15T16:05:44.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "RoomDetails.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml",
-              "RelativeDocumentMoniker": "GUI\\RoomDetails.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml",
-              "RelativeToolTip": "GUI\\RoomDetails.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-20T07:40:12.943Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SearchRoom.xaml.cs",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml.cs",
-              "RelativeDocumentMoniker": "GUI\\SearchRoom.xaml.cs",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml.cs",
-              "RelativeToolTip": "GUI\\SearchRoom.xaml.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAmwDMAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T16:47:33.913Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SearchRoom.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml",
-              "RelativeDocumentMoniker": "GUI\\SearchRoom.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml",
-              "RelativeToolTip": "GUI\\SearchRoom.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-15T16:47:09.341Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BookingWindow.xaml.cs",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml.cs",
-              "RelativeDocumentMoniker": "GUI\\BookingWindow.xaml.cs",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml.cs",
-              "RelativeToolTip": "GUI\\BookingWindow.xaml.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAwDEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T16:21:24.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "BookingWindow.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml",
               "RelativeDocumentMoniker": "GUI\\BookingWindow.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml",
               "RelativeToolTip": "GUI\\BookingWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-10-15T16:21:01.276Z",
@@ -283,11 +129,108 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 2,
+              "Title": "MainDashboard.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\MainDashboard.xaml",
+              "RelativeDocumentMoniker": "GUI\\MainDashboard.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\MainDashboard.xaml",
+              "RelativeToolTip": "GUI\\MainDashboard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:37:07.342Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReportsDashboard.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml",
+              "RelativeDocumentMoniker": "GUI\\ReportsDashboard.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml",
+              "RelativeToolTip": "GUI\\ReportsDashboard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-27T08:45:26.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminDashboard.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml",
+              "RelativeDocumentMoniker": "GUI\\AdminDashboard.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml*",
+              "RelativeToolTip": "GUI\\AdminDashboard.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-27T09:16:06.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HousekeepingDashboard.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\HousekeepingDashboard.xaml",
+              "RelativeDocumentMoniker": "GUI\\HousekeepingDashboard.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\HousekeepingDashboard.xaml",
+              "RelativeToolTip": "GUI\\HousekeepingDashboard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:12:56.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainDashboard.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\MainDashboard.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\MainDashboard.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\MainDashboard.xaml.cs",
+              "RelativeToolTip": "GUI\\MainDashboard.xaml.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAADwv50AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T08:48:41.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Paiding.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml",
+              "RelativeDocumentMoniker": "GUI\\Paiding.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml",
+              "RelativeToolTip": "GUI\\Paiding.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-27T08:15:44.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RoomDetails.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml",
+              "RelativeDocumentMoniker": "GUI\\RoomDetails.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml",
+              "RelativeToolTip": "GUI\\RoomDetails.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-20T07:40:12.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SearchRoom.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml",
+              "RelativeDocumentMoniker": "GUI\\SearchRoom.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml",
+              "RelativeToolTip": "GUI\\SearchRoom.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-15T16:47:09.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "Login.xaml",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Login.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Login.xaml",
               "RelativeDocumentMoniker": "GUI\\Login.xaml",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Login.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Login.xaml",
               "RelativeToolTip": "GUI\\Login.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-10-15T16:00:40.695Z",
@@ -295,16 +238,147 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminDashboard.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\AdminDashboard.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\AdminDashboard.xaml.cs",
+              "RelativeToolTip": "GUI\\AdminDashboard.xaml.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAUwGgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T09:23:20.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HousekeepingDashboard.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\HousekeepingDashboard.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\HousekeepingDashboard.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\HousekeepingDashboard.xaml.cs",
+              "RelativeToolTip": "GUI\\HousekeepingDashboard.xaml.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T08:18:58.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ResourcePart.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\b49ace08f4cd26a4f275d628999a0f91ccb8a1892704530d9e6f5bd1284082f1\\ResourcePart.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\b49ace08f4cd26a4f275d628999a0f91ccb8a1892704530d9e6f5bd1284082f1\\ResourcePart.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAArwCcAAAAEAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T09:25:29.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "GUI\\AssemblyInfo.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\AssemblyInfo.cs",
+              "RelativeToolTip": "GUI\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T08:08:11.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GUI.csproj",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+              "RelativeDocumentMoniker": "GUI\\GUI.csproj",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+              "RelativeToolTip": "GUI\\GUI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-27T09:01:30.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ReportsDashboard.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\ReportsDashboard.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\ReportsDashboard.xaml.cs",
+              "RelativeToolTip": "GUI\\ReportsDashboard.xaml.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAUwCwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T08:53:54.663Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 16,
+              "Title": "Paiding.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\Paiding.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Paiding.xaml.cs",
+              "RelativeToolTip": "GUI\\Paiding.xaml.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAmwEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T08:27:31.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RoomDetails.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\RoomDetails.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\RoomDetails.xaml.cs",
+              "RelativeToolTip": "GUI\\RoomDetails.xaml.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAiwDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-27T04:39:47.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "App.xaml",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\App.xaml",
+              "RelativeDocumentMoniker": "GUI\\App.xaml",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\App.xaml",
+              "RelativeToolTip": "GUI\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-15T16:05:44.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SearchRoom.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\SearchRoom.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\SearchRoom.xaml.cs",
+              "RelativeToolTip": "GUI\\SearchRoom.xaml.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAmwDMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T16:47:33.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BookingWindow.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml.cs",
+              "RelativeDocumentMoniker": "GUI\\BookingWindow.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\BookingWindow.xaml.cs",
+              "RelativeToolTip": "GUI\\BookingWindow.xaml.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAwDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T16:21:24.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "Login.xaml.cs",
-              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Login.xaml.cs",
+              "DocumentMoniker": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Login.xaml.cs",
               "RelativeDocumentMoniker": "GUI\\Login.xaml.cs",
-              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\Login.xaml.cs",
+              "ToolTip": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\Login.xaml.cs",
               "RelativeToolTip": "GUI\\Login.xaml.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAcwE0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T16:00:38.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-15T16:00:38.912Z"
             }
           ]
         }

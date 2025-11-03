@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\
 GUI
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\GUI\App.xaml
-71388624592
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\App.xaml
+9317018848
 
-12562953852
-203-1023451751
-AdminDashboard.xaml;BookingWindow.xaml;Login.xaml;Paiding.xaml;ReportsDashboard.xaml;RoomDetails.xaml;SearchRoom.xaml;
+14-631244583
+203-1693505389
+AdminDashboard.xaml;BookingWindow.xaml;HousekeepingDashboard.xaml;Login.xaml;MainDashboard.xaml;Paiding.xaml;ReportsDashboard.xaml;RoomDetails.xaml;SearchRoom.xaml;
 
 True
 

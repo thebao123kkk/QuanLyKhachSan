@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Title="Chi Tiết Đặt Phòng" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Background="Transparent">
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize" WindowState="Maximized"
+        Background="#FFEEEEEE">
 
     <Window.Resources>
         <!-- Modern Button Style - Primary Action -->

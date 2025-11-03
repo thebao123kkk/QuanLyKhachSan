@@ -1,0 +1,362 @@
+﻿<Window x:Class="GUI.MainDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        mc:Ignorable="d"
+        Title="Bảng Điều Khiển Chính" Height="720" Width="1080"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize" WindowState="Maximized"
+        Background="#FFEEEEEE"
+        Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <!-- (Sao chép toàn bộ Style từ các file XAML trước để đảm bảo tính nhất quán) -->
+        <!-- Modern Button Style - Primary Action (Cho các nút như Đăng xuất) -->
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#0A2A57"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="ButtonShadow" ShadowDepth="1" Direction="270" Color="Black" Opacity="0.2" BlurRadius="5"/>
+                            </Border.Effect>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#357ABD"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#2A5F9E"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#B0C4DE"/>
+                                <Setter Property="Foreground" Value="#F0F4F8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- === STYLE MỚI CHO THANH ĐIỀU HƯỚNG (NAV) === -->
+        <Style x:Key="NavigationButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#E0EAFC"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,15"/>
+            <Setter Property="Margin" Value="10,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- === SỬA LỖI Ở ĐÂY === -->
+                            <!-- Phải tách Opacity ra thành một Setter riêng -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFFFFF"/>
+                                <Setter TargetName="border" Property="Opacity" Value="0.1"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFFFFF"/>
+                                <Setter TargetName="border" Property="Opacity" Value="0.2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style cho icon trên thanh Nav -->
+        <Style x:Key="NavIconPathStyle" TargetType="Path">
+            <Setter Property="Fill" Value="White"/>
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Stretch" Value="Uniform"/>
+            <Setter Property="Margin" Value="0,0,15,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Style cho text trên thanh Nav -->
+        <Style x:Key="NavButtonTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- === STYLE CHO VÙNG NỘI DUNG CHÍNH === -->
+
+        <!-- TextBlock Styles -->
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#0A2A57"/>
+            <Setter Property="Margin" Value="10,0,10,5"/>
+        </Style>
+        <Style x:Key="SubHeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="Margin" Value="10,0,10,20"/>
+        </Style>
+
+        <!-- Style cho ô thống kê -->
+        <Style x:Key="StatBoxStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <!-- Đổi nền thành Trắng -->
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="25"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderBrush" Value="#E0EAFC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="2" Direction="270" Color="Black" Opacity="0.05" BlurRadius="10"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style cho số liệu thống kê (giá trị) -->
+        <Style x:Key="StatValueStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#0A2A57"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+        </Style>
+
+        <!-- Style cho nhãn thống kê -->
+        <Style x:Key="StatLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#555"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+        </Style>
+
+    </Window.Resources>
+
+    <!-- Main Window Border -->
+    <Border CornerRadius="10" Background="#F4F7FC" MouseDown="Window_MouseDown">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- Thanh điều hướng bên trái -->
+                <ColumnDefinition Width="*"/>
+                <!-- Nội dung chính -->
+            </Grid.ColumnDefinitions>
+
+            <!-- === THANH ĐIỀU HƯỚNG BÊN TRÁI (CỘT 0) === -->
+            <Border Grid.Column="0" CornerRadius="10,0,0,10" MinWidth="250">
+                <Border.Background>
+                    <!-- Áp dụng Gradient như yêu cầu -->
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#0A2A57" Offset="0.0" />
+                        <GradientStop Color="#357ABD" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <!-- Logo/Header -->
+                        <RowDefinition Height="*"/>
+                        <!-- Các nút chức năng -->
+                        <RowDefinition Height="Auto"/>
+                        <!-- Đăng xuất -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Logo/Header -->
+                    <TextBlock Grid.Row="0" Text="KHÁCH SẠN" 
+                               FontSize="22" FontWeight="Bold" Foreground="White" 
+                               TextAlignment="Center" Margin="20,30,20,20"/>
+
+                    <!-- Các nút chức năng -->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <!-- Nút Đặt Phòng Mới (MỚI) -->
+                            <Button x:Name="BookingButton" Style="{StaticResource NavigationButtonStyle}" Click="BookingButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <!-- Icon Calendar-Plus -->
+                                    <Path Data="M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M13,10H10V13H13V16H15V13H18V10H15V7H13V10Z" 
+                                          Style="{StaticResource NavIconPathStyle}" />
+                                    <TextBlock Text="Đặt Phòng Mới" Style="{StaticResource NavButtonTextStyle}"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Nút Tra Cứu Phòng -->
+                            <Button x:Name="SearchRoomButton" Style="{StaticResource NavigationButtonStyle}" Click="SearchRoomButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" 
+                                          Style="{StaticResource NavIconPathStyle}" />
+                                    <TextBlock Text="Tra Cứu / Lịch Phòng" Style="{StaticResource NavButtonTextStyle}"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Nút Thanh Toán -->
+                            <Button x:Name="CheckoutButton" Style="{StaticResource NavigationButtonStyle}" Click="CheckoutButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="M5,20H19V18H5M19,4H5V6H19M15,9H9V15H15V9M17,7V17H7V7H17M15.5,13H13.5V15H11.5V13H9.5V11H11.5V9H13.5V11H15.5V13Z" 
+                                          Style="{StaticResource NavIconPathStyle}" />
+                                    <TextBlock Text="Thanh Toán / Check-Out" Style="{StaticResource NavButtonTextStyle}"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Nút Buồng Phòng -->
+                            <Button x:Name="HousekeepingButton" Style="{StaticResource NavigationButtonStyle}" Click="HousekeepingButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <!-- Icon chổi -->
+                                    <Path Data="M19.36,2.72L20.78,4.14L15.12,9.79L16.53,11.2L11.91,15.83L10.5,14.41L15.12,9.79L9.5,4.18L10.91,2.77L15.12,7L19.36,2.72M5.93,17.57C5.54,17.96 5.54,18.59 5.93,18.98L7.03,20.08C7.42,20.47 8.05,20.47 8.44,20.08L14.07,14.45L11.26,11.64L5.93,17.57Z" 
+                                          Style="{StaticResource NavIconPathStyle}" />
+                                    <TextBlock Text="Buồng Phòng" Style="{StaticResource NavButtonTextStyle}"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Nút Báo Cáo -->
+                            <Button x:Name="ReportsButton" Style="{StaticResource NavigationButtonStyle}" Click="ReportsButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="M10,20H14V4H10M4,20H8V12H4M16,20H20V8H16V20Z" 
+                                          Style="{StaticResource NavIconPathStyle}" />
+                                    <TextBlock Text="Báo Cáo &amp; Thống Kê" Style="{StaticResource NavButtonTextStyle}"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Nút Quản Trị -->
+                            <Button x:Name="AdminButton" Style="{StaticResource NavigationButtonStyle}" Click="AdminButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Path Data="M12,1L9,4H6C5.45,4 5,4.45 5,5V7H2V9H3.14C3.05,9.33 3,9.66 3,10C3,10.34 3.05,10.67 3.14,11H2V13H5V15C5,15.55 5.45,16 6,16H9L12,19L15,16H18C18.55,16 19,15.55 19,15V13H22V11H20.86C20.95,10.67 21,10.34 21,10C21,9.66 20.95,9.33 20.86,9H22V7H19V5C19,4.45 18.55,4 18,4H15L12,1M12,6C14.21,6 16,7.79 16,10C16,12.21 14.21,14 12,14C9.79,14 8,12.21 8,10C8,7.79 9.79,6 12,6M12,8C10.9,8 10,8.9 10,10C10,11.1 10.9,12 12,12C13.1,12 14,11.1 14,10C14,8.9 13.1,8 12,8Z" 
+                                          Style="{StaticResource NavIconPathStyle}" />
+                                    <TextBlock Text="Quản Trị Hệ Thống" Style="{StaticResource NavButtonTextStyle}"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- Nút Đăng Xuất -->
+                    <Button x:Name="LogoutButton"
+                            Grid.Row="2" Style="{StaticResource NavigationButtonStyle}" 
+                            Margin="10,20" Background="#D9534F" Opacity="0.8"
+                            HorizontalContentAlignment="Center"
+                            Click="LogoutButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <!-- Icon Logout -->
+                            <Path Data="M16,17V14H9V12H16V9L21,13L16,17M14,2H7C5.9,2 5,2.9 5,4V16H7V4H14V2M19,16V20H7V18H17V16H19Z" Fill="White"
+                                  Style="{StaticResource NavIconPathStyle}"/>
+                            <TextBlock Text="Đăng Xuất" Style="{StaticResource NavButtonTextStyle}"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- === NỘI DUNG CHÍNH (CỘT 1) === -->
+            <Grid Grid.Column="1" Margin="20">
+                <!-- Close Button (Di chuyển vào đây) -->
+                <Button Content="&#x2715;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" FontWeight="Bold" Foreground="#555" BorderThickness="0" Click="CloseButton_Click" Panel.ZIndex="1">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF4C4C"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <!-- Header -->
+                        <RowDefinition Height="*"/>
+                        <!-- Bảng Thống Kê Nhanh -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Header -->
+                    <StackPanel Grid.Row="0" Margin="10,10,10,0">
+                        <TextBlock Text="BẢNG ĐIỀU KHIỂN CHÍNH" Style="{StaticResource HeaderTextStyle}"/>
+                        <TextBlock x:Name="WelcomeTextBlock" Text="Xin chào, [Tên Nhân Viên]! (Vai trò: [Vai Trò])" Style="{StaticResource SubHeaderTextStyle}"/>
+                    </StackPanel>
+
+                    <!-- BẢNG THỐNG KÊ NHANH -->
+                    <Border x:Name="StatsPanel" Grid.Row="1" Padding="10" Margin="10,0,10,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Tình hình hôm nay" FontWeight="SemiBold" Foreground="#333" Margin="10,0,0,10" FontSize="18"/>
+
+                            <!-- Dùng UniformGrid 2x2 để các ô lớn hơn -->
+                            <UniformGrid Grid.Row="1" Rows="2" Columns="2">
+                                <!-- Stat 1: Occupancy -->
+                                <Border Style="{StaticResource StatBoxStyle}">
+                                    <StackPanel>
+                                        <TextBlock x:Name="StatOccupancy" Style="{StaticResource StatValueStyle}">0 / 0</TextBlock>
+                                        <TextBlock Text="Phòng đang ở" Style="{StaticResource StatLabelStyle}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Stat 2: Check-ins -->
+                                <Border Style="{StaticResource StatBoxStyle}">
+                                    <StackPanel>
+                                        <TextBlock x:Name="StatCheckIns" Style="{StaticResource StatValueStyle}">0</TextBlock>
+                                        <TextBlock Text="Dự kiến đến" Style="{StaticResource StatLabelStyle}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Stat 3: Check-outs -->
+                                <Border Style="{StaticResource StatBoxStyle}">
+                                    <StackPanel>
+                                        <TextBlock x:Name="StatCheckOuts" Style="{StaticResource StatValueStyle}">0</TextBlock>
+                                        <TextBlock Text="Dự kiến đi" Style="{StaticResource StatLabelStyle}"/>
+                                    </StackPanel>
+                                </Border>
+                                <!-- Stat 4: Dirty Rooms -->
+                                <Border Style="{StaticResource StatBoxStyle}">
+                                    <StackPanel>
+                                        <TextBlock x:Name="StatDirtyRooms" Style="{StaticResource StatValueStyle}">0</TextBlock>
+                                        <TextBlock Text="Phòng cần dọn" Style="{StaticResource StatLabelStyle}"/>
+                                    </StackPanel>
+                                </Border>
+                            </UniformGrid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
+

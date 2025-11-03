@@ -138,11 +138,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+      "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
       "projectName": "GUI",
-      "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+      "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\GUI\\obj\\",
+      "outputPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -163,11 +163,11 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj": {
-              "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj"
+            "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj": {
+              "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj"
             },
-            "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
-              "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+            "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+              "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
             }
           }
         }
