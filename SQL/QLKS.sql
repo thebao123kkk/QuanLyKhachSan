@@ -279,10 +279,9 @@ INSERT INTO NhanVien VALUES
 ('NV03', N'Phạm Thu Thảo', N'Kế toán', N'Nữ', '1995-12-15', '0909888777', 'thao.pham@hotel.vn', N'Hà Nội', 'VT04', N'Đang làm', GETDATE());
 
 INSERT INTO TaiKhoanHeThong VALUES
-('TK01', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', 'Quản lý', N'Hoạt động', 'mai.tran@hotel.vn', 'NV01', GETDATE()),
-('TK02', 'letuan', 'E10ADC3949BA59ABBE56E057F20F883E', 'Lễ tân', N'Hoạt động', 'tuan.le@hotel.vn', 'NV02', GETDATE()),
-('TK03', 'thaopham', 'E10ADC3949BA59ABBE56E057F20F883E', 'Kế toán', N'Hoạt động', 'thao.pham@hotel.vn', 'NV03', GETDATE());
-
+('TK01', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', N'Quản lý', N'Hoạt động', 'mai.tran@hotel.vn', 'NV01', GETDATE()),
+('TK02', 'letuan', 'E10ADC3949BA59ABBE56E057F20F883E', N'Lễ tân', N'Hoạt động', 'tuan.le@hotel.vn', 'NV02', GETDATE()),
+('TK03', 'thaopham', 'E10ADC3949BA59ABBE56E057F20F883E', N'Kế toán', N'Hoạt động', 'thao.pham@hotel.vn', 'NV03', GETDATE());
 
 -- QUẢN LÝ PHÒNG
 -- Nhóm loại phòng
