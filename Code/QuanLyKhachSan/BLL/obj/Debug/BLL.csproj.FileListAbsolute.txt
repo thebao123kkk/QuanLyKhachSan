@@ -9,3 +9,14 @@ E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.Up2Date
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.dll
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DAL.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DTO.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DAL.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DTO.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.Up2Date
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.pdb

@@ -40,3 +40,46 @@ E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\GUI\obj\Debug\
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.pdb
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfig.cache
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\GUI.exe
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\GUI.deps.json
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\GUI.runtimeconfig.json
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\GUI.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\GUI.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\LiveCharts.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\LiveCharts.Wpf.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\BLL.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\DAL.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\DTO.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\BLL.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\DTO.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\bin\Debug\net8.0-windows\DAL.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.csproj.AssemblyReference.cache
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\AdminDashboard.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\BookingWindow.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\Login.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\Paiding.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\ReportsDashboard.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\RoomDetails.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\SearchRoom.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\App.g.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI_MarkupCompile.cache
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI_MarkupCompile.lref
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\AdminDashboard.baml
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\BookingWindow.baml
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\Login.baml
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\Paiding.baml
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\ReportsDashboard.baml
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\RoomDetails.baml
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\SearchRoom.baml
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.g.resources
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.AssemblyInfoInputs.cache
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.AssemblyInfo.cs
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.csproj.CoreCompileInputs.cache
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.sourcelink.json
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.csproj.Up2Date
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\refint\GUI.dll
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.pdb
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfig.cache
+D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
