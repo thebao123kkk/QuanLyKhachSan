@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Thanh Toán &amp; Hóa Đơn" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Background="Transparent">
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize" WindowState="Maximized"
+        Background="#FFECECEC">
 
     <Window.Resources>
         <!-- (Sao chép toàn bộ Style từ RoomDetails.xaml hoặc SearchRoom.xaml) -->
@@ -371,7 +371,7 @@
 
         <Grid>
             <!-- Close Button -->
-            <Button Content="&#x2715;" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="1040,10,0,0" FontWeight="Bold" Foreground="White" BorderThickness="0" Click="CloseButton_Click">
+            <Button Content="&#x2715;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="0,10,10,0" FontWeight="Bold" Foreground="White" BorderThickness="0" Click="CloseButton_Click">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Transparent"/>

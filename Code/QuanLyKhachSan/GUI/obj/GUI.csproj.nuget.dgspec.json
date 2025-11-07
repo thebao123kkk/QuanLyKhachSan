@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj": {}
   },
   "projects": {
@@ -9,15 +10,33 @@
         "projectUniqueName": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj",
         "projectName": "BLL",
         "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj",
+=======
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj": {}
+  },
+  "projects": {
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj",
+        "projectName": "BLL",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj",
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
         "UsingMicrosoftNETSdk": false,
         "frameworks": {
           "net472": {
             "projectReferences": {
+<<<<<<< HEAD
               "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj": {
                 "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj"
               },
               "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
                 "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+=======
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj"
+              },
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
               }
             }
           }
@@ -27,17 +46,30 @@
         "net472": {}
       }
     },
+<<<<<<< HEAD
     "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj": {
       "restore": {
         "projectUniqueName": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj",
         "projectName": "DAL",
         "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj",
+=======
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj",
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
         "UsingMicrosoftNETSdk": false,
         "frameworks": {
           "net472": {
             "projectReferences": {
+<<<<<<< HEAD
               "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
                 "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+=======
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
               }
             }
           }
@@ -47,11 +79,19 @@
         "net472": {}
       }
     },
+<<<<<<< HEAD
     "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
       "restore": {
         "projectUniqueName": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj",
         "projectName": "DTO",
         "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj",
+=======
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj",
+        "projectName": "DTO",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj",
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
         "UsingMicrosoftNETSdk": false,
         "frameworks": {
           "net472": {
@@ -63,6 +103,7 @@
         "net472": {}
       }
     },
+<<<<<<< HEAD
     "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -71,6 +112,16 @@
         "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
         "outputPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\obj\\",
+=======
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+        "projectName": "GUI",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\obj\\",
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,11 +142,19 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
+<<<<<<< HEAD
               "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj": {
                 "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj"
               },
               "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
                 "projectPath": "D:\\Study\\Năm 3\\Công nghệ phần mềm\\Cuối kỳ\\Project\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+=======
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj"
+              },
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
               }
             }
           }

@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Title="Báo Cáo &amp; Thống Kê" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Background="Transparent">
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize" WindowState="Maximized"
+        Background="Transparent"> 
 
     <Window.Resources>
         <!-- (Sao chép toàn bộ Style từ các file XAML trước) -->

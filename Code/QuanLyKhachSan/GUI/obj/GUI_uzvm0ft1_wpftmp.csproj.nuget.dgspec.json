@@ -1,0 +1,148 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj": {}
+  },
+  "projects": {
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj",
+        "projectName": "BLL",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj"
+              },
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DAL\\DAL.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj",
+        "projectName": "DTO",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+        "projectName": "GUI",
+        "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\GUI.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\GUI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0-windows7.0": {
+            "targetAlias": "net8.0-windows",
+            "projectReferences": {
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\BLL\\BLL.csproj"
+              },
+              "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj": {
+                "projectPath": "E:\\DaiHoc\\Nam3\\HK1\\CongNghePhanMem\\DoAnCuoiKy\\QuanLyKhachSan\\Code\\QuanLyKhachSan\\DTO\\DTO.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "LiveCharts.Wpf": {
+              "target": "Package",
+              "version": "[0.9.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

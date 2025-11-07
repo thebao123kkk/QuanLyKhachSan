@@ -8,8 +8,9 @@
         mc:Ignorable="d"
         Title="Bảng Điều Khiển Quản Lý" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize"
+         WindowState="Maximized"
         Background="Transparent">
 
     <Window.Resources>

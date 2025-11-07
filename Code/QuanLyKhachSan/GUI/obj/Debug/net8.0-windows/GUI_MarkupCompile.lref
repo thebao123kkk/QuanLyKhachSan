@@ -1,5 +1,6 @@
 ﻿
 
+<<<<<<< HEAD
 FD:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\AdminDashboard.xaml;;
 FD:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\BookingWindow.xaml;;
 FD:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\Login.xaml;;
@@ -7,4 +8,15 @@ FD:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Co
 FD:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\ReportsDashboard.xaml;;
 FD:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\RoomDetails.xaml;;
 FD:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\SearchRoom.xaml;;
+=======
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\AdminDashboard.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\BookingWindow.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\HousekeepingDashboard.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\Login.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\MainDashboard.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\Paiding.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\ReportsDashboard.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\RoomDetails.xaml;;
+FE:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\SearchRoom.xaml;;
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
 

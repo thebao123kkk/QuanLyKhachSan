@@ -8,7 +8,11 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GUI
+<<<<<<< HEAD
 build_property.ProjectDir = D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\
+=======
+build_property.ProjectDir = E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

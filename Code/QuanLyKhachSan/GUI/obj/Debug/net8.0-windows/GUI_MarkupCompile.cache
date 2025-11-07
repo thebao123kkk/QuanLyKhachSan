@@ -4,17 +4,30 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\
+=======
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\obj\Debug\net8.0-windows\
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
 GUI
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+<<<<<<< HEAD
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\App.xaml
 71388624592
 
 10-1458811757
 203-1344706747
 AdminDashboard.xaml;BookingWindow.xaml;Login.xaml;Paiding.xaml;ReportsDashboard.xaml;RoomDetails.xaml;SearchRoom.xaml;
+=======
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\GUI\App.xaml
+9317018848
+
+121641957104
+203-1693505389
+AdminDashboard.xaml;BookingWindow.xaml;HousekeepingDashboard.xaml;Login.xaml;MainDashboard.xaml;Paiding.xaml;ReportsDashboard.xaml;RoomDetails.xaml;SearchRoom.xaml;
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2
 
 False
 

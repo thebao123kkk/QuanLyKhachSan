@@ -9,6 +9,7 @@ E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.Up2Date
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.dll
 E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.pdb
+<<<<<<< HEAD
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.dll
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.pdb
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DAL.dll
@@ -20,3 +21,16 @@ D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Cod
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.Up2Date
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.dll
 D:\Study\Năm 3\Công nghệ phần mềm\Cuối kỳ\Project\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.pdb
+=======
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\BLL.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DAL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DTO.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DAL.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\bin\Debug\DTO.pdb
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.csproj.Up2Date
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.dll
+E:\DaiHoc\Nam3\HK1\CongNghePhanMem\DoAnCuoiKy\QuanLyKhachSan\Code\QuanLyKhachSan\BLL\obj\Debug\BLL.pdb
+>>>>>>> 1b57b4e6459fa4f3980c7dcbb225f309e07c46f2

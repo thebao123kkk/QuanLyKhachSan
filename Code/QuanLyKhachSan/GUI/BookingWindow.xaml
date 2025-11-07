@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Tạo Đơn Đặt Phòng" Height="750" Width="1400"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        Background="Transparent">
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize" WindowState="Maximized"
+        Background="#FFF2F2F2">
 
     <Window.Resources>
         <ResourceDictionary>
