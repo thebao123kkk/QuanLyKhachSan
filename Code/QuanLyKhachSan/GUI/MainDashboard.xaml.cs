@@ -126,36 +126,47 @@ namespace GUI
         {
             BookingWindow bookingWindow = new BookingWindow();
             bookingWindow.Show();
+            this.Hide();
         }
 
         private void SearchRoomButton_Click(object sender, RoutedEventArgs e)
         {
             SearchRoom searchRoom = new SearchRoom();
             searchRoom.Show(); // Dùng .Show() để có thể mở nhiều cửa sổ
+            this.Hide();
+
         }
 
         private void CheckoutButton_Click(object sender, RoutedEventArgs e)
         {
             Paiding checkout = new Paiding();
             checkout.Show();
+            this.Hide();
+
         }
 
         private void HousekeepingButton_Click(object sender, RoutedEventArgs e)
         {
             HousekeepingDashboard housekeeping = new HousekeepingDashboard();
             housekeeping.Show();
+            this.Hide();
+
         }
 
         private void ReportsButton_Click(object sender, RoutedEventArgs e)
         {
             ReportsDashboard reports = new ReportsDashboard();
             reports.Show();
+            this.Hide();
+
         }
 
         private void AdminButton_Click(object sender, RoutedEventArgs e)
         {
             AdminDashboard admin = new AdminDashboard();
             admin.Show();
+            this.Hide();
+
         }
     }
 }

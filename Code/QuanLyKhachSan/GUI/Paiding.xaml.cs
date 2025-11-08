@@ -61,6 +61,8 @@ namespace GUI
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            MainDashboard dashboard = new MainDashboard();
+            dashboard.Show();
         }
 
     }

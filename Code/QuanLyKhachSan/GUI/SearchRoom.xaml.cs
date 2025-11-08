@@ -23,7 +23,7 @@ namespace GUI
         {
             InitializeComponent();
         }
-         // Kéo thả cửa sổ (vì WindowStyle=None)
+        // Kéo thả cửa sổ (vì WindowStyle=None)
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -34,6 +34,8 @@ namespace GUI
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            MainDashboard dashboard = new MainDashboard();
+            dashboard.Show();
         }
 
         // Nút Tìm kiếm
@@ -49,7 +51,7 @@ namespace GUI
         // Khi chọn một hàng trong DataGrid
         private void ResultsDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-           
+
         }
 
         // Xem chi tiết phòng
@@ -68,6 +70,15 @@ namespace GUI
             {
                 MessageBox.Show("Mở form đặt phòng cho phòng đã chọn.", "Đặt phòng");
             }
-        } 
+        }
+
+        // Chech in
+        private void CheckInButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ResultsDataGrid.SelectedItem != null)
+            {
+                MessageBox.Show("Mở form check-in cho phòng đã chọn.", "Check-in");
+            }
+        }
     }
 }

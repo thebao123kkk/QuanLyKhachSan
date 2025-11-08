@@ -334,11 +334,27 @@
                     <DataGrid Grid.Row="2" x:Name="ResultsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Margin="10,0" SelectionChanged="ResultsDataGrid_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Mã Phòng" Binding="{Binding RoomId}" Width="*"/>
+                            <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding Name}" Width="*"/>
                             <DataGridTextColumn Header="Tầng" Binding="{Binding Floor}" Width="Auto"/>
                             <DataGridTextColumn Header="Loại Phòng" Binding="{Binding RoomType}" Width="*"/>
                             <DataGridTextColumn Header="Số Giường" Binding="{Binding Beds}" Width="Auto"/>
                             <DataGridTextColumn Header="Giá Tiền (VNĐ)" Binding="{Binding Price, StringFormat={}{0:N0}}" Width="*"/>
                             <DataGridTextColumn Header="Tình Trạng" Binding="{Binding Status}" Width="*"/>
+                            <!-- 🔹 Cột có nút Check-In -->
+                            <DataGridTemplateColumn Header="Nhận phòng" Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Check-In"
+                            Background="White"
+                            Foreground="#28A745"
+                            Padding="6,2"
+                            Margin="4,0"
+                            Cursor="Hand"
+                            FontSize="13"
+                            Click="CheckInButton_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 

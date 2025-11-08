@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="Thanh Toán &amp; Hóa Đơn" Height="720" Width="1080"
+        Title="Thanh Toán &amp; Hóa Đơn" Height="804" Width="1142"
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
         ResizeMode="CanResize" WindowState="Maximized"
@@ -454,7 +454,7 @@
 
                         <!-- Right Column: Summary & Payment -->
                         <Grid Grid.Column="1">
-                            <Border Background="White" CornerRadius="5" Padding="20" BorderBrush="#EEE" BorderThickness="1" Margin="0,0,0,-15">
+                            <Border Background="White" CornerRadius="5" Padding="20" BorderBrush="#EEE" BorderThickness="1">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -517,9 +517,9 @@
                                     </StackPanel>
 
                                     <!-- Record Payment (SRS 4.4.2) -->
-                                    <StackPanel Grid.Row="1" Margin="0,10,0,0">
-                                        <TextBlock Text="Ghi Nhận Thanh Toán (SRS 4.4.2)" Style="{StaticResource SubHeaderTextStyle}"/>
-                                        <TextBlock Text="Phương thức" Style="{StaticResource LabelTextStyle}"/>
+                                    <StackPanel Grid.Row="1" Margin="0,20,0,0">
+                                        <TextBlock  Text="Ghi Nhận Thanh Toán" Style="{StaticResource SubHeaderTextStyle}"/>
+                                        <TextBlock Margin="0,10,0,5" Text="Phương thức" Style="{StaticResource LabelTextStyle}"/>
                                         <ComboBox x:Name="PaymentMethodComboBox" Style="{StaticResource ModernComboBoxStyle}" Margin="0,0,0,10">
                                             <ComboBoxItem IsSelected="True">Tiền mặt</ComboBoxItem>
                                             <ComboBoxItem>Thẻ tín dụng</ComboBoxItem>
@@ -533,18 +533,17 @@
                                     </StackPanel>
 
                                     <!-- Print Actions (SRS 4.4.1, 4.4.3) -->
-                                    <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Margin="0,20,0,0">
+                                    <StackPanel Grid.Row="2" VerticalAlignment="Top" Margin="0,41,0,0" Height="68">
                                         <!-- Sử dụng Grid để đặt 2 nút In kề nhau -->
-                                        <Grid Height="35">
+                                        <Grid Height="48">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
                                             <!-- Bỏ (SRS...) khỏi Content để ngắn gọn hơn -->
                                             <Button Grid.Column="0" x:Name="PrintProformaButton" Content="In Phiếu &#xD;&#xA;Tạm Tính" Style="{StaticResource PrintButtonStyle}" Margin="0,3,5,0" Click="PrintProformaButton_Click"/>
-                                            <Button Grid.Column="1" x:Name="PrintVatButton" Content="Xuất Hóa Đơn" Style="{StaticResource VatButtonStyle}" Margin="5,3,10,0" Click="PrintVatButton_Click" RenderTransformOrigin="0.5,0.5">
+                                            <Button Grid.Column="1" x:Name="PrintVatButton" Content="Xuất Hóa Đơn" Style="{StaticResource VatButtonStyle}" Margin="5,3,0,0" Click="PrintVatButton_Click" RenderTransformOrigin="0.5,0.5">
                                                 <Button.RenderTransform>
                                                     <TransformGroup>
                                                         <ScaleTransform/>
@@ -554,7 +553,6 @@
                                                     </TransformGroup>
                                                 </Button.RenderTransform>
                                             </Button>
-                                            <Button Grid.Column="1" x:Name="FinalizeCheckoutButton" Content="Hoàn Tất" Style="{StaticResource SecondaryButtonStyle}" Margin="92,3,0,0" IsEnabled="False" Click="FinalizeCheckoutButton_Click" Grid.ColumnSpan="2" Width="NaN"/>
 
                                         </Grid>
 
