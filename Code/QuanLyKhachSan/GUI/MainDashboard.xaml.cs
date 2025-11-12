@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DAL;
 
 namespace GUI
 {
@@ -22,6 +24,25 @@ namespace GUI
         public MainDashboard()
         {
             InitializeComponent();
+            //try
+            //{
+            //    using (SqlConnection conn = SqlConnectionData.Connect())
+            //    {
+            //        conn.Open();
+            //        if (conn.State == System.Data.ConnectionState.Open)
+            //        {
+            //            MessageBox.Show("✅ Kết nối SQL Server thành công.");
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("❌ Kết nối thất bại.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi khi kết nối SQL: " + ex.Message);
+            //}
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

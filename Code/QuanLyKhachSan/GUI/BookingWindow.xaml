@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="Tạo Đơn Đặt Phòng" Height="750" Width="1400"
@@ -10,6 +11,7 @@
         WindowStyle="SingleBorderWindow"
         ResizeMode="CanResize" WindowState="Maximized"
         Background="#FFF2F2F2">
+    
 
     <Window.Resources>
         <ResourceDictionary>
@@ -201,7 +203,7 @@
                                             <TextBox Grid.Column="0" Name="txtSearchCustomer"/>
                                             <Button Grid.Column="1" Content="Tìm" Style="{StaticResource PrimaryButton}" Margin="10,0,0,0" Background="#FF1A53B2"/>
                                         </Grid>
-                                        <CheckBox Name="chkNewCustomer" Content="Khách hàng mới" Margin="0,10,0,0" IsChecked="True"/>
+                                        <CheckBox Name="chkNewCustomer" Content="Khách hàng mới" Margin="0,10,0,0" Checked="chkKhachHangMoi_Checked" Unchecked="chkKhachHangMoi_Unchecked"/>
                                     </StackPanel>
                                 </GroupBox>
 
@@ -209,13 +211,13 @@
                                 <GroupBox Header="Thông tin Khách hàng" FontWeight="SemiBold" Margin="0,0,0,15">
                                     <StackPanel IsEnabled="{Binding IsChecked, ElementName=chkNewCustomer}">
                                         <Label Content="Họ và Tên"/>
-                                        <TextBox Name="txtTenKH" Text="Nguyễn Văn An"/>
-                                        <Label Content="Số Điện Thoại" Margin="0,10,0,0"/>
-                                        <TextBox Name="txtSoDienThoai" Text="0905123456"/>
+                                        <TextBox Name="txtTenKH" IsEnabled="False" Text="Nguyễn Văn An"/>
+                                        <Label Content="Số Điện Thoại"  Margin="0,10,0,0"/>
+                                        <TextBox Name="txtSoDienThoai" IsEnabled="False" Text="0905123456"/>
                                         <Label Content="Email" Margin="0,10,0,0"/>
-                                        <TextBox Name="txtEmail" Text="an.nguyen@example.com"/>
+                                        <TextBox Name="txtEmail" IsEnabled="False" Text="an.nguyen@example.com"/>
                                         <Label Content="Địa chỉ" Margin="0,10,0,0"/>
-                                        <TextBox Name="txtDiaChi" Text="Hà Nội"/>
+                                        <TextBox Name="txtDiaChi" IsEnabled="False" Text="Hà Nội"/>
                                     </StackPanel>
                                 </GroupBox>
 
@@ -223,9 +225,9 @@
                                 <GroupBox Header="Thông tin Công ty (nếu có)" FontWeight="SemiBold" Margin="0,0,0,15">
                                     <StackPanel>
                                         <Label Content="Tên Công ty"/>
-                                        <TextBox Name="txtTenCongTy"/>
+                                        <TextBox Name="txtTenCongTy" IsEnabled="False"/> 
                                         <Label Content="Mã số thuế" Margin="0,10,0,0"/>
-                                        <TextBox Name="txtMaSoThue"/>
+                                        <TextBox Name="txtMaSoThue" IsEnabled="False"/>
                                     </StackPanel>
                                 </GroupBox>
 
@@ -268,43 +270,42 @@
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Grid.Column="0" Margin="0,0,10,0">
                                                 <Label Content="Ngày nhận phòng"/>
-                                                <DatePicker Name="dpNgayNhan" SelectedDate="2025-10-20"/>
+                                                <DatePicker Name="dpNgayNhan" DisplayDateStart="{x:Static sys:DateTime.Today}" SelectedDate="{x:Static sys:DateTime.Today}" />
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                                 <Label Content="Ngày trả phòng"/>
-                                                <DatePicker Name="dpNgayTra" SelectedDate="2025-10-22"/>
+                                                <DatePicker Name="dpNgayTra" DisplayDateStart="{x:Static sys:DateTime.Today}"/>
                                             </StackPanel>
                                         </Grid>
                                         <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
                                             <StackPanel Margin="0,0,10,0">
                                                 <Label Content="Loại phòng"/>
-                                                <ComboBox Name="cmbLoaiPhong">
-                                                    <ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>
-                                                </ComboBox>
+                                                <ComboBox x:Name="cbLoaiPhong" Width="150" SelectionChanged="cbLoaiPhong_SelectionChanged"/>
                                             </StackPanel>
                                             <StackPanel Margin="10,0,0,0">
                                                 <Label Content="Tầng"/>
-                                                <ComboBox Name="cmbTang">
-                                                    <ComboBoxItem IsSelected="True">Tất cả</ComboBoxItem>
-                                                </ComboBox>
+                                                <ComboBox x:Name="cbTang" Width="100" SelectionChanged="cbTang_SelectionChanged"/>
                                             </StackPanel>
-                                            <Button Content="Kiểm tra phòng trống" Style="{StaticResource PrimaryButton}" VerticalAlignment="Bottom" Margin="20,0,0,0" Background="#FF1A53B2"/>
+                                            <Button Content="Kiểm tra phòng trống" Style="{StaticResource PrimaryButton}" VerticalAlignment="Bottom" Margin="20,0,0,0" Background="#FF1A53B2"
+                                                    Click="BtnKiemTraPhong_Click"/>
                                         </StackPanel>
 
                                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                                             <!-- Tương tự CheckRoomStatus, hiển thị các phòng trống ở đây -->
                                             <!-- Danh sách phòng trống -->
-                                            <DataGrid x:Name="dgPhongTrong" Margin="0,10,0,0"
-          AutoGenerateColumns="True"
-          CanUserAddRows="True"
-          HeadersVisibility="Column"
-          AlternatingRowBackground="#F5F5F5"
-          GridLinesVisibility="None"
-          SelectionMode="Single">
+                                            <DataGrid x:Name="DataGridPhong" Margin="0,10,0,0"
+                                                      AutoGenerateColumns="False"
+                                                      CanUserAddRows="False"
+                                                      IsReadOnly="True"
+                                                      HeadersVisibility="Column"
+                                                      AlternatingRowBackground="#F5F5F5"
+                                                      GridLinesVisibility="None"
+                                                      SelectionMode="Single">
+                                                
 
                                                 <DataGrid.Columns>
                                                     <DataGridTextColumn Header="Số phòng" Binding="{Binding SoPhong}" Width="*"/>
-                                                    <DataGridTextColumn Header="Loại phòng" Binding="{Binding TenLoaiPhong}" Width="*"/>
+                                                    <DataGridTextColumn Header="Loại phòng" Binding="{Binding TenLoai}" Width="*"/>
                                                     <DataGridTextColumn Header="Sức chứa" Binding="{Binding SucChua}" Width="*"/>
                                                     <DataGridTextColumn Header="Giá/Đêm" Binding="{Binding GiaCoBan, StringFormat={}{0:N0} đ}" Width="*"/>
                                                     <DataGridTemplateColumn Header="Hành động" Width="100">
@@ -335,7 +336,7 @@
 
                                 <TextBlock Grid.Row="0" Text="Phòng đã chọn" FontSize="18" FontWeight="SemiBold" Margin="0,15,0,10"/>
 
-                                <DataGrid Grid.Row="1" Name="dgSelectedRooms" AutoGenerateColumns="True" CanUserAddRows="True" IsReadOnly="True" Background="#F9FAFB">
+                                <DataGrid Grid.Row="1" Name="dgSelectedRooms" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Background="#F9FAFB">
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Mã Phòng" Binding="{Binding RoomId}" Width="*"/>
                                         <DataGridTextColumn Header="Loại Phòng" Binding="{Binding RoomType}" Width="*"/>
@@ -344,7 +345,7 @@
                                         <DataGridTemplateColumn Header="Hành Động" Width="80">
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Button Content="Xóa" Background="#EF4444" Foreground="White"/>
+                                                    <Button Content="Xóa" Background="#EF4444" Foreground="White" Click="BtnXoaPhong_Click"/>
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
