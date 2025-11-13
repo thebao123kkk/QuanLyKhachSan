@@ -11,9 +11,14 @@ namespace BLL
 {
     public class PhongBLL
     {
-        public static List<PhongDTO> LayDanhSachPhong()
+        public static List<PhongDTO> LayDanhSachPhongTrong()
         {
-            return PhongDAL.GetDanhSachPhong();
+            return PhongDAL.GetDanhSachPhongTrong();
+        }
+
+        public static void UpdateTrangThaiPhong(string phongId, string trangThai)
+        {
+            PhongDAL.UpdateTrangThaiPhong(phongId, trangThai);
         }
     }
     public class LoaiPhongBLL
@@ -22,5 +27,7 @@ namespace BLL
         {
             return LoaiPhongDAL.GetTenLoaiPhong();
         }
+
     }
-}
+}    
+

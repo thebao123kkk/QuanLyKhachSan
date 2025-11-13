@@ -4,17 +4,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DTO;
 
 namespace DAL
 {
     public class PhongDAL
     {
-        public static List<PhongDTO> GetDanhSachPhong()
+        public static List<PhongDTO> GetDanhSachPhongTrong()
         {
             List<PhongDTO> dsPhong = new List<PhongDTO>();
 
-            using (SqlConnection conn = SqlConnectionData.Connect())
+            using (SqlConnection conn = DatabaseAccess.GetConnection())
             {
                 try
                 {
@@ -26,9 +27,11 @@ namespace DAL
                         p.LoaiPhongID,
                         lp.TenLoai,
                         lp.SucChua,
-                        lp.GiaCoBan
+                        lp.GiaCoBan,
+                        p.TrangThai
                     FROM Phong p
-                    JOIN LoaiPhongChiTiet lp ON p.LoaiPhongID = lp.LoaiPhongID";
+                    JOIN LoaiPhongChiTiet lp ON p.LoaiPhongID = lp.LoaiPhongID
+                    WHERE p.TrangThai = N'Trống'";
 
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -42,10 +45,14 @@ namespace DAL
                             LoaiPhongID = reader["LoaiPhongID"].ToString(),
                             TenLoai = reader["TenLoai"].ToString(),
                             SucChua = (int)reader["SucChua"],
-                            GiaCoBan = (decimal)reader["GiaCoBan"]
+                            GiaCoBan = (decimal)reader["GiaCoBan"],
+                            TrangThai = reader["TrangThai"].ToString()
+
                         };
                         dsPhong.Add(phong);
+
                     }
+                    //MessageBox.Show("SQL load " + dsPhong.Count + " phòng trống", "DAL Debug");
 
                     return dsPhong;
                 }
@@ -62,7 +69,7 @@ namespace DAL
             public static List<string> GetTenLoaiPhong()
             {
                 List<string> list = new List<string>();
-                using (SqlConnection conn = SqlConnectionData.Connect())
+                using (SqlConnection conn = DatabaseAccess.GetConnection())
                 {
                     conn.Open();
                     string sql = "SELECT DISTINCT TenLoai FROM LoaiPhongChiTiet";
@@ -74,6 +81,19 @@ namespace DAL
                     }
                 }
                 return list;
+            }
+        }
+
+        public static void UpdateTrangThaiPhong(string phongId, string trangThai)
+        {
+            using (var conn = DatabaseAccess.GetConnection())
+            {
+                conn.Open();
+                var cmd = new SqlCommand(
+                    "UPDATE Phong SET TrangThai = @TrangThai WHERE PhongID = @PhongID", conn);
+                cmd.Parameters.AddWithValue("@TrangThai", trangThai);
+                cmd.Parameters.AddWithValue("@PhongID", phongId);
+                cmd.ExecuteNonQuery();
             }
         }
     }
