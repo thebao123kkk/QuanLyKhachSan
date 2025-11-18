@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BLL;
+using DTO;
 
 namespace GUI
 {
@@ -28,7 +30,16 @@ namespace GUI
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 this.DragMove();
+            LoadData();
         }
+
+        private void LoadData()
+        {
+            string keyword = SearchTermTextBox.Text.Trim();
+            var ds = DatPhongBLL.LayPhongDaDatTheoKhach(keyword);
+            ResultsDataGrid.ItemsSource = ds;
+        }
+
 
         // Đóng cửa sổ
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -44,41 +55,64 @@ namespace GUI
             string keyword = SearchTermTextBox.Text.Trim();
             string criteria = (SearchCriteriaComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-            // TODO: gọi hàm tìm kiếm phòng từ database
-            MessageBox.Show($"Tìm kiếm theo: {criteria}\nTừ khóa: {keyword}", "Thông báo");
+            var ds = DatPhongBLL.SearchBooking(criteria, keyword);
+
+            ResultsDataGrid.ItemsSource = ds;
+        }
+
+
+        // Chech in
+        private void CheckInButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ResultsDataGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phòng để Checkout.");
+                return;
+            }
+
+            DatPhongViewDTO selected = (DatPhongViewDTO)ResultsDataGrid.SelectedItem;
+
+            if (DatPhongBLL.CheckoutPhong(selected.PhongID))
+            {
+                LoadData();
+                MessageBox.Show("Checkout thành công! Trạng thái phòng đã đổi thành 'Đã nhận'.");
+
+                // Reload lại
+                string keyword = SearchTermTextBox.Text.Trim();
+                ResultsDataGrid.ItemsSource = DatPhongBLL.LayPhongDaDatTheoKhach(keyword);
+            }
+            else
+            {
+                MessageBox.Show("Checkout thất bại.");
+            }
         }
 
         // Khi chọn một hàng trong DataGrid
         private void ResultsDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            if (ResultsDataGrid.SelectedItem != null)
+            {
+                ViewDetailsButton.IsEnabled = true;
+            }
+            else
+            {
+                ViewDetailsButton.IsEnabled = false;
+            }
         }
 
         // Xem chi tiết phòng
         private void ViewDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ResultsDataGrid.SelectedItem != null)
+            if (ResultsDataGrid.SelectedItem == null)
             {
-                MessageBox.Show("Xem chi tiết phòng đã chọn.", "Thông tin");
+                MessageBox.Show("Bạn chưa chọn phòng.");
+                return;
             }
+            var selected = (DatPhongViewDTO)ResultsDataGrid.SelectedItem;
+
+            RoomDetails detail = new RoomDetails(selected);
+            detail.ShowDialog();
         }
 
-        // Đặt phòng
-        private void BookRoomButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (ResultsDataGrid.SelectedItem != null)
-            {
-                MessageBox.Show("Mở form đặt phòng cho phòng đã chọn.", "Đặt phòng");
-            }
-        }
-
-        // Chech in
-        private void CheckInButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (ResultsDataGrid.SelectedItem != null)
-            {
-                MessageBox.Show("Mở form check-in cho phòng đã chọn.", "Check-in");
-            }
-        }
     }
 }

@@ -333,13 +333,14 @@
                     <!-- Results DataGrid -->
                     <DataGrid Grid.Row="2" x:Name="ResultsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Margin="10,0" SelectionChanged="ResultsDataGrid_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Mã Phòng" Binding="{Binding RoomId}" Width="*"/>
-                            <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding Name}" Width="*"/>
-                            <DataGridTextColumn Header="Tầng" Binding="{Binding Floor}" Width="Auto"/>
-                            <DataGridTextColumn Header="Loại Phòng" Binding="{Binding RoomType}" Width="*"/>
-                            <DataGridTextColumn Header="Số Giường" Binding="{Binding Beds}" Width="Auto"/>
-                            <DataGridTextColumn Header="Giá Tiền (VNĐ)" Binding="{Binding Price, StringFormat={}{0:N0}}" Width="*"/>
-                            <DataGridTextColumn Header="Tình Trạng" Binding="{Binding Status}" Width="*"/>
+                            <DataGridTextColumn Header="Mã Phòng" Binding="{Binding PhongID}" Width="*"/>
+                            <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding TenKhach}" Width="*"/>
+                            <DataGridTextColumn Header="Số phòng" Binding="{Binding SoPhong}" Width="Auto"/>
+                            <DataGridTextColumn Header="Loại phòng" Binding="{Binding LoaiPhong}" Width="*"/>
+                            <DataGridTextColumn Header="Số lượng phòng" Binding="{Binding  SoLuongPhong}" Width="Auto"/>
+                            <DataGridTextColumn Header="Ngày nhận" Binding="{Binding NgayNhan, StringFormat={}{0:dd/MM/yyyy}}"  Width="Auto"/>
+                            <DataGridTextColumn Header="Ngày trả" Binding="{Binding NgayTra, StringFormat={}{0:dd/MM/yyyy}}"  Width="Auto"/>
+                            <DataGridTextColumn Header="Trạngthái" Binding="{Binding TrangThai}" Width="*"/>
                             <!-- 🔹 Cột có nút Check-In -->
                             <DataGridTemplateColumn Header="Nhận phòng" Width="Auto">
                                 <DataGridTemplateColumn.CellTemplate>

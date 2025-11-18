@@ -179,7 +179,7 @@ namespace GUI
 
                 // Tính thành tiền
                 decimal thanhTien = phong.GiaCoBan * soNgay;
-                PhongBLL.UpdateTrangThaiPhong(phong.PhongID, "Đang thuê");
+                PhongBLL.UpdateTrangThaiPhong(phong.PhongID, "Chờ nhận phòng");
                 // Thêm vào danh sách phòng đã chọn
                 selectedRooms.Add(new
                 {
@@ -322,7 +322,7 @@ namespace GUI
             string khId = BookingDAL.InsertKhachHang(kh);
             foreach (var r in selectedRooms)
             {
-                PhongBLL.UpdateTrangThaiPhong((string)r.RoomId, "Đang thuê");
+                PhongBLL.UpdateTrangThaiPhong((string)r.RoomId, "Chờ nhận phòng");
                 LoadDanhSachPhongTrong();
             }
             string maDatTong = BookingDAL.InsertDatPhongTong(
@@ -337,7 +337,7 @@ namespace GUI
             );
             int soNgay = (dpNgayTra.SelectedDate.Value - dpNgayNhan.SelectedDate.Value).Days;
             decimal tienChuaVAT = selectedRooms.Sum(x => (decimal)x.Total);
-            decimal tienSauVAT = tienChuaVAT * 1.08m;
+            //decimal tienSauVAT = tienChuaVAT * 1.08m;
 
             BookingDAL.InsertDatPhongChiTiet(
                 maDatTong,
@@ -347,7 +347,7 @@ namespace GUI
                 int.Parse(txtTreEm.Text),
                 selectedRooms.Count,
                 8,
-                tienSauVAT,
+                tienChuaVAT,
                 txtGhiChu.Text
             );
             ResetFormDatPhong();

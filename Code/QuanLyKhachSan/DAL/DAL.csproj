@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingDAL.cs" />
+    <Compile Include="ChiTietDichVuDAL.cs" />
+    <Compile Include="DatPhongDAL.cs" />
+    <Compile Include="DichVuDAL.cs" />
     <Compile Include="KhachHangDAL.cs" />
     <Compile Include="PhongDAL.cs" />
     <Compile Include="DatabaseAccess.cs" />

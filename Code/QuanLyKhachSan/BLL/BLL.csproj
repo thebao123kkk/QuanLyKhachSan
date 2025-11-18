@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookingBLL.cs" />
+    <Compile Include="ChiTietDichVuBLL.cs" />
+    <Compile Include="DatPhongBLL.cs" />
+    <Compile Include="DichVuBLL.cs" />
     <Compile Include="KhachHangBLL.cs" />
     <Compile Include="PhongBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

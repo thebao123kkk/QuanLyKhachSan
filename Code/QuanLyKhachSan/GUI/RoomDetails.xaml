@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Language="vi-VN"
         mc:Ignorable="d"
         Title="Chi Tiết Đặt Phòng" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
@@ -411,7 +413,7 @@
                             <!-- Room & Guest Info -->
                             <Border Grid.Row="0" Background="White" CornerRadius="5" Padding="15" BorderBrush="#EEE" BorderThickness="1" Margin="0,0,0,15">
                                 <StackPanel>
-                                    <TextBlock Text="Phòng 101 - Standard" FontSize="20" FontWeight="Bold" Foreground="#0A2A57" Margin="0,0,0,10"/>
+                                    <TextBlock x:Name="RoomTitleText" Text="Phòng 101 - Standard" FontSize="20" FontWeight="Bold" Foreground="#0A2A57" Margin="0,0,0,10"/>
                                     <TextBlock Style="{StaticResource LabelTextStyle}" Text="Khách hàng:"/>
                                     <TextBlock Style="{StaticResource InfoTextStyle}" x:Name="GuestNameText" Text="Nguyễn Văn A"/>
 
@@ -419,7 +421,7 @@
                                     <TextBlock Style="{StaticResource InfoTextStyle}" x:Name="StayDurationText" Text="25/10/2025 - 27/10/2025 (2 đêm)"/>
 
                                     <TextBlock Style="{StaticResource LabelTextStyle}" Text="Tình trạng:"/>
-                                    <TextBlock Style="{StaticResource InfoTextStyle}" x:Name="StatusText" Text="Đang ở" Foreground="#28A745"/>
+                                    <TextBlock Style="{StaticResource InfoTextStyle}" x:Name="RoomStatusText" Text="Đang ở" Foreground="#28A745"/>
                                 </StackPanel>
                             </Border>
 
@@ -455,11 +457,10 @@
                                     <!-- Services DataGrid -->
                                     <DataGrid Grid.Row="2" x:Name="ServicesDataGrid" Margin="0,10,0,0">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Tên Dịch Vụ" Binding="{Binding ServiceName}" Width="2*"/>
-                                            <DataGridTextColumn Header="Số Lượng" Binding="{Binding Quantity}" Width="Auto"/>
-                                            <DataGridTextColumn Header="Đơn Giá" Binding="{Binding Price, StringFormat={}{0:N0}}" Width="*"/>
-                                            <DataGridTextColumn Header="Thành Tiền" Binding="{Binding Total, StringFormat={}{0:N0}}" Width="*"/>
-                                            <DataGridTextColumn Header="Thời Gian" Binding="{Binding Timestamp, StringFormat='dd/MM HH:mm'}" Width="*"/>
+                                            <DataGridTextColumn Header="Tên Dịch Vụ" Binding="{Binding TenDichVu}" Width="2*"/>
+                                            <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong}" Width="Auto"/>
+                                            <DataGridTextColumn Header="Đơn Giá" Binding="{Binding DonGia, StringFormat={}{0:N0}}" Width="*"/>
+                                            <DataGridTextColumn Header="Thành Tiền" Binding="{Binding ThanhTien, StringFormat={}{0:N0}}" Width="*"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                 </Grid>
@@ -478,7 +479,7 @@
                                 <StackPanel>
                                     <TextBlock Text="Gia Hạn Phòng" Style="{StaticResource SubHeaderTextStyle}"/>
                                     <TextBlock Style="{StaticResource LabelTextStyle}" Text="Chọn ngày trả phòng mới:"/>
-                                    <DatePicker x:Name="NewCheckoutDatePicker" Style="{StaticResource ModernDatePickerStyle}" Margin="0,0,0,10"/>
+                                    <DatePicker Name="NewCheckoutDatePicker"  DisplayDateStart="{x:Static sys:DateTime.Today}" SelectedDate="{x:Static sys:DateTime.Today}"  Margin="0,0,0,10" />
                                     <Button x:Name="CheckAvailabilityButton" Content="Kiểm Tra Khả Dụng" Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,0,10" Click="CheckAvailabilityButton_Click" Height="30" FontSize="14"/>
                                     <TextBlock x:Name="AvailabilityText" Style="{StaticResource InfoTextStyle}" Text="Vui lòng chọn ngày và kiểm tra." Foreground="Gray"/>
                                 </StackPanel>

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:GUI"
+        xmlns:globalization="clr-namespace:System.Globalization;assembly=mscorlib"
+        Language="vi-VN"
         mc:Ignorable="d"
         Title="Tạo Đơn Đặt Phòng" Height="750" Width="1400"
         WindowStartupLocation="CenterScreen"

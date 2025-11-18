@@ -2,6 +2,29 @@
 SET TrangThai = N'Trống';
 SELECT * FROM Phong WHERE TrangThai = N'Trống';
 
+UPDATE Phong
+SET TrangThai = N'Chờ nhận phòng';
+SELECT * FROM Phong WHERE TrangThai = N'Đã nhận';
+
+SELECT 
+    dpt.MaDatTong,
+    dpct.MaDatChiTiet,
+    kh.HoTen,
+    p.PhongID,
+    p.SoPhong,
+    lp.TenLoai,
+    dpct.NgayNhan,
+    dpct.NgayTra,
+    dpct.SoLuongPhong,
+    dpt.TrangThai
+FROM DatPhongTong dpt
+JOIN KhachHang kh ON kh.KhachHangID = dpt.KhachHangID
+JOIN Phong p ON p.PhongID = dpt.PhongID
+JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
+JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
+WHERE kh.HoTen LIKE '%ABC%'       
+
+
 --Insert khách hàng nếu chưa tồn tại
 CREATE OR ALTER PROCEDURE sp_InsertKhachHang
     @HoTen NVARCHAR(150),
