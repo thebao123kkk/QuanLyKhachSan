@@ -1,235 +1,89 @@
-🏨 Hotel Management System – Hệ thống Quản lý Khách sạn
+# 🏨 Hotel Management System -- Hệ thống Quản lý Khách sạn
 
-Phiên bản: Phase 1 – Desktop Application (.NET/WPF + SQL Server)
-Dựa trên tài liệu SRS: Quản lý Đặt phòng – Lễ tân – Trạng thái phòng – Thanh toán – Báo cáo – Người dùng
+> **Phiên bản: Phase 1 -- Desktop Application (.NET/WPF + SQL Server)**\
+> Dựa trên tài liệu SRS: **Quản lý Đặt phòng -- Lễ tân -- Trạng thái
+> phòng -- Thanh toán -- Báo cáo -- Người dùng**
 
-📌 1. Giới thiệu tổng quan
+## 1. Giới thiệu tổng quan
 
-Hệ thống Quản lý Khách sạn được xây dựng nhằm hỗ trợ vận hành khách sạn ở giai đoạn đầu, tập trung vào việc:
+Hệ thống Quản lý Khách sạn được xây dựng nhằm hỗ trợ vận hành khách sạn
+ở giai đoạn đầu, tập trung vào:\
+- Quản lý đặt phòng (Booking)\
+- Check-in/Check-out\
+- Trạng thái phòng\
+- Dịch vụ, minibar\
+- Thanh toán, hóa đơn VAT\
+- Báo cáo doanh thu\
+- Phân quyền người dùng và audit log
 
-Quản lý đặt phòng (Booking)
+## 2. Đối tượng sử dụng
 
-Quản lý khách đoàn
+  Vai trò           Quyền hạn
+  ----------------- --------------------------------
+  **Admin**         Toàn quyền cấu hình & quản trị
+  **Lễ tân**        Booking, check-in/out, dịch vụ
+  **Buồng phòng**   Cập nhật trạng thái phòng
 
-Quy trình Check-in/Check-out
+## 3. Phạm vi
 
-Quản lý dịch vụ, minibar, giặt ủi
+**Trong phạm vi:** Booking, check-in/out, dịch vụ, thanh toán nhiều
+phần, báo cáo Excel, phân quyền.\
+**Ngoài phạm vi:** OTA, POS, mobile app, 2FA.
 
-Theo dõi trạng thái phòng
+## 4. Kiến trúc
 
-Thanh toán, đặt cọc, tạm tính, hóa đơn VAT
+-   WPF (.NET) --- GUI/BLL/DAL\
+-   SQL Server --- SP, Trigger, Audit\
+-   Email service --- gửi xác nhận booking
 
-Báo cáo doanh thu, công suất phòng
+## 5. Module chính
 
-Phân quyền người dùng và audit log
+### 5.1 Booking
 
-Hệ thống được thiết kế cho quy mô vừa và nhỏ, phù hợp mô hình Lễ tân – Buồng phòng – Quản lý, hỗ trợ vận hành nhanh, chính xác và đảm bảo kiểm soát nghiệp vụ.
+-   Booking mẹ/con\
+-   Giữ phòng --- tự hủy khi hết hạn\
+-   Đặt cọc nhiều lần
 
-📌 2. Đối tượng sử dụng
-Vai trò	Quyền hạn chính
-Quản lý (Admin)	Toàn quyền: cấu hình giá, quản lý người dùng, xem báo cáo, duyệt đổi phòng, thay đổi trạng thái phòng.
-Lễ tân	Tạo/sửa/xóa booking, check-in/out, ghi nhận dịch vụ, in hóa đơn, quản lý khách đoàn.
-Buồng phòng	Cập nhật tình trạng phòng (Bẩn → Sạch), báo minibar, báo hỏng hóc/bảo trì.
-📌 3. Phạm vi hệ thống (Phase 1)
+### 5.2 Lễ tân
 
-Trong phạm vi:
+-   Check-in/out\
+-   Đổi phòng, gia hạn
 
-Đặt phòng (booking mẹ – con)
+### 5.3 Trạng thái phòng
 
-Check-in / Check-out có xác nhận buồng phòng
+-   Trống / Đang ở / Bẩn / Sạch / Bảo trì
 
-Quản lý dịch vụ phòng
+### 5.4 Thanh toán & hóa đơn
 
-Tính giá theo bảng giá (ngày thường, cuối tuần, ngày lễ)
+-   Bảng giá ngày thường, cuối tuần, lễ\
+-   Thanh toán nhiều phần\
+-   In tạm tính, VAT
 
-Giữ phòng (Hold) tự động hủy khi hết hạn
+### 5.5 Báo cáo
 
-Đặt cọc nhiều lần, thanh toán nhiều phần
+-   Doanh thu\
+-   Công suất phòng\
+-   Xuất Excel
 
-Xuất hóa đơn & hóa đơn VAT nội bộ
+### 5.6 Người dùng
 
-Báo cáo doanh thu và công suất phòng (Excel)
+-   Admin -- Lễ tân -- Buồng phòng\
+-   Khóa TK sau 5 lần sai\
+-   Audit log
 
-Phân quyền người dùng
+## 6. Cài đặt (placeholder)
 
-Audit log toàn bộ thao tác
+    git clone <repo>
+    Chạy script database
+    Mở solution và cấu hình chuỗi kết nối
 
-Ngoài phạm vi (giai đoạn sau):
+## 7. Liên kết quan trọng (điền sau)
 
-Tích hợp Booking.com / Agoda (OTA)
+-   Demo\
+-   SRS\
+-   ERD\
+-   Database scripts
 
-POS/QR thanh toán trực tiếp
+## 8. Tác giả (điền sau)
 
-Ứng dụng mobile cho buồng phòng
-
-Kéo–thả lịch timeline
-
-2FA, OTP đăng nhập
-
-Hóa đơn điện tử kết nối Thuế
-
-📌 4. Kiến trúc tổng quan
-
-Frontend: WPF (.NET 8 / .NET 7) – MVVM/3-layer (GUI – BLL – DAL)
-
-Backend: SQL Server (Stored Procedures, Trigger, Audit Logs)
-
-Encryption: Hash mật khẩu (SHA256/BCrypt tùy cập nhật), khóa account sau 5 lần sai
-
-Reporting: Export Excel + Print Preview hóa đơn
-
-Email Service: Gửi xác nhận booking tự động
-
-📌 5. Các module chính trong hệ thống
-🟦 5.1. Module Đặt phòng (Booking)
-
-Tạo/sửa/xóa booking
-
-Giữ phòng tự động hủy khi hết hạn
-
-Đặt cọc % hoặc số tiền
-
-Gửi email xác nhận
-
-Quản lý booking đoàn (mẹ – con)
-
-Danh mục yêu cầu đặc biệt (thêm giường, tầng cao…)
-
-🟧 5.2. Lễ tân (Front Desk)
-
-Check-in sớm / Check-out trễ (tính phí tự động)
-
-Đổi phòng (cùng loại tự đổi, lên hạng cần phê duyệt)
-
-Gia hạn theo kiểm tra phòng trống
-
-Nhập dịch vụ phòng theo thông báo buồng phòng
-
-🟩 5.3. Trạng thái phòng
-
-Trống – Đang ở – Bẩn – Sạch – Bảo trì
-
-Tự động đổi trạng thái sau check-out
-
-Buồng phòng cập nhật Bẩn → Sạch
-
-Quản lý bảo trì phòng
-
-🟨 5.4. Thanh toán & Hóa đơn
-
-Tính giá theo bảng giá theo mùa
-
-Áp mã giảm giá (% hoặc số tiền)
-
-Thanh toán nhiều phần (partial payment)
-
-In phiếu tạm tính / hóa đơn nội bộ / VAT
-
-🟫 5.5. Báo cáo – Thống kê
-
-Doanh thu theo ngày/tháng/quý/năm
-
-Công suất phòng theo loại phòng
-
-Top dịch vụ sử dụng nhiều nhất
-
-Xuất Excel
-
-🟥 5.6. Người dùng & Phân quyền
-
-Vai trò: Admin – Lễ tân – Buồng phòng
-
-Khóa tài khoản sau 5 lần nhập sai
-
-Audit Log toàn hệ thống
-
-📌 6. Mô hình dữ liệu (ERD rút gọn)
-
-Bao gồm các bảng chính:
-
-Phong, LoaiPhong
-
-BookingMe, BookingCon, BookingYeuCau
-
-BangGia, BangGiaChiTiet
-
-KhachHang
-
-SuDungDichVu
-
-ThuChi, HoaDon
-
-NguoiDung, AuditLog
-
-BaoTriPhong
-
-👉 Chi tiết đầy đủ xem trong thư mục /docs/ERD hoặc file SRS.
-
-📌 7. Quy trình nghiệp vụ chính
-🟦 Đặt phòng
-
-Lễ tân tạo booking → hệ thống sinh mã → gửi email xác nhận
-
-Nếu là “giữ phòng” → đếm ngược thời hạn → hết hạn auto-Hủy
-
-🟧 Check-in
-
-Chọn booking → chọn phòng Sạch → chuyển sang Đang ở
-
-Tính phí check-in sớm (nếu có)
-
-🟩 Trong kỳ lưu trú
-
-Buồng phòng báo minibar → lễ tân nhập → tính tiền
-
-Đổi phòng, gia hạn theo điều kiện
-
-🟥 Check-out
-
-Buồng phòng xác nhận minibar/thiệt hại → lễ tân mới được check-out
-
-Phòng chuyển sang Bẩn → buồng phòng dọn → Sạch
-
-📌 8. Cài đặt & chạy chương trình (placeholder)
-git clone <repo-url>
-
-# Import database
-- Mở SQL Server
-- Chạy script trong /database/schema.sql
-- Import sample data nếu cần
-
-# Mở solution
-- Chạy QuanLyKhachSan.sln
-- Cấu hình chuỗi kết nối (DbConfigWindow)
-
-
-(Bạn có thể yêu cầu mình viết phần này tự động thiệt hoàn chỉnh khi code xong.)
-
-📌 9. Cấu trúc thư mục dự kiến (chừa chỗ)
-/src
-  /GUI
-  /BLL
-  /DAL
-/database
-/docs
-  /SRS.pdf
-  /ERD.png
-/releases
-README.md
-
-📌 10. Liên kết quan trọng (chừa chỗ)
-
-🔗 Demo video: (điền sau)
-
-🔗 Tài liệu SRS đầy đủ: (điền sau)
-
-🔗 Slide báo cáo: (điền sau)
-
-🔗 Database scripts: (điền sau)
-
-📌 11. Tác giả (chừa chỗ)
-Họ tên	MSSV	Vai trò	Liên hệ
-Điền tên tại đây	MSSV	Developer / Phân tích hệ thống	email@domain.com
-📌 12. Giấy phép sử dụng (License) – tùy chọn
-
-Mặc định MIT License hoặc để trống nếu là project học tập.
+| Họ tên \| MSSV \| Vai trò \| Email \|
