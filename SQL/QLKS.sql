@@ -173,7 +173,7 @@ CREATE TABLE TaiKhoanHeThong (
   TaiKhoanID varchar(50) PRIMARY KEY,
   TenDangNhap nvarchar(100) UNIQUE,
   MatKhauHash varchar(256),
-  VaiTro nvarchar(50),
+  VaiTroID varchar(50),
   TrangThai nvarchar(20),
   Email nvarchar(255),
   NhanVienID varchar(50),
@@ -183,16 +183,13 @@ CREATE TABLE TaiKhoanHeThong (
 GO
 
 CREATE TABLE NhatKyHeThong (
-  LogID varchar(50) PRIMARY KEY,
-  TaiKhoanID varchar(50),
-  HanhDong nvarchar(50),
-  DoiTuong nvarchar(50),
-  MaDoiTuong varchar(50),
-  Truoc nvarchar(max),
-  Sau nvarchar(max),
-  ThoiDiem datetime2,
-  GhiChu nvarchar(255)
-)
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    TaiKhoanID VARCHAR(50),
+    TenDangNhap NVARCHAR(100),
+    HanhDong NVARCHAR(50),
+    NoiDung NVARCHAR(MAX),
+    ThoiDiem DATETIME DEFAULT GETDATE()
+);
 GO
 
 ALTER TABLE LoaiPhongChiTiet ADD FOREIGN KEY (NhomLoaiID) REFERENCES NhomLoaiPhong (NhomLoaiID)
@@ -253,6 +250,7 @@ ALTER TABLE NhatKyHeThong ADD FOREIGN KEY (TaiKhoanID) REFERENCES TaiKhoanHeThon
 GO
 
 
+
 --Insert dữ liệu
 --NHÂN VIÊN VÀ PHÂN QUYỀN
 INSERT INTO VaiTro VALUES
@@ -280,9 +278,10 @@ INSERT INTO NhanVien VALUES
 ('NV03', N'Phạm Thu Thảo', N'Kế toán', N'Nữ', '1995-12-15', '0909888777', 'thao.pham@hotel.vn', N'Hà Nội', 'VT04', N'Đang làm', GETDATE());
 
 INSERT INTO TaiKhoanHeThong VALUES
-('TK01', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', N'Quản lý', N'Hoạt động', 'mai.tran@hotel.vn', 'NV01', GETDATE()),
-('TK02', 'letuan', 'E10ADC3949BA59ABBE56E057F20F883E', N'Lễ tân', N'Hoạt động', 'tuan.le@hotel.vn', 'NV02', GETDATE()),
-('TK03', 'thaopham', 'E10ADC3949BA59ABBE56E057F20F883E', N'Kế toán', N'Hoạt động', 'thao.pham@hotel.vn', 'NV03', GETDATE());
+('TK01', 'admin', 'E10ADC3949BA59ABBE56E057F20F883E', 'VT01', N'Hoạt động', 'mai.tran@hotel.vn', 'NV01', GETDATE(),0),
+('TK02', 'letuan', 'E10ADC3949BA59ABBE56E057F20F883E', 'VT02', N'Hoạt động', 'tuan.le@hotel.vn', 'NV02', GETDATE(),0),
+('TK03', 'thaopham', 'E10ADC3949BA59ABBE56E057F20F883E', 'VT03', N'Hoạt động', 'thao.pham@hotel.vn', 'NV03', GETDATE(),0);
+
 
 
 -- QUẢN LÝ PHÒNG

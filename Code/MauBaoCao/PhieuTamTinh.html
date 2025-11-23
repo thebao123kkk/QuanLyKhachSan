@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Tạm Tính - Demo Luxury Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #374151;
+        }
+        .bill-container {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: white;
+            margin: 20px auto;
+            padding: 15mm;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .bill-container {
+                width: 100%;
+                margin: 0;
+                padding: 10mm;
+                box-shadow: none;
+            }
+        }
+        /* Minimalist Table Styles */
+        .simple-table th {
+            text-align: left;
+            border-bottom: 2px solid #e5e7eb;
+            padding: 10px 4px;
+            color: #4b5563;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+        .simple-table td {
+            border-bottom: 1px dashed #e5e7eb;
+            padding: 12px 4px;
+        }
+        .simple-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bill-container relative">
+        <!-- Header Simplified -->
+        <div class="flex justify-between items-start mb-8 border-b-2 border-gray-800 pb-4">
+            <div>
+                <h1 class="text-2xl font-bold uppercase text-gray-800">KHÁCH SẠN DEMO LUXURY</h1>
+                <p class="text-sm text-gray-500 mt-1">Hà Nội, Việt Nam</p>
+                <p class="text-sm text-gray-500">Tel: 024.3934.1234</p>
+            </div>
+            <div class="text-right">
+                <h2 class="text-3xl font-bold text-gray-800 uppercase">PHIẾU TẠM TÍNH</h2>
+                <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Provisional Bill</p>
+                <p class="text-sm mt-2 text-gray-600">Số: <strong>TMP-001</strong></p>
+            </div>
+        </div>
+
+        <!-- Info Section (Grid Layout) -->
+        <div class="grid grid-cols-2 gap-8 mb-8 text-sm">
+            <div>
+                <p class="text-gray-500 uppercase text-xs font-bold mb-1">Khách hàng / Guest</p>
+                <p class="font-bold text-lg text-gray-800">Nguyễn Văn An</p>
+                <p class="text-gray-600">Phòng: <span class="font-semibold">201 - Deluxe</span></p>
+            </div>
+            <div class="text-right">
+                <p class="text-gray-600">Ngày đến: 20/10/2025</p>
+                <p class="text-gray-600">Ngày đi: 22/10/2025</p>
+                <p class="text-gray-600 mt-1">Thu ngân: Lê Minh Tuấn</p>
+            </div>
+        </div>
+
+        <!-- Items Table (Cleaner) -->
+        <div class="mb-8">
+            <table class="w-full simple-table text-sm">
+                <thead>
+                    <tr>
+                        <th class="w-10">#</th>
+                        <th>Diễn giải / Description</th>
+                        <th class="w-20 text-center">ĐVT</th>
+                        <th class="w-16 text-center">SL</th>
+                        <th class="w-32 text-right">Đơn giá</th>
+                        <th class="w-32 text-right">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-gray-500">1</td>
+                        <td>
+                            <p class="font-semibold">Tiền phòng Deluxe</p>
+                            <p class="text-xs text-gray-500 italic">20/10 - 22/10</p>
+                        </td>
+                        <td class="text-center text-gray-500">Đêm</td>
+                        <td class="text-center font-semibold">2</td>
+                        <td class="text-right text-gray-600">950,000</td>
+                        <td class="text-right font-semibold text-gray-800">1,900,000</td>
+                    </tr>
+                    <tr>
+                        <td class="text-gray-500">2</td>
+                        <td>
+                            <p class="font-semibold">Dịch vụ: Spa thư giãn</p>
+                        </td>
+                        <td class="text-center text-gray-500">Giờ</td>
+                        <td class="text-center font-semibold">1</td>
+                        <td class="text-right text-gray-600">300,000</td>
+                        <td class="text-right font-semibold text-gray-800">300,000</td>
+                    </tr>
+                    <tr>
+                        <td class="text-gray-500">3</td>
+                        <td>
+                            <p class="font-semibold">Dịch vụ: Ăn sáng buffet</p>
+                        </td>
+                        <td class="text-center text-gray-500">Suất</td>
+                        <td class="text-center font-semibold">2</td>
+                        <td class="text-right text-gray-600">100,000</td>
+                        <td class="text-right font-semibold text-gray-800">200,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Totals (Right Aligned) -->
+        <div class="flex justify-end mb-12">
+            <div class="w-1/2">
+                <div class="flex justify-between py-2 text-sm text-gray-600">
+                    <span>Cộng tiền hàng / Subtotal:</span>
+                    <span>2,400,000</span>
+                </div>
+                <div class="flex justify-between py-2 text-sm text-gray-600 border-b border-gray-300">
+                    <span>VAT (10%):</span>
+                    <span>240,000</span>
+                </div>
+                <div class="flex justify-between py-3 text-xl font-bold text-gray-900">
+                    <span>TỔNG CỘNG / TOTAL:</span>
+                    <span>2,640,000 đ</span>
+                </div>
+                
+                <!-- Payment Status Info -->
+                <div class="mt-4 bg-gray-50 p-3 rounded text-sm text-gray-600">
+                    <div class="flex justify-between mb-1">
+                        <span>Đã đặt cọc / Deposit:</span>
+                        <span>(200,000)</span>
+                    </div>
+                    <div class="flex justify-between border-t border-gray-200 pt-1 font-semibold text-gray-800">
+                        <span>Cần thanh toán / Balance:</span>
+                        <span>2,440,000 đ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Note & Signature -->
+        <div class="border-t-2 border-gray-100 pt-6">
+            <div class="flex justify-between items-end">
+                <div class="text-xs text-gray-400 italic">
+                    <p>* Phiếu này dùng để đối chiếu, không có giá trị thay thế hóa đơn GTGT.</p>
+                    <p>* This is a provisional bill for reference only.</p>
+                </div>
+                <div class="text-center pr-8">
+                    <p class="font-bold text-sm mb-12">Xác nhận của khách hàng</p>
+                    <p class="border-t border-gray-300 w-48 mx-auto"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

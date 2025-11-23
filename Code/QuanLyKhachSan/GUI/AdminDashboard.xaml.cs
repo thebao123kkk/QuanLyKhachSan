@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,21 @@ namespace GUI
         public AdminDashboard()
         {
             InitializeComponent();
+            Loaded += Window_Loaded;
+        }
+
+        //----Load sự kiện----
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Thiết lập ComboBox Vai trò
+            RoleDAL roleDal = new RoleDAL();
+            var dsRole = roleDal.GetAllRoles();
+
+            RoleComboBox.Items.Clear();
+            foreach (var r in dsRole)
+            {
+                RoleComboBox.Items.Add(new ComboBoxItem { Content = r });
+            }
         }
 
         // --- Logic Cửa Sổ Chính ---

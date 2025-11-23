@@ -46,8 +46,11 @@
     <Compile Include="DatPhongBLL.cs" />
     <Compile Include="DichVuBLL.cs" />
     <Compile Include="KhachHangBLL.cs" />
+    <Compile Include="LoginAndPermission\LogBLL.cs" />
     <Compile Include="PhongBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LoginAndPermission\LoginBLL.cs" />
+    <Compile Include="LoginAndPermission\SessionInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

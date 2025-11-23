@@ -572,9 +572,7 @@
 
                                                 <TextBlock Text="Vai Trò (Phân quyền)" Style="{StaticResource LabelTextStyle}"/>
                                                 <ComboBox x:Name="RoleComboBox" Style="{StaticResource ModernComboBoxStyle}">
-                                                    <ComboBoxItem>Lễ tân</ComboBoxItem>
-                                                    <ComboBoxItem>Buồng phòng</ComboBoxItem>
-                                                    <ComboBoxItem>Quản lý</ComboBoxItem>
+
                                                 </ComboBox>
 
                                                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
@@ -599,7 +597,7 @@
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Text="Yêu Cầu Chờ Phê Duyệt (SRS 4.2.2)" Style="{StaticResource SubHeaderTextStyle}"/>
+                                    <TextBlock Grid.Row="0" Text="Yêu Cầu Chờ Phê Duyệt" Style="{StaticResource SubHeaderTextStyle}"/>
 
                                     <DataGrid Grid.Row="1" x:Name="ApprovalDataGrid">
                                         <DataGrid.Columns>
