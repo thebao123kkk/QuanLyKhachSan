@@ -339,16 +339,16 @@ namespace GUI
             addedServices.Clear();
             LoadUsedServices();
             MessageBox.Show("Đã lưu thay đổi thành công!", "Thông Báo", MessageBoxButton.OK, MessageBoxImage.Information);
-            this.Close(); // Đóng cửa sổ sau khi lưu
+            
         }
 
         // Nút chuyển đến màn hình thanh toán
         private void GoToCheckoutButton_Click(object sender, RoutedEventArgs e)
         {
             // Logic mở cửa sổ Thanh Toán (Checkout)
-
-            MessageBox.Show("Chuyển đến màn hình Thanh Toán...", "Thông Báo", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            Paiding pay = new Paiding(BookingInfo);
+            pay.Show();
+            this.Close();
         }
     }
 }

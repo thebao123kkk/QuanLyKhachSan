@@ -6,6 +6,7 @@ UPDATE Phong
 SET TrangThai = N'Chờ nhận phòng';
 SELECT * FROM Phong WHERE TrangThai = N'Đã nhận';
 
+Select * from MaGiamGia
 SELECT 
     dpt.MaDatTong,
     dpct.MaDatChiTiet,
@@ -23,6 +24,21 @@ JOIN Phong p ON p.PhongID = dpt.PhongID
 JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
 JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
 WHERE kh.HoTen LIKE '%ABC%'       
+
+
+
+SELECT 
+    dpct.MaDatChiTiet,
+    dpct.SoLuongPhong,
+    lp.TenLoai AS LoaiPhong,
+    lp.GiaCoBan,
+    dpct.NgayNhan,
+    dpct.NgayTra
+FROM DatPhongChiTiet dpct
+JOIN DatPhongTong dpt ON dpct.MaDatTong = dpt.MaDatTong
+JOIN Phong p ON p.PhongID = dpt.PhongID
+JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
+WHERE dpct.MaDatChiTiet like 'DP_C0019' 
 
 
 --Insert khách hàng nếu chưa tồn tại

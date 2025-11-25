@@ -111,7 +111,8 @@ namespace GUI
             var selected = (DatPhongViewDTO)ResultsDataGrid.SelectedItem;
 
             RoomDetails detail = new RoomDetails(selected);
-            detail.ShowDialog();
+            detail.Show();
+            this.Close();
         }
 
     }

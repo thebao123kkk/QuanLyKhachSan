@@ -46,7 +46,9 @@
     <Compile Include="BookingDAL.cs" />
     <Compile Include="ChiTietDichVuDAL.cs" />
     <Compile Include="DatPhongDAL.cs" />
+    <Compile Include="DatPhongTongDAL.cs" />
     <Compile Include="DichVuDAL.cs" />
+    <Compile Include="HoaDonDAL.cs" />
     <Compile Include="KhachHangDAL.cs" />
     <Compile Include="PhongDAL.cs" />
     <Compile Include="DatabaseAccess.cs" />

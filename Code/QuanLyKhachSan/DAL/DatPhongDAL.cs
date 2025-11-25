@@ -20,6 +20,7 @@ namespace DAL
                     SELECT 
                         dpt.MaDatTong,
                         dpct.MaDatChiTiet,
+                        dpt.MaCode,
                         kh.HoTen,
                         p.PhongID,
                         p.SoPhong,
@@ -47,6 +48,7 @@ namespace DAL
                     {
                         MaDatTong = rd["MaDatTong"].ToString(),
                         MaDatChiTiet = rd["MaDatChiTiet"].ToString(),
+                        MaCode = rd["MaCode"].ToString(),
                         TenKhach = rd["HoTen"].ToString(),
                         PhongID = rd["PhongID"].ToString(),
                         SoPhong = rd["SoPhong"].ToString(),
@@ -114,6 +116,7 @@ namespace DAL
             SELECT 
                 dpt.MaDatTong,
                 dpct.MaDatChiTiet,
+                dpt.MaCode,
                 kh.HoTen,
                 p.PhongID,
                 p.SoPhong,
@@ -141,6 +144,7 @@ namespace DAL
                     {
                         MaDatTong = rd["MaDatTong"].ToString(),
                         MaDatChiTiet = rd["MaDatChiTiet"].ToString(),
+                        MaCode = rd["MaCode"].ToString(),
                         TenKhach = rd["HoTen"].ToString(),
                         PhongID = rd["PhongID"].ToString(),
                         SoPhong = rd["SoPhong"].ToString(),
