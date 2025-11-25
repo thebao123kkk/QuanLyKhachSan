@@ -1,80 +1,106 @@
-﻿using System.Text;
+﻿using BLL.LoginAndPermission;
+using DAL;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class Login : Window
     {
+        private readonly LoginBLL _loginBll = new LoginBLL();
         public Login()
         {
             InitializeComponent();
+            this.Loaded += Window_Loaded;
         }
-        private async void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Hide previous message
-            MessageLabel.Visibility = Visibility.Collapsed;
 
-            // Get user input
-            string username = UsernameTextBox.Text;
+        //---------Load sự kiện---------
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Thiết lập ComboBox Vai trò
+            RoleDAL roleDal = new RoleDAL();
+            var dsRole = roleDal.GetAllRoles();
+
+            RoleComboBox.Items.Clear();
+            foreach (var r in dsRole)
+            {
+                RoleComboBox.Items.Add(new ComboBoxItem { Content = r });
+            }
+        }
+        //---------Sự kiện nút đăng nhập---------
+
+        // Cho phép kéo thả cửa sổ (vì WindowStyle="None")
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameTextBox.Text.Trim();
             string password = PasswordBox.Password;
             string role = (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
-            // --- Validation Logic ---
-            // In a real app, this would call a business logic layer (BLL).
-            bool isValid = false;
-            string welcomeMessage = "";
-
-            if (username.ToLower() == "manager" && password == "123" && role == "Quản lý")
+            // Gọi BLL
+            try
             {
-                isValid = true;
-                welcomeMessage = "Đăng nhập thành công! Chuyển đến trang Quản trị...";
+                var result = _loginBll.DangNhap(username, password, role);
+
+                if (!result.Success)
+                {
+                    ShowMessage(result.Message, Colors.Red);
+                    return;
+                }
+
+                ShowMessage("Đăng nhập thành công!", Colors.Green);
+
+                // Mở màn hình chính
+                MainDashboard main = new MainDashboard();
+                main.Show();
+
+                this.Close();
             }
-            else if (username.ToLower() == "employee" && password == "123" && role == "Nhân viên")
+            catch (Exception ex)
             {
-                isValid = true;
-                welcomeMessage = "Đăng nhập thành công! Chào mừng nhân viên...";
-            }
-
-            if (isValid)
-            {
-                // Show success message
-                MessageLabel.Text = welcomeMessage;
-                MessageLabel.Foreground = new SolidColorBrush(Colors.Green);
-                MessageLabel.Visibility = Visibility.Visible;
-
-                // Simulate navigating to another window/page
-                await Task.Delay(2000);
-
-                // For example, open the main application window and close this one
-                // var mainAppWindow = new MainApplicationWindow(role);
-                // mainAppWindow.Show();
-                // this.Close(); 
-                MessageBox.Show($"Đã chuyển hướng với vai trò: {role}", "Thông báo");
-            }
-            else
-            {
-                // Show error message
-                MessageLabel.Text = "Tên đăng nhập, mật khẩu hoặc vai trò không chính xác!";
-                MessageLabel.Foreground = new SolidColorBrush(Colors.Red);
-                MessageLabel.Visibility = Visibility.Visible;
+                ShowMessage("Có lỗi khi đăng nhập: " + ex.Message, Colors.Red);
             }
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            // Close the application
             Application.Current.Shutdown();
+        }
+
+        // Xử lý sự kiện Quên mật khẩu
+        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            // Theo SRS 4.6: "Chức năng Quên mật khẩu qua email"
+            MessageBox.Show("Vui lòng liên hệ Quản trị viên (Admin) để đặt lại mật khẩu hoặc kiểm tra email của bạn.",
+                            "Quên mật khẩu", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        // Xử lý sự kiện mở cửa sổ Cấu hình DB
+        private void DbConfigButton_Click(object sender, RoutedEventArgs e)
+        {
+            DbConfigWindow dbConfig = new DbConfigWindow();
+
+            // Sử dụng ShowDialog để mở cửa sổ dạng modal (người dùng phải đóng nó trước khi quay lại login)
+            dbConfig.ShowDialog();
+        }
+
+        // Hàm tiện ích hiển thị thông báo lỗi/thành công ngay trên form
+        private void ShowMessage(string message, Color color)
+        {
+            MessageLabel.Text = message;
+            MessageLabel.Foreground = new SolidColorBrush(color);
+            MessageLabel.Visibility = Visibility.Visible;
         }
     }
 }

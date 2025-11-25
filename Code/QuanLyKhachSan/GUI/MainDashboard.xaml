@@ -309,7 +309,7 @@
                     <!-- Header -->
                     <StackPanel Grid.Row="0" Margin="10,10,10,0">
                         <TextBlock Text="BẢNG ĐIỀU KHIỂN CHÍNH" Style="{StaticResource HeaderTextStyle}"/>
-                        <TextBlock x:Name="WelcomeTextBlock" Text="Xin chào, [Tên Nhân Viên]! (Vai trò: [Vai Trò])" Style="{StaticResource SubHeaderTextStyle}"/>
+                        <TextBlock x:Name="WelcomeTextBlock"  Style="{StaticResource SubHeaderTextStyle}"/>
                     </StackPanel>
 
                     <!-- BẢNG THỐNG KÊ NHANH -->

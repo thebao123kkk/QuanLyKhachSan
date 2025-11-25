@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL.LoginAndPermission;
+using BLL;
+using DAL;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,56 +15,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DAL;
+using DAL.DashBoard;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for MainDashboard.xaml
-    /// </summary>
+
     public partial class MainDashboard : Window
     {
+        HienThiDAL hienThiDAL = new HienThiDAL();
         public MainDashboard()
         {
             InitializeComponent();
-            //try
-            //{
-            //    using (SqlConnection conn = SqlConnectionData.Connect())
-            //    {
-            //        conn.Open();
-            //        if (conn.State == System.Data.ConnectionState.Open)
-            //        {
-            //            MessageBox.Show("✅ Kết nối SQL Server thành công.");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("❌ Kết nối thất bại.");
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Lỗi khi kết nối SQL: " + ex.Message);
-            //}
+            Loaded += Window_Loaded;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Hiển thị thông tin chào mừng
-            //WelcomeTextBlock.Text = $"Xin chào, {currentUsername}! (Vai trò: {currentUserRole})";
+            //Hiển thị welcome text với tên người dùng và vai trò
+            string[] textUandR = hienThiDAL.GetUserNameAndRoleName(SessionInfo.TenDangNhap, SessionInfo.VaiTroID);
+            WelcomeTextBlock.Text = $"Xin chào, {textUandR[0]} - Vai trò: {textUandR[1]})";
 
-            // Áp dụng phân quyền (quan trọng)
-            //ApplyRolePermissions(currentUserRole);
 
-            // Tải các số liệu thống kê nhanh
             LoadDashboardStats();
         }
+
+       
 
         private void LoadDashboardStats()
         {
             // Logic: Gọi BLL/DAO để lấy các số liệu thống kê nhanh trong ngày
-
-
 
         }
 
@@ -136,6 +118,12 @@ namespace GUI
 
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
+            LogBLL log = new LogBLL();
+            log.GhiThaoTac("Đăng xuất",
+                $"{SessionInfo.TenDangNhap} đã đăng xuất khỏi hệ thống.");
+
+            // 2️⃣ Kết thúc session (ghi thời gian)
+            SessionInfo.EndSession();
             Login loginWindow = new Login();
             loginWindow.Show();
 
