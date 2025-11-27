@@ -452,8 +452,8 @@
                                 <StackPanel>
                                     <TextBlock Text="Áp Dụng Mã Giảm Giá" Style="{StaticResource LabelTextStyle}"/>
                                     <WrapPanel>
-                                        <TextBox x:Name="DiscountCodeTextBox" MinWidth="200" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,10,0"/>
-                                        <Button x:Name="ApplyDiscountButton" Content="Áp Dụng" Style="{StaticResource SecondaryButtonStyle}" Click="ApplyDiscountButton_Click" Width="84"/>
+                                        <TextBox x:Name="txtMaGiamGia" MinWidth="200" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,10,0"/>
+                                        <Button x:Name="ApMaGiamGiabtn" Content="Áp Dụng" Style="{StaticResource SecondaryButtonStyle}" Click="ApMaGiamGiaBtn_Click" Width="84"/>
                                     </WrapPanel>
                                 </StackPanel>
                             </Border>
@@ -575,9 +575,9 @@
                                         </ComboBox>
 
                                         <TextBlock Text="Số tiền thanh toán" Style="{StaticResource LabelTextStyle}"/>
-                                        <TextBox x:Name="SoTienThanhToan" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,10"/>
+                                        <TextBox x:Name="SoTienThanhToantb" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,10"/>
 
-                                        <Button x:Name="GhiNhanThanhToanButton" Content="Ghi Nhận Thanh Toán" Style="{StaticResource ModernButtonStyle}" Click="GhiNhanThanhToan_Click" Height="38"/>
+                                        <Button x:Name="GhiNhanThanhToanButton" Content="Ghi Nhận Thanh Toán" Style="{StaticResource ModernButtonStyle}" Height="38" Click="GhiNhanThanhToan_Click"/>
                                     </StackPanel>
 
                                     <!-- Print Actions (SRS 4.4.1, 4.4.3) -->

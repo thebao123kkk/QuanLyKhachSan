@@ -130,7 +130,7 @@ namespace DAL
             JOIN Phong p ON p.PhongID = dpt.PhongID
             JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
             JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
-            WHERE {field} LIKE '%' + @keyword + '%'
+            WHERE {field} LIKE '%' + @keyword + '%' AND p.TrangThai IN (N'Chờ nhận phòng', N'Đã nhận')
         ";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);

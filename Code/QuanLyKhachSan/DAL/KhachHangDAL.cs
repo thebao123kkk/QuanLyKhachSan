@@ -35,5 +35,43 @@ namespace DAL
             }
             return list;
         }
+
+        public static KhachHangDTO LayThongTinKhach(string khachHangID)
+        {
+            KhachHangDTO dto = null;
+
+            string query = @"
+            SELECT KhachHangID, HoTen, SDT, Email, CongTy, MST, DiaChi, NgayTao
+            FROM KhachHang
+            WHERE KhachHangID = @ID
+        ";
+
+            using (SqlConnection conn = DatabaseAccess.GetConnection())
+            using (var cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@ID", khachHangID);
+
+                conn.Open();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    if (rd.Read())
+                    {
+                        dto = new KhachHangDTO
+                        {
+                            KhachHangID = rd["KhachHangID"].ToString(),
+                            HoTen = rd["HoTen"].ToString(),
+                            SDT = rd["SDT"].ToString(),
+                            Email = rd["Email"].ToString(),
+                            CongTy = rd["CongTy"].ToString(),
+                            MST = rd["MST"].ToString(),
+                            DiaChi = rd["DiaChi"].ToString(),
+                            NgayTao = Convert.ToDateTime(rd["NgayTao"])
+                        };
+                    }
+                }
+            }
+
+            return dto;
+        }
     }
 }

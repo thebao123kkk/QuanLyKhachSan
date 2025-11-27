@@ -116,5 +116,26 @@ namespace DAL
 
             return list;
         }
+
+        public static string LayDonViTheoTen(string tenDichVu)
+        {
+            using (SqlConnection conn = DatabaseAccess.GetConnection())
+            {
+                conn.Open();
+                string sql = @"
+            SELECT DonVi 
+            FROM DichVuPhong 
+            WHERE TenDichVu = @Ten AND HieuLuc = 1";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Ten", tenDichVu);
+
+                    var result = cmd.ExecuteScalar();
+                    return result == null ? null : result.ToString();
+                }
+            }
+        }
+
     }
 }

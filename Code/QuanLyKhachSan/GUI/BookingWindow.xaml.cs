@@ -410,6 +410,25 @@ namespace GUI
             // Load lại phòng trống
             LoadDanhSachPhongTrong();
         }
+        //RÀNG BUỘC
+        private void SoTienCoctb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb == null) return;
+
+            string raw = tb.Text.Replace(".", "").Replace(",", "");
+            if (string.IsNullOrEmpty(raw)) return;
+
+            // Nếu chưa phải số thì bỏ qua
+            if (!decimal.TryParse(raw, out decimal value)) return;
+
+            int caretPos = tb.SelectionStart; // vị trí con trỏ trước khi format
+
+            tb.Text = value.ToString("#,##0", new CultureInfo("vi-VN"));
+
+            // Cập nhật vị trí con trỏ = cuối text
+            tb.SelectionStart = tb.Text.Length;
+        }
 
     }
 }
