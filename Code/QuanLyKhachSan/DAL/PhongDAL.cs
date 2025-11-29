@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -97,6 +98,36 @@ namespace DAL
             }
         }
 
+        public static void UpdateGhiChuPhong(string phongId, string ghiChu)
+        {
+            string sql = @"UPDATE Phong SET GhiChu = @GhiChu WHERE PhongID = @PhongID";
+
+            using (var conn = DatabaseAccess.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@GhiChu", ghiChu);
+                cmd.Parameters.AddWithValue("@PhongID", phongId);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static string LayTrangThaiPhong(string phongId)
+        {
+            string sql = "SELECT TrangThai FROM Phong WHERE PhongID = @PhongID";
+
+            using (var conn = DatabaseAccess.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@PhongID", phongId);
+
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+
+                return result?.ToString() ?? "";
+            }
+        }
 
         public static List<RoomFullChargeDTO> GetRoomsByBooking(string maDatTong)
         {
@@ -245,8 +276,54 @@ namespace DAL
             return list;
         }
 
+        public static List<PhongDTO> LayTatCaPhong()
+        {
+            List<PhongDTO> list = new List<PhongDTO>();
 
+            string query = @"
+        SELECT
+            p.PhongID,
+            p.SoPhong,
+            p.LoaiPhongID,
+            lp.TenLoai,
+            lp.SucChua,
+            lp.GiaCoBan,
+            p.TrangThai,
+            p.GhiChu
+        FROM Phong p
+        JOIN LoaiPhongChiTiet lp ON p.LoaiPhongID = lp.LoaiPhongID
+        ORDER BY p.SoPhong;
+    ";
 
+            using (var conn = DatabaseAccess.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new PhongDTO
+                        {
+                            PhongID = reader["PhongID"].ToString(),
+                            SoPhong = reader["SoPhong"].ToString(),
+                            LoaiPhongID = reader["LoaiPhongID"].ToString(),
+                            TenLoai = reader["TenLoai"].ToString(),
+                            SucChua = reader["SucChua"] != DBNull.Value
+                                           ? Convert.ToInt32(reader["SucChua"])
+                                           : 0,
+                            GiaCoBan = reader["GiaCoBan"] != DBNull.Value
+                                           ? Convert.ToDecimal(reader["GiaCoBan"])
+                                           : 0,
+                            TrangThai = reader["TrangThai"].ToString(),
+                            GhiChu = reader["GhiChu"].ToString()
+                        });
+                    }
+                }
+            }
+
+            return list;
+        }
     }
 }
 

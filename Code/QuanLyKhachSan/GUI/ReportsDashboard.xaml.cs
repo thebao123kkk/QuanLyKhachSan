@@ -1,39 +1,104 @@
-﻿using LiveCharts;
+﻿using BLL;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for ReportsDashboard.xaml
-    /// </summary>
-    public partial class ReportsDashboard : Window
+    public partial class ReportsDashboard : Window, INotifyPropertyChanged
     {
         public ReportsDashboard()
         {
             InitializeComponent();
+            DataContext = this;
         }
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private SeriesCollection _serviceSeries;
+        public SeriesCollection ServiceSeries
+        {
+            get => _serviceSeries;
+            set
             {
-                this.DragMove();
+                _serviceSeries = value;
+                OnPropertyChanged(nameof(ServiceSeries));
             }
         }
 
-        // Nút đóng cửa sổ
+        private string[] _serviceLabels;
+        public string[] ServiceLabels
+        {
+            get => _serviceLabels;
+            set
+            {
+                _serviceLabels = value;
+                OnPropertyChanged(nameof(ServiceLabels));
+            }
+        }
+
+        private Func<double, string> _serviceFormatter;
+        public Func<double, string> ServiceFormatter
+        {
+            get => _serviceFormatter;
+            set
+            {
+                _serviceFormatter = value;
+                OnPropertyChanged(nameof(ServiceFormatter));
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadServiceChartData();
+        }
+
+        private void LoadServiceChartData()
+        {
+            var data = ServiceReportBLL.GetTopService();
+
+            if (data.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu dịch vụ.", "Thông báo");
+                return;
+            }
+
+            // Debug
+            string debugText = string.Join("\n", data.Select(d => $"{d.TenDichVu}: {d.TongSoLan} lần, {d.DoanhThu:N0} đ"));
+            MessageBox.Show(debugText);
+
+            ServiceLabels = data.Select(d => d.TenDichVu).ToArray();
+
+            ServiceSeries = new SeriesCollection
+            {
+                new ColumnSeries
+                {
+                    Title = "Số lần",
+                    Values = new ChartValues<double>(data.Select(d => (double)d.TongSoLan)),
+                    DataLabels = true,
+                    LabelPoint = val => val.X.ToString("N0") + " lần"
+                },
+                new ColumnSeries
+                {
+                    Title = "Doanh thu",
+                    Values = new ChartValues<double>(data.Select(d => (double)d.DoanhThu)),
+                    DataLabels = true,
+                    LabelPoint = val => val.X.ToString("N0") + " đ"
+                }
+            };
+
+            ServiceFormatter = val => val.ToString("N0");
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -41,49 +106,12 @@ namespace GUI
             dashboard.Show();
         }
 
-
-        // --- Logic cho Tab 1: Báo Cáo Doanh Thu ---
-
-        private void LoadRevenueChartData()
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-           
-        }
-
-        private void FilterButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Logic: Lọc dữ liệu CSDL dựa trên StartDatePicker.SelectedDate và EndDatePicker.SelectedDate
-            // Cập nhật lại RevenueSeries và RevenueLabels
-            MessageBox.Show("Đã lọc báo cáo!", "Thông Báo", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void ExportExcelButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Logic: Xuất dữ liệu ra Excel (SRS 4.5)
-            MessageBox.Show("Đang xuất file Excel...", "Thông Báo", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        // --- Logic cho Tab 2: Báo Cáo Công Suất ---
-
-        private void LoadOccupancyChartData()
-        {
-        }
-
-        private void PieChart_DataClick(object sender, ChartPoint chartPoint)
-        {
-            MessageBox.Show($"Bạn đã chọn: {chartPoint.SeriesView.Title} - {chartPoint.Y} phòng.", "Thông Tin", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        // --- Logic cho Tab 3: Báo Cáo Dịch Vụ ---
-
-        private void LoadServiceChartData()
-        {
-        }
-
-        // --- Logic cho Tab 4: Hiệu Suất Nhân Viên ---
-
-        private void LoadStaffGridData()
-        {
-
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }

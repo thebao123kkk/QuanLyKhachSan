@@ -58,6 +58,7 @@
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginAndPermission\TaiKhoanDAL.cs" />
+    <Compile Include="ReportDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

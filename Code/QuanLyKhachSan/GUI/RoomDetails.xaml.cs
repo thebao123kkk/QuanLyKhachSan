@@ -222,7 +222,7 @@ namespace GUI
 
             if (newCheckout <= oldCheckout)
             {
-                AvailabilityText.Text = "Ngày trả mới phải lớn hơn ngày trả hiện tại.";
+                AvailabilityText.Text = "Ngày gia hạn phải sau ngày hết hạn đặt phòng ban đầu.";
                 AvailabilityText.Foreground = Brushes.Red;
                 return;
             }
@@ -345,7 +345,33 @@ namespace GUI
         // Nút chuyển đến màn hình thanh toán
         private void GoToCheckoutButton_Click(object sender, RoutedEventArgs e)
         {
-            // Logic mở cửa sổ Thanh Toán (Checkout)
+            // Điều kiện bảo vệ
+            if (BookingInfo == null)
+            {
+                MessageBox.Show("Không thể xác định thông tin đặt phòng.",
+                                "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Lấy trạng thái phòng từ BookingInfo hoặc từ BLL
+            string trangThai = PhongBLL.LayTrangThaiPhong(BookingInfo.PhongID);
+
+            // Nếu phòng có nhiều trạng thái hiển thị → chuẩn hóa lại
+            string hienThi = (trangThai == "Đã nhận") ? "Đang ở" : trangThai;
+
+            // Thông báo theo yêu cầu
+            if (hienThi == "Bẩn")
+            {
+                MessageBox.Show("Phòng đã được kiểm tra.",
+                                "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Phòng chưa được kiểm tra.",
+                                "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            // Mở màn hình thanh toán
             Paiding pay = new Paiding(BookingInfo);
             pay.Show();
             this.Close();

@@ -10,7 +10,9 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
         ResizeMode="CanResize" WindowState="Maximized"
-        Background="Transparent"> 
+        Background="Transparent"
+        Loaded="Window_Loaded">
+
 
     <Window.Resources>
         <!-- (Sao chép toàn bộ Style từ các file XAML trước) -->
@@ -226,8 +228,8 @@
                                             <DatePicker x:Name="StartDatePicker" Width="150" Margin="5,0" SelectedDate="2025-10-01"/>
                                             <TextBlock Text="Đến ngày:" VerticalAlignment="Center" Margin="15,0,5,0"/>
                                             <DatePicker x:Name="EndDatePicker" Width="150" Margin="5,0" SelectedDate="2025-10-27"/>
-                                            <Button x:Name="FilterButton" Content="Lọc Báo Cáo" Margin="20,0,0,0" Style="{StaticResource ModernButtonStyle}" Click="FilterButton_Click" Width="100"/>
-                                            <Button x:Name="ExportExcelButton" Content="Xuất Excel" Margin="10,0,0,0" Style="{StaticResource ModernButtonStyle}" Click="ExportExcelButton_Click" Width="100"/>
+                                            <Button x:Name="FilterButton" Content="Lọc Báo Cáo" Margin="20,0,0,0" Style="{StaticResource ModernButtonStyle}"  Width="100"/>
+                                            <Button x:Name="ExportExcelButton" Content="Xuất Excel" Margin="10,0,0,0" Style="{StaticResource ModernButtonStyle}"  Width="100"/>
                                         </StackPanel>
                                     </Border>
 
@@ -252,15 +254,19 @@
                         <TabItem Header="Báo Cáo Công Suất">
                             <Border Background="White" CornerRadius="0,0,5,5" Padding="15">
                                 <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="377*"/>
+                                        <ColumnDefinition Width="553*"/>
+                                    </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Text="Thống kê công suất phòng (Tỷ lệ lấp đầy theo loại phòng)" FontSize="18" FontWeight="SemiBold" Foreground="#0A2A57" Margin="0,0,0,15"/>
+                                    <TextBlock Grid.Row="0" Text="Thống kê công suất phòng (Tỷ lệ lấp đầy theo loại phòng)" FontSize="18" FontWeight="SemiBold" Foreground="#0A2A57" Margin="0,0,0,15" Grid.ColumnSpan="2"/>
 
                                     <!-- Biểu đồ tròn (SRS 4.5) - Không phải CartesianChart, giữ nguyên -->
-                                    <lvc:PieChart Grid.Row="1" x:Name="OccupancyChart" Series="{Binding OccupancySeries}" LegendLocation="Bottom" DataClick="PieChart_DataClick">
+                                    <lvc:PieChart Grid.Row="1" x:Name="OccupancyChart" Series="{Binding OccupancySeries}" LegendLocation="Bottom"  Grid.ColumnSpan="2">
                                         <lvc:PieChart.ChartLegend>
                                             <lvc:DefaultLegend BulletSize="20"/>
                                         </lvc:PieChart.ChartLegend>
@@ -281,23 +287,38 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Text="Top Dịch Vụ Được Sử Dụng Nhiều Nhất (Theo Doanh Thu)" FontSize="18" FontWeight="SemiBold" Foreground="#0A2A57" Margin="0,0,0,15"/>
+                                    <!-- Tiêu đề -->
+                                    <TextBlock Grid.Row="0"
+                       Text="Top Dịch Vụ Được Sử Dụng Nhiều Nhất (Theo Doanh Thu)"
+                       FontSize="18"
+                       FontWeight="SemiBold"
+                       Foreground="#0A2A57"
+                       Margin="0,0,0,15"/>
 
-                                    <!-- Biểu đồ ngang (Bar chart) (SRS 4.5) - Đã sửa theo mẫu -->
-                                    <lvc:CartesianChart Grid.Row="1" 
-                                                        Series="{Binding ServiceSeries}" 
-                                                        LegendLocation="Right" 
-                                                        Height="280">
-                                        <lvc:CartesianChart.AxisY>
-                                            <lvc:Axis Title="Dịch vụ" Labels="{Binding ServiceLabels}"/>
-                                        </lvc:CartesianChart.AxisY>
+                                    <!-- Biểu đồ -->
+                                    <lvc:CartesianChart x:Name="ServiceChart"
+                                Grid.Row="1"
+                                Series="{Binding ServiceSeries}"
+                                LegendLocation="Right"
+                                Height="360"
+                                Background="White">
                                         <lvc:CartesianChart.AxisX>
-                                            <lvc:Axis Title="Doanh thu (VNĐ)" LabelFormatter="{Binding ServiceFormatter}"/>
+                                            <lvc:Axis Title="Dịch vụ"
+                              Labels="{Binding ServiceLabels}"
+                              
+                              FontSize="14"/>
                                         </lvc:CartesianChart.AxisX>
+                                        <lvc:CartesianChart.AxisY>
+                                            <lvc:Axis Title="Giá trị"
+                              LabelFormatter="{Binding ServiceFormatter}"
+                              FontSize="14"/>
+                                        </lvc:CartesianChart.AxisY>
                                     </lvc:CartesianChart>
                                 </Grid>
                             </Border>
                         </TabItem>
+
+
 
                         <!-- Tab 4: Staff Performance Report (SRS 5) -->
                         <TabItem Header="Hiệu Suất Nhân Viên">

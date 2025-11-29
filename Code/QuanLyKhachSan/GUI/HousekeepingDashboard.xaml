@@ -361,7 +361,7 @@
                             <!-- Filter -->
                             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
                                 <TextBlock Text="Bộ lọc trạng thái:" Style="{StaticResource LabelTextStyle}" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                                <ComboBox x:Name="FilterComboBox" Style="{StaticResource ModernComboBoxStyle}" Width="200" SelectionChanged="FilterComboBox_SelectionChanged">
+                                <ComboBox x:Name="LocTrangThaicb" Style="{StaticResource ModernComboBoxStyle}" Width="200" SelectionChanged="FilterComboBox_SelectionChanged">
                                     <ComboBoxItem IsSelected="True">Xem tất cả</ComboBoxItem>
                                     <ComboBoxItem>Chỉ xem phòng Bẩn</ComboBoxItem>
                                     <ComboBoxItem>Chỉ xem phòng Đang ở</ComboBoxItem>
@@ -370,10 +370,10 @@
                             </StackPanel>
 
                             <!-- Room List -->
-                            <DataGrid Grid.Row="1" x:Name="RoomsDataGrid" SelectionChanged="RoomsDataGrid_SelectionChanged">
+                            <DataGrid Grid.Row="1" x:Name="PhongDataGrid" SelectionChanged="PhongDataGrid_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Số Phòng" Binding="{Binding SoPhong}" Width="Auto"/>
-                                    <DataGridTextColumn Header="Loại Phòng" Binding="{Binding LoaiPhong}" Width="*"/>
+                                    <DataGridTextColumn Header="Loại Phòng" Binding="{Binding TenLoai}" Width="*"/>
                                     <DataGridTextColumn Header="Trạng Thái" Binding="{Binding TrangThai}" Width="*"/>
                                     <DataGridTextColumn Header="Ghi Chú" Binding="{Binding GhiChu}" Width="2*"/>
                                 </DataGrid.Columns>
@@ -385,33 +385,23 @@
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
                                 <StackPanel x:Name="ActionsPanel" IsEnabled="False">
                                     <TextBlock x:Name="SelectedRoomTextBlock" Text="Vui lòng chọn một phòng" Style="{StaticResource SubHeaderTextStyle}"/>
-                                    <TextBlock x:Name="CurrentStatusTextBlock" Text="Trạng Thái: N/A" Style="{StaticResource LabelTextStyle}" FontSize="14" Margin="0,0,0,15"/>
+                                    <TextBlock x:Name="TrangThaiPhongDuocChon" Text="Trạng Thái: " Style="{StaticResource LabelTextStyle}" FontSize="14" Margin="0,0,0,15"/>
 
                                     <!-- Action 1: Mark as Clean (SRS 4.3) -->
                                     <Border Background="#F4F7FC" CornerRadius="5" Padding="15" Margin="0,0,0,15">
                                         <StackPanel>
                                             <TextBlock Text="1. Cập Nhật Trạng Thái Dọn Dẹp" Style="{StaticResource LabelTextStyle}" FontSize="16"/>
-                                            <Button x:Name="MarkCleanButton" Content="Hoàn thành Dọn (Sạch)" Style="{StaticResource SuccessButtonStyle}" Click="MarkCleanButton_Click" Height="34" IsEnabled="False"/>
+                                            <Button x:Name="CapNhatTrangThaibtn" Content="Hoàn thành Dọn (Sạch)" Style="{StaticResource SuccessButtonStyle}" Click="CapNhatTrangThaibtn_Click" Height="34" IsEnabled="False"/>
                                         </StackPanel>
                                     </Border>
 
-                                    <!-- Action 2: Confirm for Checkout (SRS 4.2.1) -->
-                                    <Border Background="#F4F7FC" CornerRadius="5" Padding="15" Margin="0,0,0,15">
-                                        <StackPanel>
-                                            <TextBlock Text="2. Xác Nhận" Style="{StaticResource LabelTextStyle}" FontSize="16"/>
-                                            <TextBlock Text="Ghi chú (Minibar/Thiệt hại):" Style="{StaticResource LabelTextStyle}" Margin="0,10,0,5"/>
-                                            <TextBox x:Name="ConfirmationNotesTextBox" Style="{StaticResource ModernTextBoxStyle}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
-                                            <Button x:Name="ConfirmCheckoutButton" Content="Gửi Xác Nhận" Style="{StaticResource ModernButtonStyle}" Margin="0,10,0,0" Click="ConfirmCheckoutButton_Click" Height="34" IsEnabled="True"/>
-                                        </StackPanel>
-                                    </Border>
-
-                                    <!-- Action 3: Report Maintenance (SRS 4.3) -->
+                                    <!-- Action 2: Report Maintenance (SRS 4.3) -->
                                     <Border Background="#FFFBF0" CornerRadius="5" Padding="15" Margin="0,0,0,15">
                                         <StackPanel>
-                                            <TextBlock Text="3. Báo Cáo Bảo Trì" Style="{StaticResource LabelTextStyle}" FontSize="16"/>
+                                            <TextBlock Text="2. Báo Cáo Bảo Trì" Style="{StaticResource LabelTextStyle}" FontSize="16"/>
                                             <TextBlock Text="Nội dung sự cố / bảo trì:" Style="{StaticResource LabelTextStyle}" Margin="0,10,0,5"/>
-                                            <TextBox x:Name="MaintenanceNotesTextBox" Style="{StaticResource ModernTextBoxStyle}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
-                                            <Button x:Name="ReportMaintenanceButton" Content="Gửi Báo Cáo Bảo Trì" Style="{StaticResource WarningButtonStyle}" Margin="0,10,0,0" Click="ReportMaintenanceButton_Click" Height="34" IsEnabled="True"/>
+                                            <TextBox x:Name="BaoCaoBaoTritb" Style="{StaticResource ModernTextBoxStyle}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+                                            <Button x:Name="XacNhanBaoTribtn" Content="Gửi Báo Cáo Bảo Trì" Style="{StaticResource WarningButtonStyle}" Margin="0,10,0,0" Click="ReportMaintenanceButton_Click" Height="34" IsEnabled="True"/>
                                         </StackPanel>
                                     </Border>
 

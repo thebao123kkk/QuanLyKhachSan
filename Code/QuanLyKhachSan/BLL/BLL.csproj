@@ -103,6 +103,7 @@
     <Compile Include="PhieuTamTinhBLL.cs" />
     <Compile Include="PhongBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceReportBLL.cs" />
     <Compile Include="ThanhToanChiTietBLL.cs" />
     <Compile Include="ThanhToanTongHopBLL.cs" />
     <Compile Include="LoginAndPermission\LoginBLL.cs" />
