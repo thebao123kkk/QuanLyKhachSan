@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa Đơn Thanh Toán - Demo Luxury Hotel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            background-color: #e5e7eb; /* Gray-200 background for browser view */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-print-color-adjust: exact;
+        }
+        .invoice-container {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: white;
+            margin: 20px auto;
+            padding: 15mm;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .invoice-container {
+                width: 100%;
+                margin: 0;
+                padding: 10mm;
+                box-shadow: none;
+            }
+        }
+        .table-header {
+            background-color: #e5e7eb; /* Gray-200 */
+            font-weight: bold;
+            text-align: center;
+        }
+        .table-border {
+            border: 1px solid #9ca3af; /* Gray-400 */
+        }
+        td, th {
+            border: 1px solid #9ca3af;
+            padding: 6px 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invoice-container">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-400 uppercase tracking-widest mb-2">Logo</h1>
+            <h2 class="text-xl font-bold uppercase">KHÁCH SẠN DEMO LUXURY</h2>
+            <p class="text-sm text-gray-700">Địa chỉ: Hà Nội, Việt Nam - ĐT: 024.3934.1234</p>
+            <h3 class="text-2xl font-bold uppercase mt-4">HÓA ĐƠN THANH TOÁN / INVOICE</h3>
+        </div>
+
+        <!-- Info Section -->
+        <div class="flex justify-between mb-6 text-sm">
+            <!-- Left Column -->
+            <div class="w-1/2 pr-4">
+                <h4 class="font-bold mb-2 uppercase">THÔNG TIN KHÁCH HÀNG / CUSTOMER DETAILS</h4>
+                <table class="w-full border-none">
+                    <tr>
+                        <td class="border-none p-1 w-24 font-semibold align-top">Khách hàng:</td>
+                        <td class="border-none p-1 align-top">Nguyễn Văn An</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none p-1 font-semibold align-top">Địa chỉ:</td>
+                        <td class="border-none p-1 align-top">Hà Nội</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none p-1 font-semibold align-top">SĐT:</td>
+                        <td class="border-none p-1 align-top">0905123456</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Right Column -->
+            <div class="w-1/2 pl-4">
+                <h4 class="font-bold mb-2 uppercase">THÔNG TIN HÓA ĐƠN / INVOICE DETAILS</h4>
+                <table class="w-full border-none mb-3">
+                    <tr>
+                        <td class="border-none p-1 w-32 font-semibold align-top">Số HĐ:</td>
+                        <td class="border-none p-1 align-top">HD001</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none p-1 font-semibold align-top">Ngày lập:</td>
+                        <td class="border-none p-1 align-top">22/10/2025</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none p-1 font-semibold align-top">Mã đặt phòng:</td>
+                        <td class="border-none p-1 align-top">BK20251020_0001</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none p-1 font-semibold align-top">Thu ngân:</td>
+                        <td class="border-none p-1 align-top">Lê Minh Tuấn (NV02)</td>
+                    </tr>
+                </table>
+
+                <h4 class="font-bold mb-2 uppercase">THÔNG TIN LƯU TRÚ / STAY DETAILS</h4>
+                <table class="w-full border-none">
+                    <tr>
+                        <td class="border-none p-1 w-32 font-semibold align-top">Phòng:</td>
+                        <td class="border-none p-1 align-top">201 - Deluxe</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none p-1 font-semibold align-top">Ngày đến:</td>
+                        <td class="border-none p-1 align-top">20/10/2025</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none p-1 font-semibold align-top">Ngày đi:</td>
+                        <td class="border-none p-1 align-top">22/10/2025</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Items Table -->
+        <div class="mb-6">
+            <table class="w-full border-collapse text-sm">
+                <thead>
+                    <tr class="table-header">
+                        <th class="w-12">STT</th>
+                        <th>Diễn giải / Description</th>
+                        <th class="w-20">ĐVT /<br>Unit</th>
+                        <th class="w-16">SL /<br>Qty</th>
+                        <th class="w-32">Đơn giá /<br>Price</th>
+                        <th class="w-32">Thành tiền /<br>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td>Tiền phòng Deluxe (20/10 - 22/10)</td>
+                        <td class="text-center">Đêm</td>
+                        <td class="text-center">2</td>
+                        <td class="text-right">950,000 đ</td>
+                        <td class="text-right">1,900,000 đ</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td>Dịch vụ: Spa thư giãn</td>
+                        <td class="text-center">Giờ</td>
+                        <td class="text-center">1</td>
+                        <td class="text-right">300,000 đ</td>
+                        <td class="text-right">300,000 đ</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td>Dịch vụ: Ăn sáng buffet</td>
+                        <td class="text-center">Suất</td>
+                        <td class="text-center">2</td>
+                        <td class="text-right">100,000 đ</td>
+                        <td class="text-right">200,000 đ</td>
+                    </tr>
+                    <!-- Empty rows to fill space if needed -->
+                    <tr>
+                        <td class="text-center">&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer Totals -->
+        <div class="flex justify-end text-sm mb-12">
+            <div class="w-1/2">
+                <table class="w-full">
+                    <tr>
+                        <td class="border-none text-right font-semibold p-1">Cộng tiền hàng / Subtotal:</td>
+                        <td class="border-none text-right p-1 w-32">2,400,000 đ</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none text-right font-semibold p-1">VAT (10%):</td>
+                        <td class="border-none text-right p-1 border-b border-gray-400">240,000 đ</td>
+                    </tr>
+                    <tr class="font-bold text-base">
+                        <td class="border-none text-right p-1 pt-2">Tổng cộng / Grand Total:</td>
+                        <td class="border-none text-right p-1 pt-2">2,640,000 đ</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none text-right font-semibold p-1">Đã thanh toán / Paid:</td>
+                        <td class="border-none text-right p-1">2,090,000 đ</td>
+                    </tr>
+                    <tr>
+                        <td class="border-none text-right text-xs italic p-0 pr-1 pb-2 text-gray-600" colspan="2">
+                            (Cọc: 200,000đ, CK: 1,890,000đ)
+                        </td>
+                    </tr>
+                    <tr class="font-bold text-base">
+                        <td class="border-none text-right p-1 border-t border-gray-400">Còn lại / Balance Due:</td>
+                        <td class="border-none text-right p-1 border-t border-gray-400">550,000 đ</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer Signature -->
+        <div class="mt-8">
+            <div class="text-center italic text-sm mb-8">
+                Cảm ơn quý khách đã sử dụng dịch vụ! / Thank you for staying with us!
+            </div>
+            
+            <div class="flex justify-end pr-8">
+                <div class="text-center">
+                    <p class="font-semibold text-sm">Chữ ký khách hàng / Guest Signature</p>
+                    <div class="h-24"></div> <!-- Space for signature -->
+                    <p class="text-xs text-gray-400">(Ký, ghi rõ họ tên)</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -12,12 +12,24 @@
         Background="Transparent">
 
     <Window.Resources>
-        <!-- Style for Rounded TextBox and PasswordBox with Icon -->
-        <Style x:Key="InputBoxStyle" TargetType="{x:Type FrameworkElement}">
-            <Setter Property="Margin" Value="0,10"/>
+        <!-- Style cho Border bao quanh Input (Tạo độ mềm mại) -->
+        <Style x:Key="SoftInputBorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="22.5"/>
+            <!-- Bo tròn mạnh (bằng 1/2 chiều cao) -->
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="1" Color="Black" Opacity="0.05" BlurRadius="5"/>
+                </Setter.Value>
+            </Setter>
         </Style>
 
+        <!-- Style cho Nút bấm -->
         <Style x:Key="MaterialButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#007BFF"/>
             <Setter Property="Foreground" Value="White"/>
@@ -29,9 +41,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="8" Background="{TemplateBinding Background}" x:Name="border">
+                        <Border CornerRadius="22.5" Background="{TemplateBinding Background}" x:Name="border">
                             <Border.Effect>
-                                <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.3" BlurRadius="5"/>
+                                <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.2" BlurRadius="5"/>
                             </Border.Effect>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
@@ -50,9 +62,9 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="8" Background="{TemplateBinding Background}" x:Name="border">
+                        <Border CornerRadius="22.5" Background="{TemplateBinding Background}" x:Name="border">
                             <Border.Effect>
-                                <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.3" BlurRadius="5"/>
+                                <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.2" BlurRadius="5"/>
                             </Border.Effect>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
@@ -65,11 +77,136 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Template ToggleButton cho ComboBox (Nút mũi tên) -->
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+            <Border x:Name="templateRoot" 
+                    Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="22.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <Path x:Name="Arrow" 
+                          Grid.Column="1" 
+                          Data="M0,0 L4,4 L8,0 Z" 
+                          Fill="#666" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="templateRoot" Property="BorderBrush" Value="#007BFF"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <!-- Style cho ComboBox Mềm mại -->
+        <Style x:Key="SoftComboBoxStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Padding" Value="15,0,0,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <ToggleButton Name="ToggleButton" 
+                                          Template="{StaticResource ComboBoxToggleButton}" 
+                                          Grid.Column="2" 
+                                          Focusable="false"
+                                          IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                          ClickMode="Press"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"/>
+                            <ContentPresenter Name="ContentSite" 
+                                              IsHitTestVisible="False"  
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left" />
+                            <TextBox x:Name="PART_EditableTextBox"
+                                     Style="{x:Null}" 
+                                     Template="{x:Null}" 
+                                     HorizontalAlignment="Left" 
+                                     VerticalAlignment="Center" 
+                                     Margin="3,3,23,3"
+                                     Focusable="True" 
+                                     Background="Transparent"
+                                     Visibility="Hidden"
+                                     IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <Popup Name="Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True" 
+                                   Focusable="False"
+                                   PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder"
+                                            Background="White"
+                                            BorderThickness="1"
+                                            BorderBrush="#E0E0E0"
+                                            CornerRadius="10"
+                                            Margin="0,5,0,0">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.1" BlurRadius="10"/>
+                                        </Border.Effect>
+                                        <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style cho nút Cấu hình (Icon bánh răng) -->
+        <Style x:Key="SettingsButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="Transparent">
+                            <Path x:Name="Icon" 
+                                  Data="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" 
+                                  Fill="White" Opacity="0.7" Width="24" Height="24" Stretch="Uniform"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Icon" Property="Opacity" Value="1"/>
+                                <Setter TargetName="Icon" Property="Fill" Value="#FFD700"/>
+                                <!-- Gold color on hover -->
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Grid>
         <!-- Main Window Border -->
-        <Border CornerRadius="10">
+        <Border CornerRadius="10" MouseDown="Window_MouseDown">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#E0EAFC" Offset="0.0" />
@@ -77,6 +214,13 @@
                 </LinearGradientBrush>
             </Border.Background>
         </Border>
+
+        <!-- Nút Cấu hình DB -->
+        <Button Style="{StaticResource SettingsButtonStyle}" 
+                HorizontalAlignment="Right" VerticalAlignment="Top" 
+                Margin="0,20,20,0" 
+                ToolTip="Cấu hình Kết nối CSDL"
+                Click="DbConfigButton_Click"/>
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <!-- Hotel Logo -->
@@ -100,9 +244,9 @@
             </TextBlock>
 
             <!-- Login Card -->
-            <Border Width="400" CornerRadius="15" Padding="30">
+            <Border Width="500" CornerRadius="15" Padding="30">
                 <Border.Background>
-                    <SolidColorBrush Color="White" Opacity="0.8"/>
+                    <SolidColorBrush Color="White" Opacity="0.95"/>
                 </Border.Background>
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.3" BlurRadius="20"/>
@@ -118,50 +262,61 @@
                                Foreground="#666" 
                                Margin="0,5,0,20"/>
 
-                    <!-- Username -->
-                    <Grid Style="{StaticResource InputBoxStyle}">
-                        <TextBox x:Name="UsernameTextBox" VerticalContentAlignment="Center" Padding="40,0,10,0" BorderThickness="1" BorderBrush="LightGray" />
-                        <Path Data="M10,9A3,3 0 1,0 10,3A3,3 0 0,0 10,9M3,18A7,7 0 1,1 17,18H3Z" Fill="Gray" Width="18" Height="18" Stretch="Uniform" HorizontalAlignment="Left" Margin="12,0,0,0"/>
-                        <TextBlock IsHitTestVisible="False" Text="Tên đăng nhập" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="DarkGray">
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Text, ElementName=UsernameTextBox}" Value="">
-                                            <Setter Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                    </Grid>
+                    <!-- Username (Bao bọc bởi Border mềm mại) -->
+                    <Border Style="{StaticResource SoftInputBorderStyle}">
+                        <Grid>
+                            <TextBox x:Name="UsernameTextBox" VerticalContentAlignment="Center" Padding="40,0,10,0" BorderThickness="0" Background="Transparent" />
+                            <Path Data="M10,9A3,3 0 1,0 10,3A3,3 0 0,0 10,9M3,18A7,7 0 1,1 17,18H3Z" Fill="Gray" Width="18" Height="18" Stretch="Uniform" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                            <TextBlock IsHitTestVisible="False" Text="Tên đăng nhập" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=UsernameTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
 
-                    <!-- Password -->
-                    <Grid Style="{StaticResource InputBoxStyle}">
-                        <PasswordBox x:Name="PasswordBox" VerticalContentAlignment="Center" Padding="40,0,10,0" BorderThickness="1" BorderBrush="LightGray" />
-                        <Path Data="M18,8A6,6 0 0,1 10.257,13.743L10,14L9,15L8,16H6V18H2V14L6.257,9.743A6,6 0 0,1 18,8M12,4A1,1 0 1,0 12,6A1,1 0 0,0 12,4Z" Fill="Gray" Width="18" Height="18" Stretch="Uniform" HorizontalAlignment="Left" Margin="12,0,0,0"/>
-                        <TextBlock IsHitTestVisible="False" Text="Mật khẩu" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="DarkGray">
-                            <TextBlock.Style>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Password, ElementName=PasswordBox}" Value="">
-                                            <Setter Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                    </Grid>
+                    <!-- Password (Bao bọc bởi Border mềm mại) -->
+                    <Border Style="{StaticResource SoftInputBorderStyle}">
+                        <Grid>
+                            <PasswordBox x:Name="PasswordBox" VerticalContentAlignment="Center" Padding="40,0,10,0" BorderThickness="0" Background="Transparent"/>
+                            <Path Data="M18,8A6,6 0 0,1 10.257,13.743L10,14L9,15L8,16H6V18H2V14L6.257,9.743A6,6 0 0,1 18,8M12,4A1,1 0 1,0 12,6A1,1 0 0,0 12,4Z" Fill="Gray" Width="18" Height="18" Stretch="Uniform" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                            <TextBlock IsHitTestVisible="False" Text="Mật khẩu" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="DarkGray">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Password, ElementName=PasswordBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
 
-                    <!-- Role -->
-                    <ComboBox x:Name="RoleComboBox" Style="{StaticResource InputBoxStyle}" VerticalContentAlignment="Center" Padding="5" SelectedIndex="0">
-                        <ComboBoxItem Content="Nhân viên"/>
-                        <ComboBoxItem Content="Quản lý"/>
+                    <!-- Role (Sử dụng Style mới) -->
+                    <ComboBox x:Name="RoleComboBox" Style="{StaticResource SoftComboBoxStyle}" SelectedIndex="0">
+
                     </ComboBox>
 
-                    <!-- Remember me -->
-                    <CheckBox Content="Ghi nhớ đăng nhập" Foreground="#444" Margin="0,10,0,15"/>
+                    <!-- Remember me & Forgot Password -->
+                    <Grid Margin="5,10,5,15">
+                        <CheckBox Content="Ghi nhớ đăng nhập" Foreground="#444" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Hyperlink Click="ForgotPassword_Click" Foreground="#007BFF" TextDecorations="None" Cursor="Hand">
+                                Quên mật khẩu?
+                            </Hyperlink>
+                        </TextBlock>
+                    </Grid>
 
                     <!-- Error/Success Message -->
                     <TextBlock x:Name="MessageLabel" TextAlignment="Center" FontWeight="Medium" Margin="0,0,0,15" Visibility="Collapsed"/>
@@ -172,7 +327,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Margin="0,0,5,0" Content="Đăng nhập" Style="{StaticResource MaterialButtonStyle}" Click="LoginButton_Click"/>
+                        <Button x:Name="LoginButton" Grid.Column="0" Margin="0,0,5,0" Content="Đăng nhập" Style="{StaticResource MaterialButtonStyle}" Click="LoginButton_Click"/>
                         <Button Grid.Column="1" Margin="5,0,0,0" Content="Thoát" Style="{StaticResource ExitButtonStyle}" Click="ExitButton_Click"/>
                     </Grid>
                 </StackPanel>
