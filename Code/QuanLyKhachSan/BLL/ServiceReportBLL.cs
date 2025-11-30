@@ -11,5 +11,16 @@ namespace BLL
         {
             return ReportDAL.LayTopDichVu();
         }
+
+        public static List<CongSuatPhongDTO> GetCongSuatLoaiPhong()
+        {
+            return ReportDAL.LayCongSuatTheoLoaiPhong();
+        }
+
+        public static List<DoanhThuNgayDTO> LayDoanhThuTheoNgay(DateTime? start, DateTime? end)
+        {
+            return ReportDAL.LayDoanhThuTheoNgay(start, end);
+        }
+
     }
 }
