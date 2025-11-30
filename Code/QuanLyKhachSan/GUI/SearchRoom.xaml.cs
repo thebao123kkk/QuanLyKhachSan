@@ -75,7 +75,7 @@ namespace GUI
             if (DatPhongBLL.CheckoutPhong(selected.PhongID))
             {
                 LoadData();
-                MessageBox.Show("Checkout thành công! Trạng thái phòng đã đổi thành 'Đã nhận'.");
+                MessageBox.Show("Checkin thành công!.");
 
                 // Reload lại
                 string keyword = SearchTermTextBox.Text.Trim();
@@ -83,7 +83,7 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Checkout thất bại.");
+                MessageBox.Show("Checkin thất bại.");
             }
         }
 
@@ -111,7 +111,8 @@ namespace GUI
             var selected = (DatPhongViewDTO)ResultsDataGrid.SelectedItem;
 
             RoomDetails detail = new RoomDetails(selected);
-            detail.ShowDialog();
+            detail.Show();
+            this.Close();
         }
 
     }

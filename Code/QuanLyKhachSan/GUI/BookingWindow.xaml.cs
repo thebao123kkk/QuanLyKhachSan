@@ -325,31 +325,54 @@ namespace GUI
                 PhongBLL.UpdateTrangThaiPhong((string)r.RoomId, "Chờ nhận phòng");
                 LoadDanhSachPhongTrong();
             }
-            string maDatTong = BookingDAL.InsertDatPhongTong(
-                khId,
-                kh.HoTen,
-                kh.SDT,
-                !string.IsNullOrEmpty(kh.MST),
-            Convert.ToDecimal(txtTienCoc.Text),
-                txtGhiChu.Text,
-                "NV01",
-                selectedRooms[0].RoomId
-            );
             int soNgay = (dpNgayTra.SelectedDate.Value - dpNgayNhan.SelectedDate.Value).Days;
             decimal tienChuaVAT = selectedRooms.Sum(x => (decimal)x.Total);
+            foreach (var r in selectedRooms)
+            {
+                    string maDatTong = BookingDAL.InsertDatPhongTong(
+                    khId,
+                    kh.HoTen,
+                    kh.SDT,
+                    !string.IsNullOrEmpty(kh.MST),
+                Convert.ToDecimal(txtTienCoc.Text),
+                    txtGhiChu.Text,
+                    "NV01",
+                     r.RoomId
+                );
+                decimal tienPhong = (decimal)r.Total; // tiền trước VAT
+
+                BookingDAL.InsertDatPhongChiTiet(
+                    maDatTong,
+                    dpNgayNhan.SelectedDate.Value,
+                    dpNgayTra.SelectedDate.Value,
+                    int.Parse(txtNguoiLon.Text),
+                    int.Parse(txtTreEm.Text),
+                    selectedRooms.Count,                // ✔ mỗi dòng = 1 phòng
+                    8,                // VAT
+                    tienPhong,        // ✔ tiền từng phòng, không phải tổng
+                    txtGhiChu.Text
+                );
+            }
+           
             //decimal tienSauVAT = tienChuaVAT * 1.08m;
 
-            BookingDAL.InsertDatPhongChiTiet(
-                maDatTong,
-                dpNgayNhan.SelectedDate.Value,
-                dpNgayTra.SelectedDate.Value,
-                int.Parse(txtNguoiLon.Text),
-                int.Parse(txtTreEm.Text),
-                selectedRooms.Count,
-                8,
-                tienChuaVAT,
-                txtGhiChu.Text
-            );
+            //BookingDAL.InsertDatPhongChiTiet(
+            //    maDatTong,
+            //    dpNgayNhan.SelectedDate.Value,
+            //    dpNgayTra.SelectedDate.Value,
+            //    int.Parse(txtNguoiLon.Text),
+            //    int.Parse(txtTreEm.Text),
+            //    selectedRooms.Count,
+            //    8,
+            //    tienChuaVAT,
+            //    txtGhiChu.Text
+            //);
+            foreach (var r in selectedRooms)
+            {
+                // Tiền phòng riêng từng phòng
+                
+            }
+
             ResetFormDatPhong();
             MessageBox.Show("Đặt phòng thành công!", "Thành Công", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -386,6 +409,25 @@ namespace GUI
 
             // Load lại phòng trống
             LoadDanhSachPhongTrong();
+        }
+        //RÀNG BUỘC
+        private void SoTienCoctb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb == null) return;
+
+            string raw = tb.Text.Replace(".", "").Replace(",", "");
+            if (string.IsNullOrEmpty(raw)) return;
+
+            // Nếu chưa phải số thì bỏ qua
+            if (!decimal.TryParse(raw, out decimal value)) return;
+
+            int caretPos = tb.SelectionStart; // vị trí con trỏ trước khi format
+
+            tb.Text = value.ToString("#,##0", new CultureInfo("vi-VN"));
+
+            // Cập nhật vị trí con trỏ = cuối text
+            tb.SelectionStart = tb.Text.Length;
         }
 
     }

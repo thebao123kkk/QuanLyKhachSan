@@ -10,5 +10,11 @@ namespace BLL
         {
             return DichVuDAL.LayDichVuHoatDong();
         }
+
+        public static string LayDonVi(string tenDichVu)
+        {
+            return DichVuDAL.LayDonViTheoTen(tenDichVu);
+        }
+
     }
 }

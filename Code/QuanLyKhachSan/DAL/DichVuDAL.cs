@@ -42,5 +42,100 @@ namespace DAL
 
             return list;
         }
+
+        public static List<ServiceUsedDTO> GetUsedServices(string maDatChiTiet)
+        {
+            var list = new List<ServiceUsedDTO>();
+
+            string query = @"
+            SELECT 
+                dv.TenDichVu, 
+                ctdv.SoLuong, 
+                ctdv.DonGiaTaiThoiDiem
+            FROM ChiTietDichVu ctdv
+            JOIN DichVuPhong dv ON dv.DichVuID = ctdv.DichVuID
+            WHERE ctdv.MaDatChiTiet = @MaDatChiTiet
+            ORDER BY ctdv.NgaySuDung
+        ";
+
+            using (var conn = DatabaseAccess.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@MaDatChiTiet", maDatChiTiet);
+
+                conn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        list.Add(new ServiceUsedDTO
+                        {
+                            TenDichVu = rd["TenDichVu"].ToString(),
+                            SoLuong = Convert.ToDecimal(rd["SoLuong"]),
+                            DonGiaTaiThoiDiem = Convert.ToDecimal(rd["DonGiaTaiThoiDiem"])
+                        });
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public static List<ServiceUsedDTO> GetServicesByListChiTiet(List<string> listMaCT)
+        {
+            var list = new List<ServiceUsedDTO>();
+
+            string paramNames = string.Join(",", listMaCT.Select((x, i) => "@p" + i));
+            string query = $@"
+            SELECT dv.TenDichVu, ctdv.SoLuong, ctdv.DonGiaTaiThoiDiem
+            FROM ChiTietDichVu ctdv
+            JOIN DichVuPhong dv ON dv.DichVuID = ctdv.DichVuID
+            WHERE ctdv.MaDatChiTiet IN ({paramNames})
+        ";
+
+            using (var conn = DatabaseAccess.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                for (int i = 0; i < listMaCT.Count; i++)
+                    cmd.Parameters.AddWithValue("@p" + i, listMaCT[i]);
+
+                conn.Open();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        list.Add(new ServiceUsedDTO
+                        {
+                            TenDichVu = rd["TenDichVu"].ToString(),
+                            SoLuong = Convert.ToDecimal(rd["SoLuong"]),
+                            DonGiaTaiThoiDiem = Convert.ToDecimal(rd["DonGiaTaiThoiDiem"])
+                        });
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public static string LayDonViTheoTen(string tenDichVu)
+        {
+            using (SqlConnection conn = DatabaseAccess.GetConnection())
+            {
+                conn.Open();
+                string sql = @"
+            SELECT DonVi 
+            FROM DichVuPhong 
+            WHERE TenDichVu = @Ten AND HieuLuc = 1";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Ten", tenDichVu);
+
+                    var result = cmd.ExecuteScalar();
+                    return result == null ? null : result.ToString();
+                }
+            }
+        }
+
     }
 }

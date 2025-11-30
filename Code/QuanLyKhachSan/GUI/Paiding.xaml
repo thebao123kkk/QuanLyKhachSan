@@ -424,9 +424,16 @@
                             <!-- Guest Info -->
                             <Border Grid.Row="0" Background="White" CornerRadius="5" Padding="15" BorderBrush="#EEE" BorderThickness="1" Margin="0,0,0,15">
                                 <StackPanel>
-                                    <TextBlock Text="Phòng 101 - Nguyễn Văn A" FontSize="20" FontWeight="Bold" Foreground="#0A2A57" Margin="0,0,0,10"/>
-                                    <TextBlock Style="{StaticResource InfoTextStyle}" x:Name="GuestNameText" Text="Booking #BK-20251025-001"/>
+                                    <TextBlock x:Name="TitleRoomCustomerText" Text="Phòng 101 - Nguyễn Văn A" FontSize="20" FontWeight="Bold" Foreground="#0A2A57" Margin="0,0,0,10"/>
+                                    <TextBlock Style="{StaticResource InfoTextStyle}" x:Name="BookingIdText" Text="Booking #BK-20251025-001"/>
                                     <TextBlock Style="{StaticResource InfoTextStyle}" x:Name="StayDurationText" Text="Lưu trú: 25/10/2025 - 27/10/2025 (2 đêm)"/>
+                                    <CheckBox Name="AllPhong"
+                  Content="Tất cả phòng khách đang ở"
+                  Margin="0,10,0,0"
+                  FontWeight="SemiBold"
+                  Foreground="#0A2A57"
+                  Checked="HienAllPhongDangO_Checked"
+                  Unchecked="HienAllPhongDangO_Unchecked"/>
                                 </StackPanel>
                             </Border>
 
@@ -445,8 +452,8 @@
                                 <StackPanel>
                                     <TextBlock Text="Áp Dụng Mã Giảm Giá" Style="{StaticResource LabelTextStyle}"/>
                                     <WrapPanel>
-                                        <TextBox x:Name="DiscountCodeTextBox" MinWidth="200" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,10,0"/>
-                                        <Button x:Name="ApplyDiscountButton" Content="Áp Dụng" Style="{StaticResource SecondaryButtonStyle}" Click="ApplyDiscountButton_Click" Width="84"/>
+                                        <TextBox x:Name="txtMaGiamGia" MinWidth="200" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,10,0"/>
+                                        <Button x:Name="ApMaGiamGiabtn" Content="Áp Dụng" Style="{StaticResource SecondaryButtonStyle}" Click="ApMaGiamGiaBtn_Click" Width="84"/>
                                     </WrapPanel>
                                 </StackPanel>
                             </Border>
@@ -468,52 +475,93 @@
                                     <!-- Summary (SRS 4.4.1) -->
                                     <StackPanel Grid.Row="0">
                                         <TextBlock Text="Tóm Tắt Hóa Đơn" Style="{StaticResource SubHeaderTextStyle}"/>
-                                        <Grid Margin="0,10">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                            </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Row="0" Margin="0,0,0,0">
+                                            <Grid Margin="0,10"
+          HorizontalAlignment="Left">
 
-                                            <!-- THÊM CÁC DÒNG NÀY ĐỂ SỬA LỖI CHỒNG CHÉO -->
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"/>
-                                                <!-- Tiền phòng -->
-                                                <RowDefinition Height="Auto"/>
-                                                <!-- Dịch vụ -->
-                                                <RowDefinition Height="Auto"/>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <!-- Tổng tiền phòng -->
+                                                <TextBlock Grid.Row="0" Grid.Column="0"
+                   Text="Tổng tiền phòng:"
+                   Style="{StaticResource TotalSummaryLabelStyle}"
+                   Margin="0,5,20,5"/>
+
+                                                <TextBlock Grid.Row="0" Grid.Column="1"
+                   x:Name="TongTienPhong"
+                   Style="{StaticResource TotalSummaryValueStyle}"
+                   Margin="0,5,0,5"/>
+
+                                                <!-- Tổng tiền dịch vụ -->
+                                                <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Tổng tiền dịch vụ:"
+                   Style="{StaticResource TotalSummaryLabelStyle}"
+                   Margin="0,5,20,5"/>
+
+                                                <TextBlock Grid.Row="1" Grid.Column="1"
+                   x:Name="TongTienDichVu"
+                   Style="{StaticResource TotalSummaryValueStyle}"
+                   Margin="0,5,0,5"/>
+
                                                 <!-- Giảm giá -->
-                                                <RowDefinition Height="Auto"/>
+                                                <TextBlock Grid.Row="2" Grid.Column="0"
+                   Text="Giảm giá:"
+                   Style="{StaticResource TotalSummaryLabelStyle}"
+                   Margin="0,5,20,5"/>
+
+                                                <TextBlock Grid.Row="2" Grid.Column="1"
+                   x:Name="GiamGia"
+                   Style="{StaticResource TotalSummaryValueStyle}"
+                   Margin="0,5,0,5"
+                   Foreground="#28A745"/>
+
                                                 <!-- VAT -->
-                                                <RowDefinition Height="Auto"/>
+                                                <TextBlock Grid.Row="3" Grid.Column="0"
+                   Text="Phí (VAT, v.v.):"
+                   Style="{StaticResource TotalSummaryLabelStyle}"
+                   Margin="0,5,20,5"/>
+
+                                                <TextBlock Grid.Row="3" Grid.Column="1"
+                   x:Name="PhiVAT"
+                   Style="{StaticResource TotalSummaryValueStyle}"
+                   Margin="0,5,0,5"/>
+
                                                 <!-- Đã thanh toán -->
-                                                <RowDefinition Height="Auto"/>
+                                                <TextBlock Grid.Row="4" Grid.Column="0"
+                   Text="Đã thanh toán (cọc):"
+                   Style="{StaticResource TotalSummaryLabelStyle}"
+                   Margin="0,5,20,5"/>
+
+                                                <TextBlock Grid.Row="4" Grid.Column="1"
+                   x:Name="DaThanhToan"
+                   Style="{StaticResource TotalSummaryValueStyle}"
+                   Margin="0,5,0,5"/>
+
                                                 <!-- Còn lại -->
-                                            </Grid.RowDefinitions>
+                                                <TextBlock Grid.Row="5" Grid.Column="0"
+                   Text="CÒN LẠI:"
+                   Style="{StaticResource GrandTotalLabelStyle}"
+                   Margin="0,10,20,5"/>
 
-                                            <!-- Dòng 0: Tiền phòng -->
-                                            <TextBlock Grid.Column="0" Grid.Row="0" Text="Tổng tiền phòng:" Style="{StaticResource TotalSummaryLabelStyle}"/>
-                                            <TextBlock Grid.Column="1" Grid.Row="0" x:Name="RoomFeeText" Text="2,000,000" Style="{StaticResource TotalSummaryValueStyle}"/>
+                                                <TextBlock Grid.Row="5" Grid.Column="1"
+                   x:Name="ConLai"
+                   Style="{StaticResource GrandTotalValueStyle}"
+                   Margin="0,10,0,5"/>
+                                            </Grid>
+                                        </StackPanel>
 
-                                            <!-- Dòng 1: Dịch vụ -->
-                                            <TextBlock Grid.Column="0" Grid.Row="1" Text="Tổng tiền dịch vụ:" Style="{StaticResource TotalSummaryLabelStyle}"/>
-                                            <TextBlock Grid.Column="1" Grid.Row="1" x:Name="ServiceFeeText" Text="60,000" Style="{StaticResource TotalSummaryValueStyle}"/>
-
-                                            <!-- Dòng 2: Giảm giá -->
-                                            <TextBlock Grid.Column="0" Grid.Row="2" Text="Giảm giá:" Style="{StaticResource TotalSummaryLabelStyle}"/>
-                                            <TextBlock Grid.Column="1" Grid.Row="2" x:Name="DiscountText" Text="- 0" Style="{StaticResource TotalSummaryValueStyle}" Foreground="#28A745"/>
-
-                                            <!-- Dòng 3: VAT -->
-                                            <TextBlock Grid.Column="0" Grid.Row="3" Text="Phí (VAT, v.v.):" Style="{StaticResource TotalSummaryLabelStyle}"/>
-                                            <TextBlock Grid.Column="1" Grid.Row="3" x:Name="VatText" Text="0" Style="{StaticResource TotalSummaryValueStyle}"/>
-
-                                            <!-- Dòng 4: Đã thanh toán -->
-                                            <TextBlock Grid.Column="0" Grid.Row="4" Text="Đã thanh toán (cọc):" Style="{StaticResource TotalSummaryLabelStyle}" Foreground="#0A2A57"/>
-                                            <TextBlock Grid.Column="1" Grid.Row="4" x:Name="PaidText" Text="- 1,000,000" Style="{StaticResource TotalSummaryValueStyle}" Foreground="#0A2A57"/>
-
-                                            <!-- Dòng 5: Còn lại -->
-                                            <TextBlock Grid.Column="0" Grid.Row="5" Text="CÒN LẠI:" Style="{StaticResource GrandTotalLabelStyle}"/>
-                                            <TextBlock Grid.Column="1" Grid.Row="5" x:Name="TotalDueText" Text="1,060,000" Style="{StaticResource GrandTotalValueStyle}"/>
-                                        </Grid>
                                     </StackPanel>
 
                                     <!-- Record Payment (SRS 4.4.2) -->
@@ -527,37 +575,22 @@
                                         </ComboBox>
 
                                         <TextBlock Text="Số tiền thanh toán" Style="{StaticResource LabelTextStyle}"/>
-                                        <TextBox x:Name="PaymentAmountTextBox" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,10"/>
+                                        <TextBox x:Name="SoTienThanhToantb" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,10"/>
 
-                                        <Button x:Name="RecordPaymentButton" Content="Ghi Nhận Thanh Toán" Style="{StaticResource ModernButtonStyle}" Click="RecordPaymentButton_Click" Height="38"/>
+                                        <Button x:Name="GhiNhanThanhToanButton" Content="Ghi Nhận Thanh Toán" Style="{StaticResource ModernButtonStyle}" Height="38" Click="GhiNhanThanhToan_Click"/>
                                     </StackPanel>
 
                                     <!-- Print Actions (SRS 4.4.1, 4.4.3) -->
-                                    <StackPanel Grid.Row="2" VerticalAlignment="Top" Margin="0,41,0,0" Height="68">
-                                        <!-- Sử dụng Grid để đặt 2 nút In kề nhau -->
-                                        <Grid Height="48">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-
-                                            <!-- Bỏ (SRS...) khỏi Content để ngắn gọn hơn -->
-                                            <Button Grid.Column="0" x:Name="PrintProformaButton" Content="In Phiếu &#xD;&#xA;Tạm Tính" Style="{StaticResource PrintButtonStyle}" Margin="0,3,5,0" Click="PrintProformaButton_Click"/>
-                                            <Button Grid.Column="1" x:Name="PrintVatButton" Content="Xuất Hóa Đơn" Style="{StaticResource VatButtonStyle}" Margin="5,3,0,0" Click="PrintVatButton_Click" RenderTransformOrigin="0.5,0.5">
-                                                <Button.RenderTransform>
-                                                    <TransformGroup>
-                                                        <ScaleTransform/>
-                                                        <SkewTransform/>
-                                                        <RotateTransform Angle="0"/>
-                                                        <TranslateTransform/>
-                                                    </TransformGroup>
-                                                </Button.RenderTransform>
-                                            </Button>
-
-                                        </Grid>
-
-                                        <!-- Nút Hoàn tất check-out nằm riêng ở dưới -->
-                                    </StackPanel>
+                                  
+                                    <StackPanel Grid.Row="2" VerticalAlignment="Top" Margin="0,41,0,0">
+                                        <Button x:Name="PrintProformaButton"
+                                        Content="In Phiếu Tạm Tính"
+                                        Style="{StaticResource PrintButtonStyle}"
+                                        Height="48"
+                                        Width="{Binding ElementName=GhiNhanThanhToanButton, Path=ActualWidth}"
+                                        HorizontalAlignment="Left"
+                                        Click="PrintProformaButton_Click"/>
+                                     </StackPanel>
                                 </Grid>
                             </Border>
                         </Grid>

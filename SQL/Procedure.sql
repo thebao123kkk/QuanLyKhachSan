@@ -7,6 +7,16 @@ SET TrangThai = N'Chờ nhận phòng';
 SELECT * FROM Phong WHERE TrangThai = N'Đã nhận';
 
 SELECT 
+    SUM(H.DaThu) AS TongDaThu,
+    SUM(H.ConLai) AS TongConLai
+FROM HoaDonThanhToan H
+JOIN CTHD C ON H.MaHoaDon = C.MaHoaDon
+JOIN DatPhongChiTiet DPCT ON DPCT.MaDatChiTiet = C.MaDatChiTiet
+WHERE DPCT.MaDatTong = 'DP_0026';
+
+
+Select * from MaGiamGia
+SELECT 
     dpt.MaDatTong,
     dpct.MaDatChiTiet,
     kh.HoTen,
@@ -25,6 +35,21 @@ JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
 WHERE kh.HoTen LIKE '%ABC%'       
 
 
+
+SELECT 
+    dpct.MaDatChiTiet,
+    dpct.SoLuongPhong,
+    lp.TenLoai AS LoaiPhong,
+    lp.GiaCoBan,
+    dpct.NgayNhan,
+    dpct.NgayTra
+FROM DatPhongChiTiet dpct
+JOIN DatPhongTong dpt ON dpct.MaDatTong = dpt.MaDatTong
+JOIN Phong p ON p.PhongID = dpt.PhongID
+JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
+WHERE dpct.MaDatChiTiet like 'DP_C0019' 
+
+--Chạy từ đây phía trước chỉ là Select
 --Insert khách hàng nếu chưa tồn tại
 CREATE OR ALTER PROCEDURE sp_InsertKhachHang
     @HoTen NVARCHAR(150),
@@ -133,3 +158,42 @@ JOIN KhachHang kh ON kh.KhachHangID = dpt.KhachHangID
 JOIN Phong p ON p.PhongID = dpt.PhongID
 JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
 ORDER BY dpct.NgayNhan DESC;
+
+--Bổ sung bảng Mã giảm giá
+CREATE TABLE MaGiamGia (
+    MGGID varchar(50) PRIMARY KEY,
+    TuNgay datetime2 NOT NULL,
+    DenNgay datetime2 NOT NULL,
+    PhanTramGiamGia int NOT NULL
+);
+
+ALTER TABLE HoaDonThanhToan
+ADD MGGID varchar(50) NULL;
+
+ALTER TABLE HoaDonThanhToan
+ADD CONSTRAINT FK_HoaDonThanhToan_MaGiamGia
+    FOREIGN KEY (MGGID) REFERENCES MaGiamGia(MGGID);
+
+	INSERT INTO MaGiamGia (MGGID, TuNgay, DenNgay, PhanTramGiamGia)
+VALUES
+('TEST', '2025-11-10', '2025-12-31', 10),
+('TET2025',     '2025-01-26', '2025-02-05', 25),  -- Tết Nguyên Đán
+('VAL2025',     '2025-02-10', '2025-02-15', 15),  -- Lễ Tình Nhân
+('NOEL2025',    '2025-12-20', '2025-12-31', 30),  -- Giáng Sinh
+('LABOR2025',   '2025-04-27', '2025-05-03', 10),  -- 30/4 - 1/5
+('QK2_9_2025',  '2025-08-30', '2025-09-03', 20),  -- Quốc Khánh
+('LOWSEASON25', '2025-03-01', '2025-03-20', 18),  -- Mùa thấp điểm
+('VIPWEEK2025', '2025-06-15', '2025-06-22', 35);  -- Tuần VIP
+
+Select * from MaGiamGia where MGGID = 'TET2025'
+
+SELECT 
+    hd.MaHoaDon,
+    hd.DaThu,
+    hd.ConLai,
+    hd.NgayLap,
+    mg.MGGID,
+    mg.PhanTramGiamGia
+FROM HoaDonThanhToan hd
+LEFT JOIN MaGiamGia mg ON hd.MGGID = mg.MGGID;
+

@@ -57,6 +57,7 @@ update TaiKhoanHeThong set VaiTroID = 'VT01' where TaiKhoanID = 'TK01'
 update TaiKhoanHeThong set VaiTroID = 'VT02' where TaiKhoanID = 'TK02'
 update TaiKhoanHeThong set VaiTroID = 'VT03' where TaiKhoanID = 'TK03'
 
+------------------------------------------
 CREATE OR ALTER TRIGGER trg_AutoCreateAccount
 ON NhanVien
 AFTER INSERT
