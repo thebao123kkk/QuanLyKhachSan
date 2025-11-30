@@ -54,7 +54,7 @@ namespace DAL
     {
         // Chuỗi kết nối được mã hóa cứng
         private const string ConnectionString =
-            "Server=localhost\\SQLEXPRESS;Database=QuanLyKhachSan;Trusted_Connection=True;Encrypt=False;TrustServerCertificate=True;";
+            "Server=localhost\\SQLEXPRESS01;Database=QuanLyKhachSan;Trusted_Connection=True;Encrypt=False;TrustServerCertificate=True;";
         // Hàm tạo và mở kết nối
         public  static SqlConnection GetConnection()
         {
