@@ -100,13 +100,16 @@ namespace BLL.LoginAndPermission
 
         public string Update(NhanVienDTO nv)
         {
-            if (nv.newMk != null)
-            {
-
-            }
             // Kiểm tra nhân viên có tồn tại không
             if (!dal.CheckIDExists(nv.NhanVienID))
                 return "Không tìm thấy nhân viên cần cập nhật.";
+
+            // Nếu có mật khẩu mới → cập nhật trước
+            if (!string.IsNullOrWhiteSpace(nv.newMk))
+            {
+                bool okPass = UpdatePassword(nv.NhanVienID, nv.newMk);
+                if (!okPass) return "Không thể cập nhật mật khẩu mới.";
+            }
 
             // Nếu bị khóa → không cho sửa
             if (dal.GetStatus(nv.NhanVienID) == "Khóa")

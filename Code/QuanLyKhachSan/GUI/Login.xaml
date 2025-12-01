@@ -299,11 +299,11 @@
               Margin="12,0,0,0"/>
 
                             <TextBlock x:Name="passlabel" 
-                   Text="Mật khẩu"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   Margin="40,0,0,0"
-                   Foreground="DarkGray">
+                               Text="Mật khẩu"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="40,0,0,0" Panel.ZIndex="1"
+                               Foreground="DarkGray">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -318,17 +318,17 @@
 
                             <!-- Toggle Eye -->
                             <Button x:Name="EyeButton"
-                Width="33" Height="30"
-                HorizontalAlignment="Right"
-                Margin="0"
-                VerticalAlignment="Center"
-                Background="Transparent"
-                BorderThickness="0"
-                Click="EyeButton_Click">
+                                Width="33" Height="30" Panel.ZIndex="2"
+                                HorizontalAlignment="Left"
+                                Margin="395,0,0,0"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Click="EyeButton_Click">
                                 <Path x:Name="EyeIcon"
-                  Data="M1,10C1,10 5,2 12,2C19,2 23,10 23,10C23,10 19,18 12,18C5,18 1,10 1,10Z M12,14A4,4 0 1 0 12,6A4,4 0 0 0 12,14Z"
-                  Fill="#666"
-                  Width="23" Height="20"/>
+                                    Data="M1,10C1,10 5,2 12,2C19,2 23,10 23,10C23,10 19,18 12,18C5,18 1,10 1,10Z M12,14A4,4 0 1 0 12,6A4,4 0 0 0 12,14Z"
+                                    Fill="#666"
+                                    Width="23" Height="20"/>
                             </Button>
 
                             <!-- TextBox Password Visible -->
@@ -354,8 +354,7 @@
                     <!-- Remember me & Forgot Password -->
                     <Grid Margin="5,10,5,15">
 
-        <CheckBox Content="Ghi nhớ đăng nhập" Foreground="#444" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">
                             <Hyperlink Click="ForgotPassword_Click" Foreground="#007BFF" TextDecorations="None" Cursor="Hand">
                                 Quên mật khẩu?
                             </Hyperlink>

@@ -182,6 +182,7 @@ namespace GUI
             string roleID = selectedRole?.Tag?.ToString();
             NhanVienDTO nv = new NhanVienDTO
             {
+                newMk = PasswordTextBox.Password,
                 NhanVienID = CurrentNhanVienID,
                 ChucVu = ChucVuTextBox.Text,
                 HoTen = HoTenTextBox.Text,

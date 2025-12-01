@@ -1,8 +1,10 @@
-﻿using BLL.LoginAndPermission;
-using BLL;
+﻿using BLL;
+using BLL.LoginAndPermission;
 using DAL;
+using DAL.DashBoard;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -15,7 +17,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DAL.DashBoard;
 
 namespace GUI
 {
@@ -27,6 +28,7 @@ namespace GUI
         {
             InitializeComponent();
             Loaded += Window_Loaded;
+            ApplyRolePermissions();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -48,52 +50,54 @@ namespace GUI
         }
 
 
-        private void ApplyRolePermissions(string role)
+        private void ApplyRolePermissions()
         {
-            // Mặc định ẩn các nút quản trị và thống kê
-            ReportsButton.Visibility = Visibility.Collapsed;
-            AdminButton.Visibility = Visibility.Collapsed;
-            StatsPanel.Visibility = Visibility.Collapsed;
+            // Reset tất cả về Disable
+            StatsPanel.IsEnabled = false;
+            BookingButton.IsEnabled = false;
+            SearchRoomButton.IsEnabled = false;
+            CheckoutButton.IsEnabled = false;
+            HousekeepingButton.IsEnabled = false;
+            ReportsButton.IsEnabled = false;
+            AdminButton.IsEnabled = false;
 
-            // Mặc định ẩn các nút nghiệp vụ
-            BookingButton.Visibility = Visibility.Collapsed; // (MỚI)
-            SearchRoomButton.Visibility = Visibility.Collapsed;
-            CheckoutButton.Visibility = Visibility.Collapsed;
-            HousekeepingButton.Visibility = Visibility.Collapsed;
+            string[] textUandR = hienThiDAL.GetUserNameAndRoleName(SessionInfo.TenDangNhap, SessionInfo.VaiTroID);
 
-            // Phân quyền
-            switch (role.ToLower())
+            string role = textUandR[1].ToLower();
+
+            // 1️ QUẢN LÝ
+            if (role == "quản lý")
             {
-                case "quản lý":
-                    // Quản lý thấy tất cả
-                    StatsPanel.Visibility = Visibility.Visible;
-                    BookingButton.Visibility = Visibility.Visible; // (MỚI)
-                    SearchRoomButton.Visibility = Visibility.Visible;
-                    CheckoutButton.Visibility = Visibility.Visible;
-                    HousekeepingButton.Visibility = Visibility.Visible;
-                    ReportsButton.Visibility = Visibility.Visible;
-                    AdminButton.Visibility = Visibility.Visible;
-                    break;
-
-                case "lễ tân":
-                    // Lễ tân thấy nghiệp vụ của lễ tân và thống kê nhanh
-                    StatsPanel.Visibility = Visibility.Visible;
-                    BookingButton.Visibility = Visibility.Visible; // (MỚI)
-                    SearchRoomButton.Visibility = Visibility.Visible;
-                    CheckoutButton.Visibility = Visibility.Visible;
-                    break;
-
-                case "buồng phòng":
-                    // Buồng phòng chỉ thấy nghiệp vụ buồng phòng
-                    HousekeepingButton.Visibility = Visibility.Visible;
-                    break;
-
-                default:
-                    // Vai trò lạ
-                    MessageBox.Show("Vai trò không xác định. Không có quyền truy cập.", "Lỗi Phân Quyền", MessageBoxButton.OK, MessageBoxImage.Error);
-                    this.Close(); // Đóng dashboard nếu không có quyền
-                    break;
+                ReportsButton.IsEnabled = true;   // mở
+                AdminButton.IsEnabled = true;     // mở
+                return;
             }
+
+            // 2️ LỄ TÂN
+            if (role == "lễ tân")
+            {
+                StatsPanel.IsEnabled = true;
+                BookingButton.IsEnabled = true;
+                SearchRoomButton.IsEnabled = true;
+                CheckoutButton.IsEnabled = true;
+
+                ReportsButton.IsEnabled = true;   
+
+                return;
+            }
+
+            // 3️ BUỒNG PHÒNG
+            if (role == "buồng phòng")
+            {
+                HousekeepingButton.IsEnabled = true;
+                return;
+            }
+
+            // Vai trò không hợp lệ
+            MessageBox.Show("Không xác định được vai trò người dùng.",
+                "Lỗi phân quyền", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            this.Close();
         }
 
 

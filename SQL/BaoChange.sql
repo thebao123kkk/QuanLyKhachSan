@@ -184,3 +184,58 @@ BEGIN
     );
 END
 
+-----------------------------------------------------
+CREATE VIEW v_TaiKhoan_Quyen AS
+SELECT 
+    tk.TaiKhoanID,
+    tk.TenDangNhap,
+    tk.VaiTroID,
+    vq.QuyenID,
+    q.TenQuyen,
+    q.NhomQuyen
+FROM TaiKhoanHeThong tk
+JOIN VaiTro_Quyen vq ON tk.VaiTroID = vq.VaiTroID
+JOIN Quyen q ON q.QuyenID = vq.QuyenID;
+GO
+
+select * from NhatKyHeThong
+select * from TaiKhoanHeThong
+
+CREATE OR ALTER TRIGGER trg_UpdateTrangThai_FromLog
+ON NhatKyHeThong
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE
+        @TaiKhoanID VARCHAR(50),
+        @HanhDong NVARCHAR(50);
+
+    -- Lấy dòng mới được insert
+    SELECT 
+        @TaiKhoanID = TaiKhoanID,
+        @HanhDong = HanhDong
+    FROM INSERTED;
+
+    -- Nếu HanhDong = 'Đăng nhập'  → set trạng thái = Đang làm
+    IF (@HanhDong = N'Đăng nhập')
+    BEGIN
+        UPDATE TaiKhoanHeThong
+        SET TrangThai = N'Đang làm'
+        WHERE TaiKhoanID = @TaiKhoanID;
+
+        RETURN;
+    END
+
+    -- Nếu HanhDong = 'Đăng xuất' → set trạng thái = Hoạt động
+    IF (@HanhDong = N'Đăng xuất')
+    BEGIN
+        UPDATE TaiKhoanHeThong
+        SET TrangThai = N'Hoạt động'
+        WHERE TaiKhoanID = @TaiKhoanID;
+
+        RETURN;
+    END
+END;
+GO

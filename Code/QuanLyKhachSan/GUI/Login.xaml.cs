@@ -40,12 +40,10 @@ namespace GUI
             if (PasswordBox.Password.Length < 6)
             {
                 PassError.Visibility = Visibility.Visible;
-                LoginButton.IsEnabled = false;
             }
             else
             {
                 PassError.Visibility = Visibility.Collapsed;
-                LoginButton.IsEnabled = true;
             }
         }
         //---------View pass---------

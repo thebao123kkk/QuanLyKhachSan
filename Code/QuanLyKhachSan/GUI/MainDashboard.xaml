@@ -112,6 +112,16 @@
 
         <!-- === STYLE CHO VÙNG NỘI DUNG CHÍNH === -->
 
+        <Style TargetType="Button">
+            <Setter Property="Opacity" Value="1"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.4"/>
+                    <Setter Property="ToolTip" Value="Bạn không có quyền sử dụng chức năng này"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- TextBlock Styles -->
         <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="24"/>

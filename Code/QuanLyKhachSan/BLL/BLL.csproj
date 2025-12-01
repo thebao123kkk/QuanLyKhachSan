@@ -98,6 +98,7 @@
     <Compile Include="HoaDonBLL.cs" />
     <Compile Include="KhachHangBLL.cs" />
     <Compile Include="LoginAndPermission\NhanVienBLL.cs" />
+    <Compile Include="LoginAndPermission\AuthService.cs" />
     <Compile Include="MaGiamGiaBLL.cs" />
     <Compile Include="PaidingBLL.cs" />
     <Compile Include="LoginAndPermission\LogBLL.cs" />
@@ -107,7 +108,6 @@
     <Compile Include="ServiceReportBLL.cs" />
     <Compile Include="ThanhToanChiTietBLL.cs" />
     <Compile Include="ThanhToanTongHopBLL.cs" />
-
     <Compile Include="LoginAndPermission\LoginBLL.cs" />
     <Compile Include="LoginAndPermission\SessionInfo.cs" />
   </ItemGroup>
