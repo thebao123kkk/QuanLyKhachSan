@@ -97,11 +97,11 @@
     <Compile Include="DichVuBLL.cs" />
     <Compile Include="HoaDonBLL.cs" />
     <Compile Include="KhachHangBLL.cs" />
-<<<<<<< HEAD
+
     <Compile Include="LoginAndPermission\LogBLL.cs" />
     <Compile Include="PhongBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-=======
+
     <Compile Include="MaGiamGiaBLL.cs" />
     <Compile Include="PaidingBLL.cs" />
     <Compile Include="LoginAndPermission\LogBLL.cs" />
@@ -111,7 +111,7 @@
     <Compile Include="ServiceReportBLL.cs" />
     <Compile Include="ThanhToanChiTietBLL.cs" />
     <Compile Include="ThanhToanTongHopBLL.cs" />
->>>>>>> 3276b994dbab588239e15406df02222fb461babe
+
     <Compile Include="LoginAndPermission\LoginBLL.cs" />
     <Compile Include="LoginAndPermission\SessionInfo.cs" />
   </ItemGroup>
