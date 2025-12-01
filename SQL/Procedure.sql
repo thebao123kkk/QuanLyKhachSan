@@ -1,4 +1,29 @@
-﻿UPDATE Phong
+﻿WITH Tong AS (
+    SELECT 
+        lp.TenLoai AS TenLoaiPhong,
+        COUNT(p.PhongID) AS SoPhong,
+        SUM(CASE WHEN dpt.MaDatTong IS NOT NULL THEN 1 ELSE 0 END) AS SoPhongDaDat
+    FROM Phong p
+    JOIN LoaiPhongChiTiet lp ON p.LoaiPhongID = lp.LoaiPhongID
+    LEFT JOIN DatPhongTong dpt ON dpt.PhongID = p.PhongID AND dpt.TrangThai != N'Hủy'
+    GROUP BY lp.TenLoai
+)
+SELECT *,
+    CAST(1.0 * SoPhongDaDat / NULLIF((SELECT SUM(SoPhongDaDat) FROM Tong), 0) * 100 AS DECIMAL(5,2)) AS TiLeGopLapDay
+FROM Tong
+ORDER BY TiLeGopLapDay DESC;
+------
+SELECT 
+    CAST(NgayLap AS date) AS Ngay,
+    SUM(DaThu) AS TongDoanhThu
+FROM HoaDonThanhToan
+WHERE NgayLap BETWEEN '2025-11-01' AND '2025-12-01'
+GROUP BY CAST(NgayLap AS date)
+ORDER BY CAST(NgayLap AS date)
+
+
+
+UPDATE Phong
 SET TrangThai = N'Trống';
 SELECT * FROM Phong WHERE TrangThai = N'Trống';
 
@@ -176,6 +201,7 @@ ADD CONSTRAINT FK_HoaDonThanhToan_MaGiamGia
 
 	INSERT INTO MaGiamGia (MGGID, TuNgay, DenNgay, PhanTramGiamGia)
 VALUES
+
 ('TEST', '2025-11-10', '2025-12-31', 10),
 ('TET2025',     '2025-01-26', '2025-02-05', 25),  -- Tết Nguyên Đán
 ('VAL2025',     '2025-02-10', '2025-02-15', 15),  -- Lễ Tình Nhân

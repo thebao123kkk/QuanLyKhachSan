@@ -107,6 +107,7 @@
     <Compile Include="ServiceReportBLL.cs" />
     <Compile Include="ThanhToanChiTietBLL.cs" />
     <Compile Include="ThanhToanTongHopBLL.cs" />
+
     <Compile Include="LoginAndPermission\LoginBLL.cs" />
     <Compile Include="LoginAndPermission\SessionInfo.cs" />
   </ItemGroup>

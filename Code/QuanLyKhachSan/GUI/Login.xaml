@@ -283,11 +283,27 @@
                     </Border>
 
                     <!-- Password (Bao bọc bởi Border mềm mại) -->
+                    <!-- Password -->
                     <Border Style="{StaticResource SoftInputBorderStyle}">
                         <Grid>
-                            <PasswordBox PasswordChanged="visibleChanged" x:Name="PasswordBox" VerticalContentAlignment="Center" Padding="40,0,10,0" BorderThickness="0" Background="Transparent"/>
-                            <Path Data="M18,8A6,6 0 0,1 10.257,13.743L10,14L9,15L8,16H6V18H2V14L6.257,9.743A6,6 0 0,1 18,8M12,4A1,1 0 1,0 12,6A1,1 0 0,0 12,4Z" Fill="Gray" Width="18" Height="18" Stretch="Uniform" HorizontalAlignment="Left" Margin="12,0,0,0"/>
-                            <TextBlock x:Name="passlabel" Text="Mật khẩu" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40,0,0,0" Foreground="DarkGray">
+                            <PasswordBox x:Name="PasswordBox" 
+                     Padding="40,0,40,0"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     VerticalContentAlignment="Center"
+                     PasswordChanged="visibleChanged"/>
+
+                            <Path Data="M18,8A6,6 0 0,1 10.257,13.743L10,14L9,15L8,16H6V18H2V14L6.257,9.743A6,6 0 0,1 18,8M12,4A1,1 0 1,0 12,6A1,1 0 0,0 12,4Z" 
+              Fill="Gray" Width="18" Height="18"
+              HorizontalAlignment="Left"
+              Margin="12,0,0,0"/>
+
+                            <TextBlock x:Name="passlabel" 
+                   Text="Mật khẩu"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="40,0,0,0"
+                   Foreground="DarkGray">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -299,30 +315,37 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBox x:Name="PasswordVisibleBox"
-                                 VerticalContentAlignment="Center"
-                                 Padding="40,0,40,0"
-                                 BorderThickness="0"
-                                 Background="Transparent"
-                                 Visibility="Collapsed"/>
+
+                            <!-- Toggle Eye -->
                             <Button x:Name="EyeButton"
-                                Width="33" Height="30"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="388,0,0,0"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Click="EyeButton_Click">
+                Width="33" Height="30"
+                HorizontalAlignment="Right"
+                Margin="0"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                Click="EyeButton_Click">
                                 <Path x:Name="EyeIcon"
-                                  Data="M1,10C1,10 5,2 12,2C19,2 23,10 23,10C23,10 19,18 12,18C5,18 1,10 1,10Z M12,14A4,4 0 1 0 12,6A4,4 0 0 0 12,14Z"
-                                  Fill="#666" Width="23" Height="20" Stretch="Fill"/>
+                  Data="M1,10C1,10 5,2 12,2C19,2 23,10 23,10C23,10 19,18 12,18C5,18 1,10 1,10Z M12,14A4,4 0 1 0 12,6A4,4 0 0 0 12,14Z"
+                  Fill="#666"
+                  Width="23" Height="20"/>
                             </Button>
+
+                            <!-- TextBox Password Visible -->
+                            <TextBox x:Name="PasswordVisibleBox"
+                 Padding="40,0,40,0"
+                 VerticalContentAlignment="Center"
+                 BorderThickness="0"
+                 Background="Transparent"
+                 Visibility="Collapsed"/>
                         </Grid>
                     </Border>
+
                     <TextBlock x:Name="PassError"
-                       Foreground="Red"
-                       Visibility="Collapsed"
-                       Text="Mật khẩu phải tối thiểu 6 ký tự." Margin="10,0,0,0"/>
+           Foreground="Red"
+           Visibility="Collapsed"
+           Text="Mật khẩu phải tối thiểu 6 ký tự."
+           Margin="10,0,0,0"/>
                     <!-- Role (Sử dụng Style mới) -->
                     <ComboBox x:Name="RoleComboBox" Style="{StaticResource SoftComboBoxStyle}" SelectedIndex="0">
 
@@ -331,7 +354,8 @@
                     <!-- Remember me & Forgot Password -->
                     <Grid Margin="5,10,5,15">
 
-                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">
+        <CheckBox Content="Ghi nhớ đăng nhập" Foreground="#444" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">
                             <Hyperlink Click="ForgotPassword_Click" Foreground="#007BFF" TextDecorations="None" Cursor="Hand">
                                 Quên mật khẩu?
                             </Hyperlink>

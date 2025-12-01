@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BLL;
+using BLL.LoginAndPermission;
 using DAL;
 using DTO;
 
@@ -336,7 +337,7 @@ namespace GUI
                     !string.IsNullOrEmpty(kh.MST),
                 Convert.ToDecimal(txtTienCoc.Text),
                     txtGhiChu.Text,
-                    "NV01",
+                    SessionInfo.TaiKhoanID,
                      r.RoomId
                 );
                 decimal tienPhong = (decimal)r.Total; // tiền trước VAT
