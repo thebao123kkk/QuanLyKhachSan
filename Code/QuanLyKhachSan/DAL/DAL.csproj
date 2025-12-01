@@ -53,12 +53,18 @@
     <Compile Include="KhachHangDAL.cs" />
     <Compile Include="LoginAndPermission\LogDAL.cs" />
     <Compile Include="LoginAndPermission\RoleDAL.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="MaGiamGiaDAL.cs" />
+>>>>>>> 3276b994dbab588239e15406df02222fb461babe
     <Compile Include="PhongDAL.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginAndPermission\TaiKhoanDAL.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="ReportDAL.cs" />
+>>>>>>> 3276b994dbab588239e15406df02222fb461babe
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

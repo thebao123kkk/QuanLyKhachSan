@@ -53,11 +53,15 @@
     <Compile Include="PhongDTO.cs" />
     <Compile Include="KhachHangDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+    <Compile Include="TaiKhoanDTO.cs" />
+=======
     <Compile Include="RoomFullChargeDTO.cs" />
     <Compile Include="ServiceUsedDTO.cs" />
     <Compile Include="TongKetThanhToanDTO.cs" />
     <Compile Include="TaiKhoanDTO.cs" />
     <Compile Include="TopServiceDTO.cs" />
+>>>>>>> 3276b994dbab588239e15406df02222fb461babe
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

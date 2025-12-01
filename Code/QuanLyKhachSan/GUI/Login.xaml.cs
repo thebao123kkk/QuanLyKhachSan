@@ -17,6 +17,60 @@ namespace GUI
             InitializeComponent();
             this.Loaded += Window_Loaded;
         }
+<<<<<<< HEAD
+
+        //---------Load sự kiện---------
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Thiết lập ComboBox Vai trò
+            RoleDAL roleDal = new RoleDAL();
+            var dsRole = roleDal.GetAllRoles();
+
+            RoleComboBox.Items.Clear();
+            foreach (var r in dsRole)
+            {
+                RoleComboBox.Items.Add(new ComboBoxItem { Content = r });
+            }
+        }
+        //---------Sự kiện nút đăng nhập---------
+
+        // Cho phép kéo thả cửa sổ (vì WindowStyle="None")
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameTextBox.Text.Trim();
+            string password = PasswordBox.Password;
+            string role = (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            // Gọi BLL
+            try
+            {
+                var result = _loginBll.DangNhap(username, password, role);
+
+                if (!result.Success)
+                {
+                    ShowMessage(result.Message, Colors.Red);
+                    return;
+                }
+
+                ShowMessage("Đăng nhập thành công!", Colors.Green);
+
+                // Mở màn hình chính
+                MainDashboard main = new MainDashboard();
+                main.Show();
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+=======
 
         //---------Load sự kiện---------
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -115,6 +169,7 @@ namespace GUI
             }
             catch (Exception ex)
             {
+>>>>>>> 3276b994dbab588239e15406df02222fb461babe
                 ShowMessage("Có lỗi khi đăng nhập: " + ex.Message, Colors.Red);
             }
         }
