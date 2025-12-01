@@ -391,7 +391,7 @@
                                     <Border Background="#F4F7FC" CornerRadius="5" Padding="15" Margin="0,0,0,15">
                                         <StackPanel>
                                             <TextBlock Text="1. Cập Nhật Trạng Thái Dọn Dẹp" Style="{StaticResource LabelTextStyle}" FontSize="16"/>
-                                            <Button x:Name="CapNhatTrangThaibtn" Content="Hoàn thành Dọn (Sạch)" Style="{StaticResource SuccessButtonStyle}" Click="CapNhatTrangThaibtn_Click" Height="34" IsEnabled="False"/>
+                                            <Button x:Name="CapNhatTrangThaibtn" Content="Cập nhật (Sạch/Dơ)" Style="{StaticResource SuccessButtonStyle}" Click="CapNhatTrangThaibtn_Click" Height="34" IsEnabled="False"/>
                                         </StackPanel>
                                     </Border>
 
@@ -401,7 +401,7 @@
                                             <TextBlock Text="2. Báo Cáo Bảo Trì" Style="{StaticResource LabelTextStyle}" FontSize="16"/>
                                             <TextBlock Text="Nội dung sự cố / bảo trì:" Style="{StaticResource LabelTextStyle}" Margin="0,10,0,5"/>
                                             <TextBox x:Name="BaoCaoBaoTritb" Style="{StaticResource ModernTextBoxStyle}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
-                                            <Button x:Name="XacNhanBaoTribtn" Content="Gửi Báo Cáo Bảo Trì" Style="{StaticResource WarningButtonStyle}" Margin="0,10,0,0" Click="ReportMaintenanceButton_Click" Height="34" IsEnabled="True"/>
+                                            <Button x:Name="XacNhanBaoTribtn" Content="Báo Bảo Trì" Style="{StaticResource WarningButtonStyle}" Margin="0,10,0,0" Click="ReportMaintenanceButton_Click" Height="34" IsEnabled="True"/>
                                         </StackPanel>
                                     </Border>
 

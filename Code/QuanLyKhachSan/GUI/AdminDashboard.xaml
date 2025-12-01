@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
         ResizeMode="CanResize"
-         WindowState="Maximized"
+        WindowState="Maximized"
         Background="Transparent">
 
     <Window.Resources>
@@ -456,11 +456,10 @@
             </LinearGradientBrush>
         </Border.Background>
 
-        <Grid Margin="0,0,0,-16">
+        <Grid>
             <!-- Close Button -->
             <Button Content="&#x2715;" HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Margin="0,10,10,0" FontWeight="Bold" Foreground="White" BorderThickness="0" Click="CloseButton_Click" Panel.ZIndex="1">
                 <Button.Style>
-                    <!-- (Style cho nút Close) -->
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Transparent"/>
                         <Setter Property="Template">
@@ -526,8 +525,8 @@
                                         </DataGrid>
                                         <!-- Lock/Unlock Buttons (SRS 4.6) -->
                                         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
-                                            <Button x:Name="LockUserButton" Content="Khóa Tài Khoản" Style="{StaticResource DestructiveButtonStyle}" Margin="0,0,10,0" Click="LockUserButton_Click" Height="34" Width="128"/>
-                                            <Button x:Name="UnlockUserButton" Content="Mở Khóa" Style="{StaticResource SuccessButtonStyle}" Click="UnlockUserButton_Click" Width="83"/>
+                                            <Button x:Name="LockUserButton" Content="Khóa Tài Khoản" Style="{StaticResource DestructiveButtonStyle}" Margin="0,0,10,0" Click="LockUserButton_Click" Width="117" Height="34"/>
+                                            <Button x:Name="UnlockUserButton" Content="Mở Khóa" Style="{StaticResource SuccessButtonStyle}" Click="UnlockUserButton_Click" Width="63"/>
                                         </StackPanel>
                                     </Grid>
 
@@ -539,17 +538,15 @@
                                                 <TextBlock Text="Thêm / Cập Nhật Nhân Viên" Style="{StaticResource SubHeaderTextStyle}"/>
 
                                                 <!-- Cập nhật các trường theo DB Schema -->
-                                                <TextBlock Text="Mã Nhân Viên (Tên đăng nhập)" Style="{StaticResource LabelTextStyle}"/>
-                                                <TextBox x:Name="NhanVienIDTextBox" Style="{StaticResource ModernTextBoxStyle}"/>
 
                                                 <TextBlock Text="Mật Khẩu (Nhập để đổi)" Style="{StaticResource LabelTextStyle}"/>
                                                 <PasswordBox x:Name="PasswordTextBox" Style="{StaticResource ModernPasswordBoxStyle}"/>
 
+                                                <TextBlock Text="Chức Vụ" Style="{StaticResource LabelTextStyle}"/>
+                                                <TextBox IsEnabled="False" x:Name="ChucVuTextBox" Style="{StaticResource ModernTextBoxStyle}"/>
+                                           
                                                 <TextBlock Text="Họ Tên" Style="{StaticResource LabelTextStyle}"/>
                                                 <TextBox x:Name="HoTenTextBox" Style="{StaticResource ModernTextBoxStyle}"/>
-
-                                                <TextBlock Text="Chức Vụ" Style="{StaticResource LabelTextStyle}"/>
-                                                <TextBox x:Name="ChucVuTextBox" Style="{StaticResource ModernTextBoxStyle}"/>
 
                                                 <TextBlock Text="Giới Tính" Style="{StaticResource LabelTextStyle}"/>
                                                 <ComboBox x:Name="GioiTinhComboBox" Style="{StaticResource ModernComboBoxStyle}">
@@ -571,13 +568,15 @@
                                                 <TextBox x:Name="DiaChiTextBox" Style="{StaticResource ModernTextBoxStyle}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
 
                                                 <TextBlock Text="Vai Trò (Phân quyền)" Style="{StaticResource LabelTextStyle}"/>
-                                                <ComboBox x:Name="RoleComboBox" Style="{StaticResource ModernComboBoxStyle}">
-
+                                                <ComboBox SelectionChanged="RoleComboBox_SelectionChanged" x:Name="RoleComboBox" Style="{StaticResource ModernComboBoxStyle}">
+                                                    <ComboBoxItem>Lễ tân</ComboBoxItem>
+                                                    <ComboBoxItem>Buồng phòng</ComboBoxItem>
+                                                    <ComboBoxItem>Quản lý</ComboBoxItem>
                                                 </ComboBox>
 
                                                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                                                    <Button x:Name="AddUserButton" Content="Thêm Mới" Style="{StaticResource ModernButtonStyle}" Click="AddUserButton_Click" Width="76"/>
-                                                    <Button x:Name="UpdateUserButton" Content="Cập Nhật" Style="{StaticResource ModernButtonStyle}" Margin="10,0,0,0" Click="UpdateUserButton_Click" Height="36" Width="70"/>
+                                                    <Button x:Name="AddUserButton" Content="Thêm Mới" Style="{StaticResource ModernButtonStyle}" Click="AddUserButton_Click" Width="102"/>
+                                                    <Button x:Name="UpdateUserButton" Content="Cập Nhật" Style="{StaticResource ModernButtonStyle}" Margin="10,0,0,0" Click="UpdateUserButton_Click" Width="102" Height="30"/>
                                                 </StackPanel>
                                                 <Button x:Name="ClearFormButton" Content="Làm Mới Form" Margin="0,10,0,0" Click="ClearFormButton_Click"/>
                                             </StackPanel>
@@ -587,32 +586,40 @@
                             </Border>
                         </TabItem>
 
-                        <!-- Tab 2: Approval Management (SRS 4.2.2) -->
-                        <TabItem Header="Phê Duyệt Yêu Cầu">
+                        <!-- Tab 2: Data Import (Changed from Approval) -->
+                        <TabItem Header="Nhập Dữ Liệu (Excel)">
                             <Border Background="White" CornerRadius="0,0,5,5" Padding="15">
                                 <Grid>
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <TextBlock Grid.Row="0" Text="Yêu Cầu Chờ Phê Duyệt" Style="{StaticResource SubHeaderTextStyle}"/>
+                                    <TextBlock Grid.Row="0" Text="Nhập Dữ Liệu Từ Excel (Import)" Style="{StaticResource SubHeaderTextStyle}"/>
 
-                                    <DataGrid Grid.Row="1" x:Name="ApprovalDataGrid">
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Mã Yêu Cầu" Binding="{Binding RequestId}" Width="Auto"/>
-                                            <DataGridTextColumn Header="Loại Yêu Cầu" Binding="{Binding RequestType}" Width="*"/>
-                                            <DataGridTextColumn Header="Nhân Viên" Binding="{Binding StaffName}" Width="*"/>
-                                            <DataGridTextColumn Header="Mã Booking" Binding="{Binding BookingCode}" Width="*"/>
-                                            <DataGridTextColumn Header="Chi Tiết" Binding="{Binding Details}" Width="2*"/>
-                                            <DataGridTextColumn Header="Ngày Yêu Cầu" Binding="{Binding RequestDate, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="*"/>
-                                        </DataGrid.Columns>
+                                    <!-- Controls Row -->
+                                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
+                                        <TextBlock Text="Loại dữ liệu:" VerticalAlignment="Center" Style="{StaticResource LabelTextStyle}" Margin="0,0,10,0"/>
+                                        <ComboBox x:Name="ImportTypeComboBox" Style="{StaticResource ModernComboBoxStyle}" Width="200" Margin="0,0,20,0">
+                                            <ComboBoxItem IsSelected="True">Nhân viên</ComboBoxItem>
+                                            <ComboBoxItem>Phòng</ComboBoxItem>
+                                            <ComboBoxItem>Dịch vụ</ComboBoxItem>
+                                        </ComboBox>
+
+                                        <Button x:Name="ImportExcelButton" Content="📂 Chọn File Excel" Style="{StaticResource ModernButtonStyle}" Click="ImportExcelButton_Click" Width="138"/>
+                                    </StackPanel>
+
+                                    <!-- Preview DataGrid -->
+                                    <DataGrid Grid.Row="2" x:Name="ImportPreviewDataGrid" AutoGenerateColumns="True" IsReadOnly="True" Margin="0,0,0,15">
+                                        <!-- Columns will be auto-generated based on import type -->
                                     </DataGrid>
 
-                                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
-                                        <Button x:Name="ApproveButton" Content="Phê Duyệt" Style="{StaticResource SuccessButtonStyle}" Margin="10,0,0,0" Click="ApproveButton_Click" Height="37" Width="102"/>
-                                        <Button x:Name="RejectButton" Content="Từ Chối" Style="{StaticResource DestructiveButtonStyle}" Margin="10,0,0,0" Click="RejectButton_Click" Width="87"/>
+                                    <!-- Action Buttons -->
+                                    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <TextBlock Text="Số lượng bản ghi: 0" x:Name="RecordCountTextBlock" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="#666"/>
+                                        <Button x:Name="SaveImportButton" Content="💾 Lưu vào CSDL" Style="{StaticResource SuccessButtonStyle}" Click="SaveImportButton_Click" Height="27" Width="125"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>
@@ -623,4 +630,3 @@
         </Grid>
     </Border>
 </Window>
-

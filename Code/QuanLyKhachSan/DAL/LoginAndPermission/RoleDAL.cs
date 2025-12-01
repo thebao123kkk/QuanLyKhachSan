@@ -54,5 +54,24 @@ namespace DAL
             }
         }
 
+        public List<(string VaiTroID, string TenVaiTro)> GetAllRolesDetail()
+        {
+            List<(string, string)> list = new List <(string, string)>();
+            string query = "SELECT VaiTroID, TenVaiTro FROM VaiTro";
+
+            using (SqlConnection con = DatabaseAccess.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, con))
+            {
+                con.Open();
+                var rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    list.Add((rd["VaiTroID"].ToString(), rd["TenVaiTro"].ToString()));
+                }
+            }
+
+            return list;
+        }
+
     }
 }

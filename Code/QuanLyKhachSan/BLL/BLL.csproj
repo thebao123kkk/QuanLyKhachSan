@@ -97,6 +97,7 @@
     <Compile Include="DichVuBLL.cs" />
     <Compile Include="HoaDonBLL.cs" />
     <Compile Include="KhachHangBLL.cs" />
+    <Compile Include="LoginAndPermission\NhanVienBLL.cs" />
     <Compile Include="MaGiamGiaBLL.cs" />
     <Compile Include="PaidingBLL.cs" />
     <Compile Include="LoginAndPermission\LogBLL.cs" />

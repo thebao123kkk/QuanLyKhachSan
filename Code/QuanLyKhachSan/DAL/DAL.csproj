@@ -52,6 +52,7 @@
     <Compile Include="HoaDonDAL.cs" />
     <Compile Include="KhachHangDAL.cs" />
     <Compile Include="LoginAndPermission\LogDAL.cs" />
+    <Compile Include="LoginAndPermission\NhanVienDAL.cs" />
     <Compile Include="LoginAndPermission\RoleDAL.cs" />
     <Compile Include="MaGiamGiaDAL.cs" />
     <Compile Include="PhongDAL.cs" />
