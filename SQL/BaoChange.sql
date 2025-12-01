@@ -120,4 +120,67 @@ BEGIN
     );
 END
 
+------------------------------------------
+CREATE OR ALTER TRIGGER trg_AutoCreateAccount
+ON NhanVien
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE 
+        @NhanVienID VARCHAR(50),
+        @Email NVARCHAR(255),
+        @VaiTroID VARCHAR(50),
+        @TaiKhoanID VARCHAR(50),
+        @TenDangNhap NVARCHAR(100),
+        @BaseUser NVARCHAR(100);
+
+    -- Lấy dữ liệu nhân viên mới được thêm
+    SELECT 
+        @NhanVienID = NhanVienID,
+        @Email = Email,
+        @VaiTroID = VaiTroID
+    FROM INSERTED;
+
+    ------------------------------------------
+    -- 1️⃣ Sinh TaiKhoanID tự động
+    ------------------------------------------
+    SET @TaiKhoanID = 'TK' + RIGHT('0000' + CAST((SELECT COUNT(*) + 1 
+                         FROM TaiKhoanHeThong) AS VARCHAR(10)), 4);
+
+    ------------------------------------------
+    -- 2️⃣ Tạo username dựa trên email
+    ------------------------------------------
+    SET @BaseUser = LOWER(LEFT(@Email, CHARINDEX('@', @Email) - 1));
+    SET @TenDangNhap = @BaseUser;
+
+    -- Nếu username trùng → tự sinh số phía sau
+    IF EXISTS (SELECT 1 FROM TaiKhoanHeThong WHERE TenDangNhap = @TenDangNhap)
+    BEGIN
+        SET @TenDangNhap = @BaseUser + CAST(ABS(CHECKSUM(NEWID())) % 1000 AS VARCHAR(5));
+    END
+
+    ------------------------------------------
+    -- 3️⃣ Tạo tài khoản hệ thống
+    -- Mật khẩu mặc định: 123456 (MD5 = E10ADC3949BA59ABBE56E057F20F883E)
+    ------------------------------------------
+    INSERT INTO TaiKhoanHeThong
+    (
+        TaiKhoanID, TenDangNhap, MatKhauHash, VaiTroID, TrangThai, Email,
+        NhanVienID, NgayTao, Khoa
+    )
+    VALUES
+    (
+        @TaiKhoanID,
+        @TenDangNhap,
+        'E10ADC3949BA59ABBE56E057F20F883E',
+        @VaiTroID,
+        N'Hoạt động',
+        @Email,
+        @NhanVienID,
+        GETDATE(),
+        0
+    );
+END
 
