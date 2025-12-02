@@ -1,4 +1,6 @@
-﻿SELECT * FROM DatPhongTong WHERE NhanVienID = 'NV01'
+﻿SELECT * FROM DatPhongTong 
+Select * from HoaDonThanhToan
+Select * from NhanVien
 Select * from MaGiamGia
 Select * from Phong
 Select * from LoaiPhongChiTiet
@@ -10,6 +12,35 @@ SELECT COUNT(*) FROM Phong;
 SELECT COUNT(*) 
 FROM DatPhongChiTiet 
 WHERE NgayTra = '2025-12-2';
+
+Select * from HoaDonThanhToan
+Select * from NhanVien
+SELECT * FROM NhanVien WHERE NhanVienID = 'NV01';
+
+SELECT 
+    nv.NhanVienID,
+    nv.HoTen,
+    ISNULL(bc.SoBooking, 0) AS SoBooking,
+    ISNULL(hd.TotalRevenue, 0) AS TotalRevenue
+FROM NhanVien nv
+LEFT JOIN (
+    SELECT 
+        NhanVienID,
+        COUNT(*) AS SoBooking
+    FROM DatPhongTong
+    GROUP BY NhanVienID
+) bc ON nv.NhanVienID = bc.NhanVienID
+LEFT JOIN (
+    SELECT 
+        NhanVienID,
+        SUM(DaThu) AS TotalRevenue
+    FROM HoaDonThanhToan
+    GROUP BY NhanVienID
+) hd ON nv.NhanVienID = hd.NhanVienID
+ORDER BY nv.NhanVienID;
+
+
+
 
 --
 WITH Tong AS (
@@ -73,20 +104,6 @@ JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
 JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
 WHERE kh.HoTen LIKE '%ABC%'       
 
-
-
-SELECT 
-    dpct.MaDatChiTiet,
-    dpct.SoLuongPhong,
-    lp.TenLoai AS LoaiPhong,
-    lp.GiaCoBan,
-    dpct.NgayNhan,
-    dpct.NgayTra
-FROM DatPhongChiTiet dpct
-JOIN DatPhongTong dpt ON dpct.MaDatTong = dpt.MaDatTong
-JOIN Phong p ON p.PhongID = dpt.PhongID
-JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
-WHERE dpct.MaDatChiTiet like 'DP_C0019' 
 
 --Chạy từ đây phía trước chỉ là Select
 --Insert khách hàng nếu chưa tồn tại
@@ -225,4 +242,16 @@ VALUES
 ('LOWSEASON25', '2025-03-01', '2025-03-20', 18),  -- Mùa thấp điểm
 ('VIPWEEK2025', '2025-06-15', '2025-06-22', 35);  -- Tuần VIP
 
+
+--Thêm cột NVID FK qua 
+ALTER TABLE HoaDonThanhToan
+ADD NhanVienID VARCHAR(50) NULL;
+
+UPDATE HoaDonThanhToan
+SET NhanVienID = 'NV01';
+
+ALTER TABLE HoaDonThanhToan
+ADD CONSTRAINT FK_HoaDonThanhToan_NhanVien
+    FOREIGN KEY (NhanVienID)
+    REFERENCES NhanVien(NhanVienID);
 
