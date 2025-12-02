@@ -226,7 +226,7 @@ namespace DAL
 
 
         // Lấy tất cả phòng theo tên khách
-        public static List<RoomFullChargeDTO> GetAllRoomsByCustomerName(string tenKhach)
+        public static List<RoomFullChargeDTO> GetAllRoomsByCustomerName(string tenKhach, DateTime ngayNhan)
         {
             List<RoomFullChargeDTO> list = new List<RoomFullChargeDTO>();
 
@@ -245,7 +245,7 @@ namespace DAL
             JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
             JOIN Phong p ON p.PhongID = dpt.PhongID
             JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
-            WHERE kh.HoTen = @TenKhach
+            WHERE kh.HoTen = @TenKhach AND dpct.NgayNhan = @NgayNhan
         ";
 
             using (var conn = DatabaseAccess.GetConnection())

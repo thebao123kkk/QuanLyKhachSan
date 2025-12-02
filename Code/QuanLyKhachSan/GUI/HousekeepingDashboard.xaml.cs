@@ -120,7 +120,7 @@ namespace GUI
             // Hiển thị trạng thái
             string trangThai = selectedRoom.TrangThai == "Đã nhận" ? "Đang ở" : selectedRoom.TrangThai;
             TrangThaiPhongDuocChon.Text = $"Trạng thái: {trangThai}";
-
+            BaoCaoBaoTritb.Text = selectedRoom.GhiChu;
             // Cập nhật mode của nút dựa trên trạng thái
             if (trangThai == "Bẩn")
             {
@@ -214,7 +214,7 @@ namespace GUI
             MessageBox.Show("Báo cáo bảo trì đã được lưu vào ghi chú phòng.", "Thành công",
                 MessageBoxButton.OK, MessageBoxImage.Information);
 
-            BaoCaoBaoTritb.Clear();
+            BaoCaoBaoTritb.Text = noiDung;
             LoadRoomsGrid();
         }
     }
