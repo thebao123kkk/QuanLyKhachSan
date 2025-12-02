@@ -52,8 +52,8 @@ namespace DAL
                 conn.Open();
 
                 string sql = @"
-            INSERT INTO HoaDonThanhToan (MaHoaDon, DaThu, ConLai, NgayLap, MGGID)
-            VALUES (@MaHoaDon, @DaThu, @ConLai, @NgayLap, @MGGID);";
+            INSERT INTO HoaDonThanhToan (MaHoaDon, DaThu, ConLai, NgayLap, MGGID, NhanVienID)
+            VALUES (@MaHoaDon, @DaThu, @ConLai, @NgayLap, @MGGID, @NhanVienID);";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -66,7 +66,7 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@MGGID", DBNull.Value);
                     else
                         cmd.Parameters.AddWithValue("@MGGID", dto.MGGID);
-
+                    cmd.Parameters.AddWithValue("@NhanVienID", dto.NhanVienID);
                     cmd.ExecuteNonQuery();
                 }
             }

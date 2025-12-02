@@ -55,6 +55,7 @@
     <Compile Include="PhongDTO.cs" />
     <Compile Include="KhachHangDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaffReportDTO.cs" />
     <Compile Include="TaiKhoanDTO.cs" />
     <Compile Include="RoomFullChargeDTO.cs" />
     <Compile Include="ServiceUsedDTO.cs" />

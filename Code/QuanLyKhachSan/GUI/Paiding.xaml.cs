@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using BLL;
+using BLL.LoginAndPermission;
 using DAL;
 using DTO;
 
@@ -390,7 +391,7 @@ namespace GUI
                 NgayDi = booking.NgayTra,
 
                 NhanVien = "Lê Minh Tuấn",
-
+                NhanVienID = SessionInfo.NhanVienID,
                 ChiTiet = InvoiceDetailsGrid.Items.Cast<InvoiceItemDTO>().ToList(),
 
                 // GIÁ TRỊ TỪ TỔNG KẾT

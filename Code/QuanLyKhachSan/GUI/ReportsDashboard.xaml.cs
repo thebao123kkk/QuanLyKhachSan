@@ -13,6 +13,7 @@ namespace GUI
         {
             InitializeComponent();
             DataContext = this;
+            LoadStaffReport();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -164,6 +165,12 @@ namespace GUI
             RevenueChart.AxisX[0].Labels = RevenueLabels;
             RevenueChart.AxisY[0].LabelFormatter = RevenueFormatter;
 
+        }
+
+        private void LoadStaffReport()
+        {
+            StaffReportBLL bll = new StaffReportBLL();
+            StaffDataGrid.ItemsSource = bll.LoadStaffReport();
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

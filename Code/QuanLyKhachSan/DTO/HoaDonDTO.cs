@@ -15,6 +15,7 @@ namespace DTO
         public DateTime NgayDen { get; set; }
         public DateTime NgayDi { get; set; }
         public string NhanVien { get; set; }
+        public string NhanVienID { get; set; }
 
         // Chi tiết dòng hóa đơn (dùng lại InvoiceItemDTO)
         public List<InvoiceItemDTO> ChiTiet { get; set; }

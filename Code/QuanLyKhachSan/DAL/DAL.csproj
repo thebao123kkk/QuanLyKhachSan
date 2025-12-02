@@ -63,6 +63,7 @@
     <Compile Include="LoginAndPermission\TaiKhoanDAL.cs" />
     <Compile Include="QuanLyDAL.cs" />
     <Compile Include="ReportDAL.cs" />
+    <Compile Include="StaffReportDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
