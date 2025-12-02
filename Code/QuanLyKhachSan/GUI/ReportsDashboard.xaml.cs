@@ -53,6 +53,21 @@ namespace GUI
         {
             LoadServiceChartData();
             TaiDuLieuCongSuatPhong();
+            RevenueChart.AxisX.Clear();
+            RevenueChart.AxisX.Add(new Axis
+            {
+                Title = "Ngày",
+                Labels = new List<string>(),
+                LabelsRotation = 0
+            });
+
+            RevenueChart.AxisY.Clear();
+            RevenueChart.AxisY.Add(new Axis
+            {
+                Title = "Doanh thu (VNĐ)",
+                LabelFormatter = val => val.ToString("N0") + " đ"
+            });
+
         }
 
         private void LoadServiceChartData()
@@ -145,6 +160,7 @@ namespace GUI
             RevenueFormatter = val => val.ToString("N0") + " đ";
             DataContext = this;
             RevenueChart.Series = RevenueSeries;
+            RevenueChart.AxisX[0].LabelsRotation = 0;
             RevenueChart.AxisX[0].Labels = RevenueLabels;
             RevenueChart.AxisY[0].LabelFormatter = RevenueFormatter;
 
@@ -154,6 +170,14 @@ namespace GUI
         {
             LoadDoanhThuChart();
             //MessageBox.Show("OK");
+        }
+
+        private void ExportExcelButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime? start = StartDatePicker.SelectedDate;
+            DateTime? end = EndDatePicker.SelectedDate;
+            var data = ServiceReportBLL.LayDoanhThuTheoNgay(start, end);
+            BaoCaoDoanhThuBLL.XuatExcelDoanhThu(data);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -337,7 +337,8 @@ namespace GUI
                     !string.IsNullOrEmpty(kh.MST),
                 Convert.ToDecimal(txtTienCoc.Text),
                     txtGhiChu.Text,
-                    SessionInfo.TaiKhoanID,
+                    SessionInfo.NhanVienID,
+                    //"NV01",
                      r.RoomId
                 );
                 decimal tienPhong = (decimal)r.Total; // tiền trước VAT

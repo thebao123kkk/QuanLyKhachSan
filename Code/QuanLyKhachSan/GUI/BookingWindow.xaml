@@ -312,33 +312,7 @@
                                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                                             <!-- Tương tự CheckRoomStatus, hiển thị các phòng trống ở đây -->
                                             <!-- Danh sách phòng trống -->
-                                            <DataGrid x:Name="DataGridPhong" Margin="0,10,0,0"
-                                                      AutoGenerateColumns="False"
-                                                      CanUserAddRows="False"
-                                                      IsReadOnly="True"
-                                                      HeadersVisibility="Column"
-                                                      AlternatingRowBackground="#F5F5F5"
-                                                      GridLinesVisibility="None"
-                                                      SelectionMode="Single">
-                                                
-
-                                                <DataGrid.Columns>
-                                                    <DataGridTextColumn Header="Số phòng" Binding="{Binding SoPhong}" Width="*"/>
-                                                    <DataGridTextColumn Header="Loại phòng" Binding="{Binding TenLoai}" Width="*"/>
-                                                    <DataGridTextColumn Header="Sức chứa" Binding="{Binding SucChua}" Width="*"/>
-                                                    <DataGridTextColumn Header="Giá/Đêm" Binding="{Binding GiaCoBan, StringFormat={}{0:N0} đ}" Width="*"/>
-                                                    <DataGridTemplateColumn Header="Hành động" Width="100">
-                                                        <DataGridTemplateColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <Button Content="Thêm"
-                            Style="{StaticResource ModernButtonStyle}"
-                            Padding="8,4"
-                            Click="BtnThemPhong_Click"/>
-                                                            </DataTemplate>
-                                                        </DataGridTemplateColumn.CellTemplate>
-                                                    </DataGridTemplateColumn>
-                                                </DataGrid.Columns>
-                                            </DataGrid>
+                                            
                                         </ScrollViewer>
                                     </StackPanel>
                                 </Border>
@@ -346,31 +320,103 @@
                             </StackPanel>
 
                             <!-- Room List & Selected Rooms -->
+                            <!-- ================== KHU VỰC DANH SÁCH PHÒNG & PHÒNG ĐÃ CHỌN ================== -->
+
                             <Grid Grid.Row="1" Margin="0,20,0,0">
+
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="1.2*"/>
+                                    <RowDefinition Height="2*" />
+                                    <!-- 2/3: phòng trống -->
+                                    <RowDefinition Height="1*" />
+                                    <!-- 1/3: phòng đã chọn -->
                                 </Grid.RowDefinitions>
 
+                                <!-- ====================== DANH SÁCH PHÒNG TRỐNG ====================== -->
+                                <Border Grid.Row="0">
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Background="White"
+                      Margin="0,0,0,10">
 
-                                <TextBlock Grid.Row="0" Text="Phòng đã chọn" FontSize="18" FontWeight="SemiBold" Margin="0,15,0,10"/>
+                                        <DataGrid x:Name="DataGridPhong"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      IsReadOnly="True"
+                      EnableRowVirtualization="True"
+                      EnableColumnVirtualization="True"
+                      VirtualizingPanel.IsVirtualizing="True"
+                      VirtualizingPanel.VirtualizationMode="Recycling"
+                      ScrollViewer.CanContentScroll="True"
+                      ColumnWidth="*"
+                      Background="White">
 
-                                <DataGrid Grid.Row="1" Name="dgSelectedRooms" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True" Background="#F9FAFB">
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Mã Phòng" Binding="{Binding RoomId}" Width="*"/>
-                                        <DataGridTextColumn Header="Loại Phòng" Binding="{Binding RoomType}" Width="*"/>
-                                        <DataGridTextColumn Header="Đơn giá/Đêm" Binding="{Binding Price, StringFormat={}{0:N0}}" Width="*"/>
-                                        <DataGridTextColumn Header="Thành tiền" Binding="{Binding Total, StringFormat={}{0:N0}}" Width="*"/>
-                                        <DataGridTemplateColumn Header="Hành Động" Width="80">
-                                            <DataGridTemplateColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Button Content="Xóa" Background="#EF4444" Foreground="White" Click="BtnXoaPhong_Click"/>
-                                                </DataTemplate>
-                                            </DataGridTemplateColumn.CellTemplate>
-                                        </DataGridTemplateColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Số phòng" Binding="{Binding SoPhong}" Width="*" />
+                                                <DataGridTextColumn Header="Loại phòng" Binding="{Binding TenLoai}" Width="*" />
+                                                <DataGridTextColumn Header="Sức chứa" Binding="{Binding SucChua}" Width="*" />
+                                                <DataGridTextColumn Header="Giá/Đêm" Binding="{Binding GiaCoBan, StringFormat={}{0:N0} đ}" Width="*" />
+
+                                                <DataGridTemplateColumn Header="Hành động" Width="110">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button Content="Thêm"
+                                        Width="80"
+                                        Height="28"
+                                        Style="{StaticResource ModernButtonStyle}"
+                                        Click="BtnThemPhong_Click"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+
+                                    </ScrollViewer>
+                                </Border>
+
+                                <!-- ====================== PHÒNG ĐÃ CHỌN ====================== -->
+                                <Border Grid.Row="1" Margin="0,10,0,0">
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled"
+                      Background="White">
+
+                                        <DataGrid x:Name="dgSelectedRooms"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      ColumnWidth="*"
+                      EnableRowVirtualization="True"
+                      VirtualizingPanel.IsVirtualizing="True"
+                      VirtualizingPanel.VirtualizationMode="Recycling"
+                      Background="White">
+
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Mã Phòng" Binding="{Binding RoomId}" Width="*" />
+                                                <DataGridTextColumn Header="Loại Phòng" Binding="{Binding RoomType}" Width="*" />
+                                                <DataGridTextColumn Header="Đơn giá/Đêm" Binding="{Binding Price, StringFormat={}{0:N0}}" Width="*" />
+                                                <DataGridTextColumn Header="Thành tiền" Binding="{Binding Total, StringFormat={}{0:N0}}" Width="*" />
+
+                                                <DataGridTemplateColumn Header="Hành Động" Width="80">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <Button Content="Xóa"
+                                        Width="60"
+                                        Height="26"
+                                        Background="#EF4444"
+                                        Foreground="White"
+                                        Click="BtnXoaPhong_Click"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+
+                                    </ScrollViewer>
+                                </Border>
+
                             </Grid>
+
 
                             <!-- Footer with Summary and Actions -->
                             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,20,0,0">

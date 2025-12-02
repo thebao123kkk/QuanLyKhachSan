@@ -1,8 +1,6 @@
-﻿using BLL.LoginAndPermission;
-using DAL;
-using DAL.LoginAndPermission;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,6 +14,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BLL;
+using BLL.LoginAndPermission;
+using DAL;
+using DAL.LoginAndPermission;
+using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.Win32;
 namespace GUI
 {
     /// <summary>
@@ -232,33 +236,99 @@ namespace GUI
             LoadUsersGrid();
         }
 
-        // --- TAB 2: QUẢN LÝ PHÊ DUYỆT (SRS 4.2.2) ---
-        // (Không thay đổi logic)
-
-        private void LoadApprovalRequestsGrid()
-        {
-            // Dữ liệu giả lập cho các yêu cầu cần phê duyệt
-
-        }
-
-        private void ApproveButton_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private void RejectButton_Click(object sender, RoutedEventArgs e)
-        {
-        }
 
         // --- TAB 2: NHẬP DỮ LIỆU TỪ EXCEL ---
+
+        // Lưu DataTable tạm thời khi import để dùng cho việc lưu sau
+        private DataTable importData;
+        private DataTable TempTable;
+        // Xử lý nút Import Excel
         private void ImportExcelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Excel Files (*.xlsx)|*.xlsx";
+            dlg.Title = "Chọn file Excel để nhập dữ liệu";
+            if (dlg.ShowDialog() == true)
+            {
+                string filePath = dlg.FileName;
+                // Lấy loại dữ liệu đã chọn trong ComboBox (ví dụ: "Phòng")
+                string sheetName = (ImportComboBox.SelectedItem as ComboBoxItem).Content.ToString();
+                try
+                {
+                    DataTable dt = QuanLyBLL.ImportExcel(filePath, sheetName);
+                    ImportPreviewDataGrid.ItemsSource = dt.DefaultView; // Set DataView cho DataGrid:contentReference[oaicite:10]{index=10}
+                    textBlockSoBanGhi.Text = $"Số lượng bản ghi: {dt.Rows.Count}";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi đọc file Excel: " + ex.Message);
+                }
+            }
         }
 
+        // Sự kiện khi nhấn nút Lưu dữ liệu import
         private void SaveImportButton_Click(object sender, RoutedEventArgs e)
         {
+            string selectedType = (ImportComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            if (string.IsNullOrEmpty(selectedType))
+            {
+                MessageBox.Show("Vui lòng chọn loại dữ liệu cần nhập.");
+                return;
+            }
+           
+                if (ImportPreviewDataGrid.ItemsSource is DataView dv)
+                {
+                    DataTable dt = dv.ToTable();
+                    try
+                    {
+                        switch (selectedType)
+                        {
+                            case "Phòng":
+                                QuanLyBLL.SavePhong(dt);
+                                break;
+                            case "Loại phòng":
+                                QuanLyBLL.SaveLoaiPhong(dt);
+                                MessageBox.Show("Loại phòng");
+                                break;
+                            case "Nhóm loại phòng":
+                                QuanLyBLL.SaveNhomLoaiPhong(dt);
+                                break;
+                            case "Dịch vụ":
+                                QuanLyBLL.SaveDichVuPhong(dt);
+                                break;
+                            case "Mã giảm giá":
+                                QuanLyBLL.SaveMaGiamGia(dt);
+                                break;
+                            default:
+                                MessageBox.Show($"Loại '{selectedType}' chưa được hỗ trợ lưu.");
+                                return;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi lưu dữ liệu: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu để lưu.");
+                }
+        }
+
+        private void ImportPreviewDataGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyType == typeof(DateTime) || e.PropertyType == typeof(DateTime?))
+            {
+                if (e.Column is DataGridTextColumn col)
+                {
+                    var b = col.Binding as Binding;
+                    b.StringFormat = "dd/MM/yyyy";
+                }
+            }
 
         }
+
+
+
     }
 }

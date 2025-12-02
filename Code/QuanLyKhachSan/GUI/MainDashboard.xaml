@@ -336,7 +336,7 @@
                                 <!-- Stat 1: Occupancy -->
                                 <Border Style="{StaticResource StatBoxStyle}">
                                     <StackPanel>
-                                        <TextBlock x:Name="StatOccupancy" Style="{StaticResource StatValueStyle}">0 / 0</TextBlock>
+                                        <TextBlock x:Name="PhongTrangThaiDaNhan" Style="{StaticResource StatValueStyle}">0 / 0</TextBlock>
                                         <TextBlock Text="Phòng đang ở" Style="{StaticResource StatLabelStyle}"/>
                                     </StackPanel>
                                 </Border>

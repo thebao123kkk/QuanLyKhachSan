@@ -1,4 +1,18 @@
-﻿WITH Tong AS (
+﻿SELECT * FROM DatPhongTong WHERE NhanVienID = 'NV01'
+Select * from MaGiamGia
+Select * from Phong
+Select * from LoaiPhongChiTiet
+Select * from NhomLoaiPhong
+Select * from DichVuPhong
+Select * from MaGiamGia
+SELECT COUNT(*) FROM Phong WHERE TrangThai = N'Đã nhận';
+SELECT COUNT(*) FROM Phong;
+SELECT COUNT(*) 
+FROM DatPhongChiTiet 
+WHERE NgayTra = '2025-12-2';
+
+--
+WITH Tong AS (
     SELECT 
         lp.TenLoai AS TenLoaiPhong,
         COUNT(p.PhongID) AS SoPhong,
@@ -211,15 +225,4 @@ VALUES
 ('LOWSEASON25', '2025-03-01', '2025-03-20', 18),  -- Mùa thấp điểm
 ('VIPWEEK2025', '2025-06-15', '2025-06-22', 35);  -- Tuần VIP
 
-Select * from MaGiamGia where MGGID = 'TET2025'
-
-SELECT 
-    hd.MaHoaDon,
-    hd.DaThu,
-    hd.ConLai,
-    hd.NgayLap,
-    mg.MGGID,
-    mg.PhanTramGiamGia
-FROM HoaDonThanhToan hd
-LEFT JOIN MaGiamGia mg ON hd.MGGID = mg.MGGID;
 

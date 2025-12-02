@@ -41,12 +41,28 @@ namespace GUI
             LoadDashboardStats();
         }
 
-       
+
 
         private void LoadDashboardStats()
         {
-            // Logic: Gọi BLL/DAO để lấy các số liệu thống kê nhanh trong ngày
+            DashBoardBLL bll = new DashBoardBLL();
+            DateTime today = DateTime.Today;
 
+            // 1. Phòng đang ở
+            var phong = bll.LayPhongDangO();
+            PhongTrangThaiDaNhan.Text = $"{phong.soDangO} / {phong.tongPhong}";
+
+            // 2. Check-in hôm nay
+            int checkIns = bll.LaySoCheckIns(today);
+            StatCheckIns.Text = checkIns.ToString();
+
+            // 3. Check-out hôm nay
+            int checkOuts = bll.LaySoCheckOuts(today);
+            StatCheckOuts.Text = checkOuts.ToString();
+
+            // 4. Phòng bẩn
+            int soPhongBan = bll.LaySoPhongBan();
+            StatDirtyRooms.Text = soPhongBan.ToString();
         }
 
 
@@ -99,6 +115,8 @@ namespace GUI
 
             this.Close();
         }
+
+
 
 
         // --- Logic Cửa Sổ Cơ Bản ---

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:GUI"
         xmlns:primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework"
         mc:Ignorable="d"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="Bảng Điều Khiển Quản Lý" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
@@ -505,13 +506,17 @@
 
                                     <!-- Left Panel: User List -->
                                     <Grid Grid.Column="0" Margin="0,0,15,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="227*"/>
+                                            <ColumnDefinition Width="378*"/>
+                                        </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" Text="Danh Sách Nhân Viên" Style="{StaticResource SubHeaderTextStyle}"/>
-                                        <DataGrid Grid.Row="1" x:Name="UsersDataGrid" SelectionChanged="UsersDataGrid_SelectionChanged">
+                                        <TextBlock Grid.Row="0" Text="Danh Sách Nhân Viên" Style="{StaticResource SubHeaderTextStyle}" Grid.ColumnSpan="2"/>
+                                        <DataGrid Grid.Row="1" x:Name="UsersDataGrid" SelectionChanged="UsersDataGrid_SelectionChanged" Grid.ColumnSpan="2">
                                             <DataGrid.Columns>
                                                 <!-- Cập nhật cột theo DB Schema -->
                                                 <DataGridTextColumn Header="Mã NV" Binding="{Binding NhanVienID}" Width="Auto"/>
@@ -544,7 +549,7 @@
 
                                                 <TextBlock Text="Chức Vụ" Style="{StaticResource LabelTextStyle}"/>
                                                 <TextBox IsEnabled="False" x:Name="ChucVuTextBox" Style="{StaticResource ModernTextBoxStyle}"/>
-                                           
+
                                                 <TextBlock Text="Họ Tên" Style="{StaticResource LabelTextStyle}"/>
                                                 <TextBox x:Name="HoTenTextBox" Style="{StaticResource ModernTextBoxStyle}"/>
 
@@ -602,23 +607,41 @@
                                     <!-- Controls Row -->
                                     <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
                                         <TextBlock Text="Loại dữ liệu:" VerticalAlignment="Center" Style="{StaticResource LabelTextStyle}" Margin="0,0,10,0"/>
-                                        <ComboBox x:Name="ImportTypeComboBox" Style="{StaticResource ModernComboBoxStyle}" Width="200" Margin="0,0,20,0">
-                                            <ComboBoxItem IsSelected="True">Nhân viên</ComboBoxItem>
+                                        <ComboBox x:Name="ImportComboBox" SelectedIndex="0" Style="{StaticResource ModernComboBoxStyle}" Width="200" Margin="0,0,20,0">
                                             <ComboBoxItem>Phòng</ComboBoxItem>
+                                            <ComboBoxItem>Loại phòng</ComboBoxItem>
+                                            <ComboBoxItem>Nhóm loại phòng</ComboBoxItem>
                                             <ComboBoxItem>Dịch vụ</ComboBoxItem>
+                                            <ComboBoxItem>Mã giảm giá</ComboBoxItem>
                                         </ComboBox>
 
                                         <Button x:Name="ImportExcelButton" Content="📂 Chọn File Excel" Style="{StaticResource ModernButtonStyle}" Click="ImportExcelButton_Click" Width="138"/>
                                     </StackPanel>
 
                                     <!-- Preview DataGrid -->
-                                    <DataGrid Grid.Row="2" x:Name="ImportPreviewDataGrid" AutoGenerateColumns="True" IsReadOnly="True" Margin="0,0,0,15">
+                                    <DataGrid Grid.Row="2" x:Name="ImportPreviewDataGrid" ColumnWidth="*" AutoGenerateColumns="True" IsReadOnly="True" Margin="0,0,0,15"
+                                               AutoGeneratingColumn="ImportPreviewDataGrid_AutoGeneratingColumn">
                                         <!-- Columns will be auto-generated based on import type -->
+                                        <DataGrid.Resources>
+                                            <!-- Căn giữa nội dung cell -->
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                            </Style>
+
+                                            <!-- Căn giữa header -->
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                            </Style>
+                                        </DataGrid.Resources>
+
+
                                     </DataGrid>
 
                                     <!-- Action Buttons -->
                                     <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <TextBlock Text="Số lượng bản ghi: 0" x:Name="RecordCountTextBlock" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="#666"/>
+                                        <TextBlock Text="Số lượng bản ghi: 0" x:Name="textBlockSoBanGhi" VerticalAlignment="Center" Margin="0,0,20,0" Foreground="#666"/>
                                         <Button x:Name="SaveImportButton" Content="💾 Lưu vào CSDL" Style="{StaticResource SuccessButtonStyle}" Click="SaveImportButton_Click" Height="27" Width="125"/>
                                     </StackPanel>
                                 </Grid>
