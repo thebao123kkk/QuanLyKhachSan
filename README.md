@@ -21,7 +21,9 @@ Hệ thống Quản lý Khách sạn được xây dựng nhằm hỗ trợ vậ
   Vai trò           Quyền hạn
   ----------------- --------------------------------
   **Admin**         Toàn quyền cấu hình & quản trị
+  
   **Lễ tân**        Booking, check-in/out, dịch vụ
+  
   **Buồng phòng**   Cập nhật trạng thái phòng
 
 ## 3. Phạm vi
@@ -34,7 +36,7 @@ phần, báo cáo Excel, phân quyền.
 
 -   WPF (.NET) --- GUI/BLL/DAL
 -   SQL Server --- SP, Trigger, Audit
--   Email service --- gửi xác nhận booking
+-   Email service --- gửi xác nhận booking (trong tương lai)
 
 ## 5. Module chính
 
@@ -84,6 +86,10 @@ phần, báo cáo Excel, phân quyền.
 -   ERD
 -   Database scripts
 
-## 8. Tác giả (điền sau)
+## 8. Tác giả
 
-| Họ tên \| MSSV \| Vai trò \| Email \|
+| Họ tên        | MSSV     | Vai trò               | Email                      |
+|---------------|----------|-----------------------|----------------------------|
+| Tiêu Thế Bảo  | 52300180 | Designer, Development | thebaobehv123@gmai.com     |
+| Phạm Tiến Dũng| 52300191 | Main Development      | *(chưa có email, cần bổ sung)* |
+
