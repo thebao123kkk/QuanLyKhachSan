@@ -258,7 +258,7 @@
                                         <Label Content="Trẻ em" Margin="0,10,0,0"/>
                                         <TextBox Name="txtTreEm" Text="0"/>
                                         <Label Content="Tiền cọc (VNĐ)"/>
-                                        <TextBox Name="txtTienCoc" Text="0" />
+                                        <TextBox Name="txtTienCoc" Text="0" TextChanged="SoTienCoctb_TextChanged"/>
                                         <Label Content="Ghi chú" Margin="0,10,0,0"/>
                                         <TextBox Name="txtGhiChu" Text="Khách lẻ" Height="80" TextWrapping="Wrap" AcceptsReturn="True"/>
                                     </StackPanel>
@@ -305,8 +305,6 @@
                                                 <Label Content="Tầng"/>
                                                 <ComboBox x:Name="cbTang" Width="100" SelectionChanged="cbTang_SelectionChanged"/>
                                             </StackPanel>
-                                            <Button Content="Kiểm tra phòng trống" Style="{StaticResource PrimaryButton}" VerticalAlignment="Bottom" Margin="20,0,0,0" Background="#FF1A53B2"
-                                                    Click="BtnKiemTraPhong_Click"/>
                                         </StackPanel>
 
                                         <ScrollViewer VerticalScrollBarVisibility="Auto">

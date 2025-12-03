@@ -141,7 +141,7 @@ namespace GUI
         private void HienAllPhongDangO_Checked(object sender, RoutedEventArgs e)
         {
             // Load nhiều phòng
-            var dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach);
+            var dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach, booking.NgayNhan);
             var dsMaCT = dsPhong.Select(p => p.MaDatChiTiet).ToList();
             var dsDichVu = DichVuDAL.GetServicesByListChiTiet(dsMaCT);
             var room = PhongDAL.GetRoomFullInfo(booking.MaDatChiTiet);
@@ -205,7 +205,7 @@ namespace GUI
             if (AllPhong.IsChecked == true)
             {
                 // Lấy tất cả phòng theo tên khách
-                dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach);
+                dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach, booking.NgayNhan);
 
                 // Lấy list mã đặt chi tiết của tất cả phòng
                 var dsMaCT = dsPhong.Select(p => p.MaDatChiTiet).ToList();
@@ -331,7 +331,7 @@ namespace GUI
             if (AllPhong.IsChecked == true)
             {
                 // LẤY TẤT CẢ PHÒNG CỦA KHÁCH NÀY
-                dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach);
+                dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach, booking.NgayNhan);
 
                 var dsMaCT = dsPhong.Select(p => p.MaDatChiTiet).ToList();
 
@@ -446,7 +446,7 @@ namespace GUI
             // Nếu chọn tất cả phòng → thay thế dsPhong & dsDichVu
             if (AllPhong.IsChecked == true)
             {
-                dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach);
+                dsPhong = PhongDAL.GetAllRoomsByCustomerName(booking.TenKhach, booking.NgayNhan);
 
                 var dsMaCT = dsPhong.Select(p => p.MaDatChiTiet).ToList();
                 dsDichVu = DichVuDAL.GetServicesByListChiTiet(dsMaCT);

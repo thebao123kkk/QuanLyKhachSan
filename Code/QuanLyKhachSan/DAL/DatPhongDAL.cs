@@ -34,7 +34,8 @@ namespace DAL
                     JOIN Phong p ON p.PhongID = dpt.PhongID
                     JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
                     JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
-                    WHERE kh.HoTen LIKE '%' + @TenKhach + '%'
+                    WHERE kh.HoTen LIKE '%' + @TenKhach + '%' 
+                    AND p.TrangThai IN (N'Chờ nhận phòng', N'Đã nhận')
                 ";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);

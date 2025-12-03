@@ -183,7 +183,7 @@ namespace BLL
                 string tenDV = row.Table.Columns.Count > 1 ? row[1].ToString() : "";
                 decimal donGia = row.Table.Columns.Count > 2 ? Convert.ToDecimal(row[2]) : 0;
                 string donVi = row.Table.Columns.Count > 3 ? row[3].ToString() : "";
-                bool hieuLuc = row.Table.Columns.Count > 4 && (row[4].ToString() == "1" || row[4].ToString().ToLower() == "true");
+                bool hieuLuc = row.Table.Columns.Count > 4 && (row[4].ToString() == "1" || row[4].ToString().ToLower() == "khả dụng");
 
                 if (QuanLyDAL.DichVuExists(id))
                     QuanLyDAL.UpdateDichVu(id, tenDV, donGia, donVi, hieuLuc);

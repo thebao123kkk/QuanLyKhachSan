@@ -293,6 +293,58 @@ namespace GUI
         //INsert ĐẶT PHÒNG KHI NHẤN NÚT ĐẶT PHÒNG
         private void BtnDatPhong_Click(object sender, RoutedEventArgs e)
         {
+            // ====== RÀNG BUỘC HỌ TÊN ======
+            if (string.IsNullOrWhiteSpace(txtTenKH.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Họ và Tên khách hàng.",
+                    "Thiếu thông tin", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // ====== RÀNG BUỘC SĐT ======
+            if (string.IsNullOrWhiteSpace(txtSoDienThoai.Text))
+            {
+                MessageBox.Show("Vui lòng nhập Số điện thoại.",
+                    "Thiếu thông tin", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // SĐT phải bắt đầu bằng 0 và tối thiểu 10 số
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtSoDienThoai.Text, @"^0\d{9,10}$"))
+            {
+                MessageBox.Show("Số điện thoại sai định dạng. Ví dụ hợp lệ: 0901234567",
+                    "Sai định dạng", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // ====== RÀNG BUỘC EMAIL ======
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) &&
+                !System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text, @"^\S+@\S+\.\S+$"))
+            {
+                MessageBox.Show("Email sai định dạng. Ví dụ hợp lệ: abc@example.com",
+                    "Sai định dạng", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // ====== RÀNG BUỘC TIỀN CỌC ======
+            if (string.IsNullOrWhiteSpace(txtTienCoc.Text) ||
+                !decimal.TryParse(txtTienCoc.Text.Replace(".", "").Replace(",", ""), out decimal tienCoc))
+            {
+                MessageBox.Show("Tiền cọc không hợp lệ.",
+                    "Sai định dạng", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Format lại tiền cọc theo dạng 1.000.000
+            txtTienCoc.Text = tienCoc.ToString("#,##0", new CultureInfo("vi-VN"));
+
+            // ====== RÀNG BUỘC PHÒNG ĐÃ CHỌN ======
+            if (selectedRooms.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất 1 phòng trước khi đặt.",
+                    "Thiếu phòng", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             // KIỂM TRA SỐ NGƯỜI
             if (string.IsNullOrWhiteSpace(txtNguoiLon.Text) ||
                 !int.TryParse(txtNguoiLon.Text, out int nguoiLon) ||
@@ -419,17 +471,15 @@ namespace GUI
             if (tb == null) return;
 
             string raw = tb.Text.Replace(".", "").Replace(",", "");
-            if (string.IsNullOrEmpty(raw)) return;
+            if (!decimal.TryParse(raw, out decimal value))
+                return;
 
-            // Nếu chưa phải số thì bỏ qua
-            if (!decimal.TryParse(raw, out decimal value)) return;
-
-            int caretPos = tb.SelectionStart; // vị trí con trỏ trước khi format
+            tb.TextChanged -= SoTienCoctb_TextChanged; // tránh vòng lặp lặp vô tận
 
             tb.Text = value.ToString("#,##0", new CultureInfo("vi-VN"));
-
-            // Cập nhật vị trí con trỏ = cuối text
             tb.SelectionStart = tb.Text.Length;
+
+            tb.TextChanged += SoTienCoctb_TextChanged;
         }
 
     }
