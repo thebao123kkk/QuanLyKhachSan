@@ -226,7 +226,7 @@ namespace DAL
 
 
         // Lấy tất cả phòng theo tên khách
-        public static List<RoomFullChargeDTO> GetAllRoomsByCustomerName(string tenKhach, DateTime ngayNhan)
+        public static List<RoomFullChargeDTO> GetAllRoomsByCustomerName(string tenKhach)
         {
             List<RoomFullChargeDTO> list = new List<RoomFullChargeDTO>();
 
@@ -245,7 +245,57 @@ namespace DAL
             JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
             JOIN Phong p ON p.PhongID = dpt.PhongID
             JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
-            WHERE kh.HoTen = @TenKhach AND dpct.NgayNhan = @NgayNhan
+            WHERE kh.HoTen = @TenKhach 
+        ";
+
+            using (var conn = DatabaseAccess.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@TenKhach", tenKhach);
+
+                conn.Open();
+                using (var rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        list.Add(new RoomFullChargeDTO
+                        {
+                            MaDatChiTiet = rd["MaDatChiTiet"].ToString(),
+                            PhongID = rd["PhongID"].ToString(),
+                            LoaiPhong = rd["LoaiPhong"].ToString(),
+                            GiaCoBan = Convert.ToDecimal(rd["GiaCoBan"]),
+                            SoLuongPhong = Convert.ToInt32(rd["SoLuongPhong"]),
+                            NgayNhan = Convert.ToDateTime(rd["NgayNhan"]),
+                            NgayTra = Convert.ToDateTime(rd["NgayTra"]),
+                            ThanhTien = Convert.ToDecimal(rd["ThanhTien"])
+                        });
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public static List<RoomFullChargeDTO> GetAllRoomsByCustomerName2(string tenKhach)
+        {
+            List<RoomFullChargeDTO> list = new List<RoomFullChargeDTO>();
+
+            string query = @"
+            SELECT
+                dpct.MaDatChiTiet,
+                dpct.SoLuongPhong,
+                dpct.NgayNhan,
+                dpct.NgayTra,
+                lp.TenLoai AS LoaiPhong,
+                lp.GiaCoBan,
+                dpct.ThanhTien,
+                p.PhongID
+            FROM DatPhongTong dpt
+            JOIN KhachHang kh ON kh.KhachHangID = dpt.KhachHangID
+            JOIN DatPhongChiTiet dpct ON dpct.MaDatTong = dpt.MaDatTong
+            JOIN Phong p ON p.PhongID = dpt.PhongID
+            JOIN LoaiPhongChiTiet lp ON lp.LoaiPhongID = p.LoaiPhongID
+            WHERE kh.HoTen = @TenKhach 
         ";
 
             using (var conn = DatabaseAccess.GetConnection())
