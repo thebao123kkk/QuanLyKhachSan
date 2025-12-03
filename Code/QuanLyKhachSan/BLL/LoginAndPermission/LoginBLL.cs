@@ -101,15 +101,16 @@ namespace BLL.LoginAndPermission
                 return Fail($"Sai vai trò. Vui lòng chọn lại");
             }
 
-            // 6. Kiểm tra trạng thái hoạt động
-            if (!string.Equals(tk.TrangThai, "Hoạt động", StringComparison.OrdinalIgnoreCase))
+            // 6. Kiểm tra trạng thái hoạt động (KHÔNG ÁP DỤNG CHO ADMIN)
+            if (!string.Equals(tk.TenDangNhap, "admin", StringComparison.OrdinalIgnoreCase))
             {
-                return new LoginResult
+                if (!string.Equals(tk.TrangThai, "Hoạt động", StringComparison.OrdinalIgnoreCase))
                 {
-                    Success = false,
-                    Message = "Tài khoản không còn hoạt động. Vui lòng liên hệ Quản lý."
-                };
+                    return Fail("Tài khoản không còn hoạt động. Vui lòng liên hệ Quản lý.");
+                }
             }
+
+
 
             // 7. Thành công
             SessionInfo.StartSession(tk);

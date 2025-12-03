@@ -239,3 +239,54 @@ BEGIN
     END
 END;
 GO
+
+CREATE OR ALTER TRIGGER trg_NoDeleteAdmin
+ON TaiKhoanHeThong
+INSTEAD OF DELETE
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM deleted WHERE TenDangNhap = 'admin' OR TaiKhoanID = 'TK01')
+    BEGIN
+        RAISERROR (N'Không thể xóa tài khoản admin.', 16, 1);
+        RETURN;
+    END
+
+    -- Cho phép xóa các tài khoản khác
+    DELETE FROM TaiKhoanHeThong
+    WHERE TaiKhoanID IN (SELECT TaiKhoanID FROM deleted);
+END
+
+CREATE OR ALTER TRIGGER trg_ProtectAdmin_Update
+ON TaiKhoanHeThong
+FOR UPDATE
+AS
+BEGIN
+    -- Nếu đang update vào admin
+    IF EXISTS (
+        SELECT 1 FROM inserted i
+        JOIN deleted d ON i.TaiKhoanID = d.TaiKhoanID
+        WHERE d.TenDangNhap = 'admin'
+              OR d.TaiKhoanID = 'TK01'
+    )
+    BEGIN
+        -- Kiểm tra các trường bị cấm thay đổi
+        IF EXISTS (
+            SELECT 1 
+            FROM inserted i
+            JOIN deleted d ON i.TaiKhoanID = d.TaiKhoanID
+            WHERE 
+                (i.Khoa <> d.Khoa)       -- không được khóa/mở khóa
+                OR (i.TrangThai <> d.TrangThai) -- không đổi trạng thái
+                OR (i.VaiTroID <> d.VaiTroID)   -- không đổi vai trò
+                OR (i.MatKhauHash <> d.MatKhauHash) -- không đổi mật khẩu
+                OR (i.Email <> d.Email) -- không đổi email
+                OR (i.NhanVienID <> d.NhanVienID) -- không đổi NV gắn
+        )
+        BEGIN
+            RAISERROR (N'❌ Không thể thay đổi thông tin của tài khoản ADMIN (bảo vệ đặc biệt).', 16, 1);
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
+    END
+END
+GO

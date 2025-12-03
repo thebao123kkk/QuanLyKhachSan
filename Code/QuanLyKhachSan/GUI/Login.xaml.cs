@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Data.SqlClient;
 namespace GUI
 {
 
@@ -21,6 +21,26 @@ namespace GUI
         //---------Load sự kiện---------
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (!DatabaseAccess.CanConnect())
+            {
+                MessageBox.Show(
+                    "Không thể kết nối đến cơ sở dữ liệu.\nVui lòng cấu hình lại trước khi đăng nhập.",
+                    "Lỗi kết nối",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                );
+
+                DbConfigWindow config = new DbConfigWindow();
+                bool? result = config.ShowDialog();
+
+                // Nếu vẫn không lưu hoặc thoát → đóng ứng dụng luôn
+                if (result != true || !DatabaseAccess.CanConnect())
+                {
+                    Application.Current.Shutdown();
+                    return;
+                }
+            }
+
             // Thiết lập ComboBox Vai trò
             RoleDAL roleDal = new RoleDAL();
             var dsRole = roleDal.GetAllRoles();
@@ -30,6 +50,7 @@ namespace GUI
             {
                 RoleComboBox.Items.Add(new ComboBoxItem { Content = r });
             }
+            
         }
         private void visibleChanged(object sender, RoutedEventArgs e)
         {

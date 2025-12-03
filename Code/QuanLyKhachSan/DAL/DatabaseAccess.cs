@@ -1,74 +1,57 @@
-﻿//using DTO;
-//using System;
-//using System.Collections.Generic;
-//using System.Configuration;
-//using System.Data;
-//using System.Data.SqlClient;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-
-//namespace DAL
-//{
-//    public class SqlConnectionData
-//    {
-//        public static SqlConnection Connect()
-//        {
-//            // Chuỗi kết nối đến SQL Server (nhớ đổi khi đổi máy)
-//            string strcon = 
-//                //"Data Source=.\\SQLEXPRESS;Initial Catalog=QuanLyKhachSan;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
-//                "Server=localhost\\SQLEXPRESS01;Database=QuanLyKhachSan;Trusted_Connection=True;";
-
-//            SqlConnection conn = new SqlConnection(strcon);
-//            return conn;
-//        }
-//    }
-//    //public class DatabaseAccess
-//    //{
-//    //    public static string ConnectionString { get; internal set; }
-
-//    //}
-//    public static class DatabaseAccess
-//    {
-//        public static string GetConnectionString()
-//        {
-//            return ConfigurationManager
-//                .ConnectionStrings["QuanLyKhachSan"]
-//                ?.ConnectionString;
-//        }
-
-//        public static SqlConnection GetConnection()
-//        {
-//            return new SqlConnection(GetConnectionString());
-//        }
-//    }
-//}
-
-
-using System;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace DAL
 {
-    public  class DatabaseAccess
+    public static class DatabaseAccess
     {
-        // Chuỗi kết nối được mã hóa cứng
-        private const string ConnectionString =
-            "Server=localhost\\SQLEXPRESS;Database=QuanLyKhachSan;Trusted_Connection=True;Encrypt=False;TrustServerCertificate=True;";
-        // Hàm tạo và mở kết nối
-        public  static SqlConnection GetConnection()
-        {
-            SqlConnection conn = new SqlConnection(ConnectionString);
+        private const string ConnName = "QuanLyKhachSanDB"; // DÙNG CỐ ĐỊNH 1 TÊN
 
-            // Cố gắng mở kết nối và xử lý ngoại lệ nếu thất bại
+        /// <summary>
+        /// Đọc chuỗi kết nối từ App.config
+        /// </summary>
+        public static string GetConnectionString()
+        {
+            return ConfigurationManager
+                .ConnectionStrings[ConnName]
+                ?.ConnectionString;
+        }
+
+        /// <summary>
+        /// Tạo SqlConnection từ chuỗi cấu hình DB
+        /// </summary>
+        public static SqlConnection GetConnection()
+        {
+            string cs = GetConnectionString();
+
+            if (string.IsNullOrWhiteSpace(cs))
+                throw new Exception("Không tìm thấy cấu hình cơ sở dữ liệu (connection string trống).");
+
+            return new SqlConnection(cs);
+        }
+
+        /// <summary>
+        /// Kiểm tra xem có kết nối được DB hay không
+        /// </summary>
+        public static bool CanConnect()
+        {
             try
             {
-                return conn;
+                string cs = GetConnectionString();
+
+                if (string.IsNullOrWhiteSpace(cs))
+                    return false;
+
+                using (SqlConnection conn = new SqlConnection(cs))
+                {
+                    conn.Open();
+                    return true;
+                }
             }
-            catch (SqlException ex)
+            catch
             {
-                // Thay vì chỉ trả về, nên log lỗi hoặc ném lại ngoại lệ với thông báo rõ ràng hơn
-                throw new Exception("Lỗi kết nối cơ sở dữ liệu: Vui lòng kiểm tra Server Name và trạng thái SQL Server.", ex);
+                return false;
             }
         }
     }

@@ -35,7 +35,7 @@ namespace GUI
         {
             //Hiển thị welcome text với tên người dùng và vai trò
             string[] textUandR = hienThiDAL.GetUserNameAndRoleName(SessionInfo.TenDangNhap, SessionInfo.VaiTroID);
-            WelcomeTextBlock.Text = $"Xin chào, {textUandR[0]} - Vai trò: {textUandR[1]})";
+            WelcomeTextBlock.Text = $"Xin chào, {textUandR[0]} - Vai trò: {textUandR[1]}";
 
 
             LoadDashboardStats();
