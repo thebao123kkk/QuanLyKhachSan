@@ -97,8 +97,6 @@ namespace GUI
                 SearchRoomButton.IsEnabled = true;
                 CheckoutButton.IsEnabled = true;
 
-                ReportsButton.IsEnabled = true;   
-
                 return;
             }
 
