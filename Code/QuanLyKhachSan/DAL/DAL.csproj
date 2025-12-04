@@ -57,6 +57,7 @@
     <Compile Include="LoginAndPermission\QuyenDAL.cs" />
     <Compile Include="LoginAndPermission\RoleDAL.cs" />
     <Compile Include="MaGiamGiaDAL.cs" />
+    <Compile Include="NVDAL.cs" />
     <Compile Include="PhongDAL.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

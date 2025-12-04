@@ -56,7 +56,7 @@ select * from TaiKhoanHeThong
 update TaiKhoanHeThong set VaiTroID = 'VT01' where TaiKhoanID = 'TK01'
 update TaiKhoanHeThong set VaiTroID = 'VT02' where TaiKhoanID = 'TK02'
 update TaiKhoanHeThong set VaiTroID = 'VT03' where TaiKhoanID = 'TK03'
-
+-----
 CREATE OR ALTER TRIGGER trg_AutoCreateAccount
 ON NhanVien
 AFTER INSERT
@@ -276,7 +276,6 @@ BEGIN
             JOIN deleted d ON i.TaiKhoanID = d.TaiKhoanID
             WHERE 
                 (i.Khoa <> d.Khoa)       -- không được khóa/mở khóa
-                OR (i.TrangThai <> d.TrangThai) -- không đổi trạng thái
                 OR (i.VaiTroID <> d.VaiTroID)   -- không đổi vai trò
                 OR (i.MatKhauHash <> d.MatKhauHash) -- không đổi mật khẩu
                 OR (i.Email <> d.Email) -- không đổi email

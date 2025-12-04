@@ -427,7 +427,7 @@ namespace GUI
                 NgayDen = booking.NgayNhan,
                 NgayDi = booking.NgayTra,
 
-                NhanVien = "Lê Minh Tuấn",
+                NhanVien = NVBLL.LayTenNhanVien(SessionInfo.NhanVienID),
                 NhanVienID = SessionInfo.NhanVienID,
                 ChiTiet = InvoiceDetailsGrid.Items.Cast<InvoiceItemDTO>().ToList(),
 
