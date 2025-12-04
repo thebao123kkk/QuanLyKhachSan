@@ -106,6 +106,7 @@
     <Compile Include="LoginAndPermission\NhanVienBLL.cs" />
     <Compile Include="LoginAndPermission\AuthService.cs" />
     <Compile Include="MaGiamGiaBLL.cs" />
+    <Compile Include="NVBLL.cs" />
     <Compile Include="PaidingBLL.cs" />
     <Compile Include="LoginAndPermission\LogBLL.cs" />
     <Compile Include="PhieuTamTinhBLL.cs" />

@@ -388,6 +388,7 @@ namespace GUI
             }
             int soNgay = (dpNgayTra.SelectedDate.Value - dpNgayNhan.SelectedDate.Value).Days;
             decimal tienChuaVAT = selectedRooms.Sum(x => (decimal)x.Total);
+            decimal tienCocVal = decimal.Parse(txtTienCoc.Text.Replace(".", "").Replace(",", ""));
             foreach (var r in selectedRooms)
             {
                     string maDatTong = BookingDAL.InsertDatPhongTong(
@@ -395,7 +396,7 @@ namespace GUI
                     kh.HoTen,
                     kh.SDT,
                     !string.IsNullOrEmpty(kh.MST),
-                Convert.ToDecimal(txtTienCoc.Text),
+                    tienCocVal,
                     txtGhiChu.Text,
                     SessionInfo.NhanVienID,
                     //"NV01",
