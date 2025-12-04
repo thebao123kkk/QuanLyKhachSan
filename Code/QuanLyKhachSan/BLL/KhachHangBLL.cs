@@ -14,5 +14,11 @@ namespace BLL
         {
             return KhachHangDAL.LayTatCaKhachHang();
         }
+        public static string LayEmailKhach(string sdt)
+        {
+            return KhachHangDAL.LayEmailKhach(sdt);
+        }
+
+
     }
 }

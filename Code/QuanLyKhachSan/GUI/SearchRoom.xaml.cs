@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL;
+using BLL.LoginAndPermission;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BLL;
-using DTO;
 
 namespace GUI
 {
@@ -21,6 +22,8 @@ namespace GUI
     /// </summary>
     public partial class SearchRoom : Window
     {
+        private readonly LogBLL _log = new LogBLL();
+
         public SearchRoom()
         {
             InitializeComponent();
@@ -76,6 +79,10 @@ namespace GUI
             {
                 LoadData();
                 MessageBox.Show("Checkin thành công!.");
+                _log.GhiThaoTac(
+                    "Check-in phòng",
+                    $"{SessionInfo.TenDangNhap} check-in phòng {selected.PhongID} – Booking #{selected.MaCode}"
+                );
 
                 // Reload lại
                 string keyword = SearchTermTextBox.Text.Trim();

@@ -28,6 +28,7 @@ namespace GUI
     public partial class AdminDashboard : Window
     {
         private string CurrentNhanVienID;
+        private readonly LogBLL _log = new LogBLL();
 
         public AdminDashboard()
         {
@@ -169,6 +170,11 @@ namespace GUI
             if (result == "SUCCESS")
             {
                 MessageBox.Show("Thêm nhân viên thành công!");
+                _log.GhiThaoTac(
+                "Thêm nhân viên",
+                $"{SessionInfo.TenDangNhap} đã thêm nhân viên mới: {nv.HoTen}, Vai trò: {nv.VaiTroID}, Email: {nv.Email}"
+);
+
             }
             else
             {
@@ -204,6 +210,11 @@ namespace GUI
             if (result == "SUCCESS")
             {
                 MessageBox.Show("Cập nhật nhân viên thành công!");
+                _log.GhiThaoTac(
+                "Cập nhật nhân viên",
+                $"{SessionInfo.TenDangNhap} đã cập nhật nhân viên ID: {nv.NhanVienID}, Họ tên: {nv.HoTen}"
+);
+
             }
             else
             {
@@ -221,6 +232,10 @@ namespace GUI
 
             NhanVienBLL bll = new NhanVienBLL();
             bll.Lock(nv.NhanVienID);
+            _log.GhiThaoTac(
+            "Khóa tài khoản",
+            $"{SessionInfo.TenDangNhap} đã khóa tài khoản nhân viên: {nv.HoTen} (ID: {nv.NhanVienID})"
+);
 
             LoadUsersGrid();
         }
@@ -232,6 +247,10 @@ namespace GUI
 
             NhanVienBLL bll = new NhanVienBLL();
             bll.Unlock(nv.NhanVienID);
+            _log.GhiThaoTac(
+            "Mở khóa tài khoản",
+            $"{SessionInfo.TenDangNhap} đã mở khóa tài khoản nhân viên: {nv.HoTen} (ID: {nv.NhanVienID})"
+);
 
             LoadUsersGrid();
         }
@@ -258,6 +277,11 @@ namespace GUI
                     DataTable dt = QuanLyBLL.ImportExcel(filePath, sheetName);
                     ImportPreviewDataGrid.ItemsSource = dt.DefaultView; // Set DataView cho DataGrid:contentReference[oaicite:10]{index=10}
                     textBlockSoBanGhi.Text = $"Số lượng bản ghi: {dt.Rows.Count}";
+                    _log.GhiThaoTac(
+                    "Import Excel",
+                    $"{SessionInfo.TenDangNhap} đã import file: {filePath}, Sheet: {sheetName}, Số dòng: {dt.Rows.Count}"
+);
+
                 }
                 catch (Exception ex)
                 {
@@ -285,20 +309,41 @@ namespace GUI
                         {
                             case "Phòng":
                                 QuanLyBLL.SavePhong(dt);
-                                break;
+                                _log.GhiThaoTac(
+                                    "Lưu dữ liệu import",
+                                    $"{SessionInfo.TenDangNhap} đã lưu {dt.Rows.Count} phòng từ Excel."
+                                );
+                            break;
                             case "Loại phòng":
                                 QuanLyBLL.SaveLoaiPhong(dt);
                                 MessageBox.Show("Loại phòng");
-                                break;
+                                _log.GhiThaoTac(
+                                    "Lưu dữ liệu import",
+                                    $"{SessionInfo.TenDangNhap} đã lưu {dt.Rows.Count} loại phòng từ Excel."
+                                );
+
+                            break;
                             case "Nhóm loại phòng":
                                 QuanLyBLL.SaveNhomLoaiPhong(dt);
-                                break;
+                                _log.GhiThaoTac(
+                                "Lưu dữ liệu import",
+                                $"{SessionInfo.TenDangNhap} đã lưu {dt.Rows.Count} nhóm loại phòng từ Excel."
+                                );
+                            break;
                             case "Dịch vụ":
                                 QuanLyBLL.SaveDichVuPhong(dt);
-                                break;
+                                _log.GhiThaoTac(
+                                "Lưu dữ liệu import",
+                                $"{SessionInfo.TenDangNhap} đã lưu {dt.Rows.Count} dịch vụ phòng từ Excel."
+                                );
+                            break;
                             case "Mã giảm giá":
                                 QuanLyBLL.SaveMaGiamGia(dt);
-                                break;
+                                _log.GhiThaoTac(
+                                "Lưu dữ liệu import",
+                                $"{SessionInfo.TenDangNhap} đã lưu {dt.Rows.Count} mã giảm giá từ Excel."
+                                );
+                            break;
                             default:
                                 MessageBox.Show($"Loại '{selectedType}' chưa được hỗ trợ lưu.");
                                 return;

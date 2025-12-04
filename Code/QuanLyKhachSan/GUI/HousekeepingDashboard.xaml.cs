@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL;
+using BLL.LoginAndPermission;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +14,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BLL;
-using DTO;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for HousekeepingDashboard.xaml
-    /// </summary>
+
     public partial class HousekeepingDashboard : Window
     {
+        private readonly LogBLL _log = new LogBLL();
+
         public HousekeepingDashboard()
         {
             InitializeComponent();
@@ -163,6 +164,11 @@ namespace GUI
 
                     MessageBox.Show("Phòng đã được cập nhật sang trạng thái Sạch.", "Thành công");
                     LoadRoomsGrid();
+                    _log.GhiThaoTac(
+                        "Cập nhật trạng thái phòng",
+                        $"{SessionInfo.TenDangNhap} đã chuyển phòng {selectedRoom.PhongID} từ Bẩn → Sạch"
+                    );
+
                 }
 
                 return;
@@ -187,6 +193,11 @@ namespace GUI
 
                     MessageBox.Show("Trạng thái phòng đã được chuyển sang Bẩn.", "Thành công");
                     LoadRoomsGrid();
+                    _log.GhiThaoTac(
+                        "Kiểm phòng",
+                        $"{SessionInfo.TenDangNhap} đã kiểm phòng {selectedRoom.PhongID} và chuyển sang trạng thái Bẩn"
+                    );
+
                 }
 
                 return;
@@ -215,6 +226,11 @@ namespace GUI
                 MessageBoxButton.OK, MessageBoxImage.Information);
 
             BaoCaoBaoTritb.Text = noiDung;
+            _log.GhiThaoTac(
+                "Báo cáo bảo trì",
+                $"{SessionInfo.TenDangNhap} báo cáo bảo trì phòng {selectedRoom.PhongID}: {noiDung}"
+            );
+
             LoadRoomsGrid();
         }
     }

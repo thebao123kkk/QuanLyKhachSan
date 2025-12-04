@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BLL;
+using BLL.LoginAndPermission;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +14,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BLL;
-using DTO;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
+
     public partial class RoomDetails : Window
     {
+        private readonly LogBLL _log = new LogBLL();
+
         public DatPhongViewDTO BookingInfo { get; set; }
         public RoomDetails()
         {
@@ -300,6 +301,11 @@ namespace GUI
 
             AvailabilityText.Text = "Gia hạn thành công!";
             AvailabilityText.Foreground = Brushes.Green;
+            _log.GhiThaoTac(
+                "Gia hạn lưu trú",
+                $"{SessionInfo.TenDangNhap} đã gia hạn phòng {BookingInfo.PhongID} đến ngày {newCheckout:dd/MM/yyyy}"
+            );
+
         }
 
 

@@ -22,12 +22,11 @@ using DTO;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for Paiding.xaml
-    /// </summary>
     public partial class Paiding : Window
     {
         private DatPhongViewDTO booking;
+        private readonly LogBLL _log = new LogBLL();
+
         public Paiding()
         {
             InitializeComponent();
@@ -310,9 +309,14 @@ namespace GUI
 
 
             PhieuTamTinhBLL.InPhieuTamTinh(dto);
+            _log.GhiThaoTac(
+                "In phiếu tạm tính",
+                $"{SessionInfo.TenDangNhap} đã in TMP cho phòng {booking.PhongID} (Booking #{booking.MaCode})"
+            );
+
         }
 
-        private void GhiNhanThanhToan_Click(object sender, RoutedEventArgs e)
+        private async void GhiNhanThanhToan_Click(object sender, RoutedEventArgs e)
         {
             string trangThai = DatPhongTongDAL.LayTrangThai(booking.MaDatTong);
 
@@ -462,8 +466,58 @@ namespace GUI
                 DatPhongTongDAL.CapNhatTrangThaiDatPhongTong(booking.MaDatTong);
             }
 
-            HoaDonBLL.InHoaDon(dto);
+            //HoaDonBLL.InHoaDon(dto);
+            // 1) IN HÓA ĐƠN → TRẢ VỀ ĐƯỜNG DẪN PDF
+            string pdfPath = HoaDonBLL.InHoaDon(dto);
+
+            if (string.IsNullOrEmpty(pdfPath))
+            {
+                MessageBox.Show("Không thể gửi email vì hóa đơn chưa được lưu.");
+                return;
+            }
+
+            // 2) EMAIL HTML
+            string emailBody = $@"
+                <h2>💳 XÁC NHẬN THANH TOÁN</h2>
+                <p>Chào <b>{dto.TenKhach}</b>,</p>
+                <p>Bạn đã thanh toán thành công cho Booking <b>{dto.Booking.MaCode}</b>.</p>
+
+                <p><b>Tóm tắt:</b></p>
+                <ul>
+                    <li>Phòng: {dto.Phong}</li>
+                    <li>Đã thanh toán thêm: {dto.SoTienThanhToanThem:N0} VNĐ</li>
+                    <li>Còn lại: {dto.ConLai:N0} VNĐ</li>
+                </ul>
+
+                <p>Hóa đơn chi tiết được đính kèm trong file PDF.</p>
+                <p>Trân trọng!</p>
+                ";
+
+            // 3) GỬI EMAIL KÈM FILE PDF
+            string customerEmail = KhachHangBLL.LayEmailKhach(dto.SDT);
+
+            if (string.IsNullOrEmpty(customerEmail))
+            {
+                MessageBox.Show("Không tìm thấy email của khách hàng.");
+                return;
+            }
+
+            await EmailService.SendEmailWithAttachmentAsync(
+                customerEmail,
+                $"Hóa đơn thanh toán – Booking #{dto.Booking.MaCode}",
+                emailBody,
+                pdfPath
+            );
+
+            MessageBox.Show("Đã gửi hóa đơn PDF đến email khách!", "Email");
+
+
             MessageBox.Show("Thanh toán thành công!", "Thông báo");
+            _log.GhiThaoTac(
+                "Ghi nhận thanh toán",
+                $"{SessionInfo.TenDangNhap} đã thanh toán {soTienThanhToanThem:N0}đ cho Booking #{booking.MaCode}"
+            );
+
             LoadTongKet();
 
         }

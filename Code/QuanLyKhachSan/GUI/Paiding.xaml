@@ -590,7 +590,7 @@
                                         <Button x:Name="PrintProformaButton"
                                         Content="In Phiếu Tạm Tính"
                                         Style="{StaticResource PrintButtonStyle}"
-                                        Height="48"
+                                        Height="34"
                                         Width="{Binding ElementName=GhiNhanThanhToanButton, Path=ActualWidth}"
                                         HorizontalAlignment="Left"
                                         Click="PrintProformaButton_Click"/>

@@ -73,5 +73,26 @@ namespace DAL
 
             return dto;
         }
+
+        public static string LayEmailKhach(string sdt)
+        {
+            string email = null;
+
+            using (SqlConnection conn = DatabaseAccess.GetConnection())
+            {
+                string query = "SELECT Email FROM KhachHang WHERE SDT = @sdt";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@sdt", sdt);
+
+                conn.Open();
+                var result = cmd.ExecuteScalar();
+                if (result != null)
+                    email = result.ToString();
+            }
+
+            return email;
+        }
+
     }
 }

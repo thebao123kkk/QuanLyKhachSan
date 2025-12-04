@@ -4,16 +4,24 @@ using System.Windows.Input;
 using BLL;
 using LiveCharts;
 using LiveCharts.Wpf;
-
+using BLL.LoginAndPermission;
 namespace GUI
 {
+
     public partial class ReportsDashboard : Window, INotifyPropertyChanged
     {
+        private readonly LogBLL _log = new LogBLL();
+
         public ReportsDashboard()
         {
             InitializeComponent();
             DataContext = this;
             LoadStaffReport();
+            _log.GhiThaoTac(
+                "Xem báo cáo",
+                $"{SessionInfo.TenDangNhap} đã mở màn hình ReportsDashboard"
+            );
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -185,6 +193,11 @@ namespace GUI
             DateTime? end = EndDatePicker.SelectedDate;
             var data = ServiceReportBLL.LayDoanhThuTheoNgay(start, end);
             BaoCaoDoanhThuBLL.XuatExcelDoanhThu(data);
+            _log.GhiThaoTac(
+                "Xuất Excel báo cáo doanh thu",
+                $"{SessionInfo.TenDangNhap} đã xuất báo cáo doanh thu từ {start:dd/MM/yyyy} đến {end:dd/MM/yyyy}"
+            );
+
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using BLL;
+using BLL.LoginAndPermission;
+using DAL;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -13,21 +17,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BLL;
-using BLL.LoginAndPermission;
-using DAL;
-using DTO;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for KiemTraTinhTrangPhong.xaml
-    /// </summary>
+
     public partial class BookingWindow : Window
     {
         private List<PhongDTO> allRooms = new List<PhongDTO>();
         private List<dynamic> selectedRooms = new List<dynamic>();
         private List<KhachHangDTO> goiYKhachHang = new List<KhachHangDTO>();
+        private readonly LogBLL _log = new LogBLL();
 
         public BookingWindow()
         {
@@ -298,8 +297,8 @@ namespace GUI
                 e.Handled = true;
             }
         }
-        //INsert ĐẶT PHÒNG KHI NHẤN NÚT ĐẶT PHÒNG
-        private void BtnDatPhong_Click(object sender, RoutedEventArgs e)
+        //Insert ĐẶT PHÒNG KHI NHẤN NÚT ĐẶT PHÒNG
+        private async void BtnDatPhong_Click(object sender, RoutedEventArgs e)
         {
             // ====== RÀNG BUỘC HỌ TÊN ======
             if (string.IsNullOrWhiteSpace(txtTenKH.Text))
@@ -416,27 +415,54 @@ namespace GUI
                 );
             }
            
-            //decimal tienSauVAT = tienChuaVAT * 1.08m;
-
-            //BookingDAL.InsertDatPhongChiTiet(
-            //    maDatTong,
-            //    dpNgayNhan.SelectedDate.Value,
-            //    dpNgayTra.SelectedDate.Value,
-            //    int.Parse(txtNguoiLon.Text),
-            //    int.Parse(txtTreEm.Text),
-            //    selectedRooms.Count,
-            //    8,
-            //    tienChuaVAT,
-            //    txtGhiChu.Text
-            //);
             foreach (var r in selectedRooms)
             {
                 // Tiền phòng riêng từng phòng
                 
             }
 
-            ResetFormDatPhong();
             MessageBox.Show("Đặt phòng thành công!", "Thành Công", MessageBoxButton.OK, MessageBoxImage.Information);
+            _log.GhiThaoTac(
+                "Đặt phòng",
+                $"{SessionInfo.TenDangNhap} đã đặt {selectedRooms.Count} phòng cho khách {txtTenKH.Text}, ngày {dpNgayNhan.SelectedDate:dd/MM} - {dpNgayTra.SelectedDate:dd/MM}"
+            );
+
+            // Lấy thông tin khách
+            string tenKhach = txtTenKH.Text;
+            string emailKhach = txtEmail.Text;
+
+            // Thông tin phòng
+            string ngayNhan = dpNgayNhan.SelectedDate?.ToString("dd/MM/yyyy");
+            string ngayTra = dpNgayTra.SelectedDate?.ToString("dd/MM/yyyy");
+            string tiencoc = string.IsNullOrWhiteSpace(txtTienCoc.Text) ? "0" : txtTienCoc.Text;
+
+            // Tạo nội dung email đúng dữ liệu
+            string emailBody = $@"
+            <h2>🎉 XÁC NHẬN ĐẶT PHÒNG THÀNH CÔNG</h2>
+
+            <p>Chào <b>{tenKhach}</b>,</p>
+
+            <p>Cảm ơn bạn đã đặt phòng tại khách sạn của chúng tôi.</p>
+
+            <p><b>Thông tin đặt phòng:</b></p>
+            <ul>
+                <li>Ngày nhận: {ngayNhan}</li>
+                <li>Ngày trả: {ngayTra}</li>
+                <li>Tiền cọc: {tiencoc} VNĐ</li>
+            </ul>
+
+            <p>Chúng tôi sẽ liên hệ bạn ngay khi phòng sẵn sàng.</p>
+            <p>Trân trọng!</p>
+            ";
+
+            await EmailService.SendEmailAsync(
+                kh.Email,
+                "Xác nhận đặt phòng thành công",
+                emailBody
+            );
+            ResetFormDatPhong();
+
+
         }
 
         private void ResetFormDatPhong()
