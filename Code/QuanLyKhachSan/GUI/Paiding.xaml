@@ -575,7 +575,11 @@
                                         </ComboBox>
 
                                         <TextBlock Text="Số tiền thanh toán" Style="{StaticResource LabelTextStyle}"/>
-                                        <TextBox x:Name="SoTienThanhToantb" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,10"/>
+                                        <TextBox x:Name="SoTienThanhToantb" Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,10"  
+                                                 PreviewTextInput="SoTienThanhToantb_PreviewTextInput"
+                                                 PreviewKeyDown="SoTienThanhToantb_PreviewKeyDown"
+                                                 DataObject.Pasting="SoTienThanhToantb_Pasting"
+                                                 TextChanged="SoTienThanhToantb_TextChanged"/>
 
                                         <Button x:Name="GhiNhanThanhToanButton" Content="Ghi Nhận Thanh Toán" Style="{StaticResource ModernButtonStyle}" Height="38" Click="GhiNhanThanhToan_Click"/>
                                     </StackPanel>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,6 +58,13 @@ namespace GUI
         private void chkKhachHangMoi_Checked(object sender, RoutedEventArgs e)
         {
             SetThongTinKhachHangEnabled(true);
+            txtTenKH.Clear();
+            txtSoDienThoai.Clear();
+            txtEmail.Clear();
+            txtDiaChi.Clear();
+            txtTenCongTy.Clear();
+            txtMaSoThue.Clear();
+            txtSearchCustomer.Clear();
         }
 
         private void chkKhachHangMoi_Unchecked(object sender, RoutedEventArgs e)
@@ -480,6 +488,40 @@ namespace GUI
             tb.SelectionStart = tb.Text.Length;
 
             tb.TextChanged += SoTienCoctb_TextChanged;
+        }
+
+        private void txtTienCoc_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !Regex.IsMatch(e.Text, "^[0-9]+$");
+        }
+
+        private void txtTienCoc_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            // Không cho nhập Space, Subtract, OemMinus, OemPlus
+            if (e.Key == Key.Space ||
+                e.Key == Key.OemMinus ||
+                e.Key == Key.Subtract ||
+                e.Key == Key.OemPlus)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTienCoc_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(string)))
+            {
+                string pasted = (string)e.DataObject.GetData(typeof(string));
+
+                if (!Regex.IsMatch(pasted, @"^[0-9]+$"))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
         }
 
     }
