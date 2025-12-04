@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -367,7 +368,39 @@ namespace GUI
             // 4) LẤY SỐ TIỀN THANH TOÁN THÊM
             // -------------------------------
             decimal soTienThanhToanThem = 0;
-            decimal.TryParse(SoTienThanhToantb.Text, out soTienThanhToanThem);
+            decimal.TryParse(
+                SoTienThanhToantb.Text,
+                NumberStyles.AllowThousands,
+                CultureInfo.GetCultureInfo("vi-VN"),
+                out soTienThanhToanThem
+            );
+
+            // 2. Lấy số còn lại từ tongKet
+            decimal soConLai = tongKet.ConLai;
+
+            // 3. Kiểm tra đúng số tiền
+            if (soTienThanhToanThem < soConLai)
+            {
+                MessageBox.Show(
+                    $"Khách chưa thanh toán đủ.\nCòn thiếu: {(soConLai - soTienThanhToanThem):N0}đ",
+                    "Thiếu tiền",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                );
+                return;
+            }
+
+            if (soTienThanhToanThem > soConLai)
+            {
+                MessageBox.Show(
+                    $"Số tiền nhập vượt quá số cần thanh toán.\nCòn lại chỉ là: {soConLai:N0}đ",
+                    "Sai số tiền",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning
+                );
+                return;
+            }
+
 
             // -------------------------------
             // 5) LẤY THÔNG TIN KHÁCH
@@ -498,10 +531,41 @@ namespace GUI
 
         //private void OnlyNumber(object sender, TextCompositionEventArgs e)
         //{
-            
+
         //    e.Handled = !char.IsDigit(e.Text, 0);
         //    MessageBox.Show("hãy nhập số hợp lệ", "Thông báo");
-        //}
+        
+        private void SoTienThanhToantb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !Regex.IsMatch(e.Text, "^[0-9]+$");
+        }
 
+        private void SoTienThanhToantb_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space ||
+                e.Key == Key.OemMinus ||
+                e.Key == Key.Subtract ||
+                e.Key == Key.OemPlus)
+            {
+                e.Handled = true;
+            }
+        }
+        private void SoTienThanhToantb_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(string)))
+            {
+                string pasted = (string)e.DataObject.GetData(typeof(string));
+
+                if (!Regex.IsMatch(pasted, @"^[0-9]+$"))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
+        }
+        
     }
 }
